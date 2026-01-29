@@ -20,16 +20,18 @@ const HeroCompliance: React.FC = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * idx, duration: 0.5 }}
-              className="flex flex-col items-center gap-2 group"
+              whileHover={{ scale: 1.1, y: -5 }}
+              className="flex flex-col items-center gap-2 group cursor-pointer relative"
             >
-              <div className="h-8 md:h-10 w-auto flex items-center justify-center">
+              <div className="h-8 md:h-10 w-auto flex items-center justify-center relative z-10">
+                <div className="absolute inset-0 bg-brand-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <img
                   src={logo.image}
                   alt={logo.name}
-                  className="h-full w-auto object-contain transition-all duration-300"
+                  className="h-full w-auto object-contain transition-all duration-300 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100"
                 />
               </div>
-              <span className="text-[10px] font-bold tracking-widest text-(--muted-foreground) uppercase">
+              <span className="text-[10px] font-bold tracking-widest text-(--muted-foreground) uppercase transition-colors duration-300 group-hover:text-brand-primary">
                 {logo.name}
               </span>
             </motion.div>
