@@ -40,6 +40,8 @@ export const caseStudies: ProofCaseStudy[] = [
   {
     id: "emaar",
     logo: "EMAAR",
+    sourceLogo:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKPRXmffFUFhstsSry7-v40QNQRZnct8SclA&s",
     title: "$12M Off-Plan Sales for Luxury Launch",
     metrics: [
       { value: "$12M+", label: "Revenue" },
@@ -58,6 +60,8 @@ export const caseStudies: ProofCaseStudy[] = [
   {
     id: "sobha",
     logo: "SOBHA",
+    sourceLogo:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWA2aqWWmrh8e9BG_NqwpKcggOY-EzpXbD1w&s",
     title: "Automating Quality Control at Scale",
     metrics: [
       { value: "85%", label: "Junk Reduced" },
@@ -76,6 +80,8 @@ export const caseStudies: ProofCaseStudy[] = [
   {
     id: "damac",
     logo: "DAMAC",
+    sourceLogo:
+      "https://e7.pngegg.com/pngimages/338/272/png-clipart-damac-properties-real-estate-off-plan-property-property-developer-limited-offer-miscellaneous-angle-thumbnail.png",
     title: "High-Volume Velocity Sales",
     metrics: [
       { value: "10k+", label: "Leads/Wk" },
@@ -94,6 +100,8 @@ export const caseStudies: ProofCaseStudy[] = [
   {
     id: "nakheel",
     logo: "NAKHEEL",
+    sourceLogo:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Nakheel_Properties_logo.svg/960px-Nakheel_Properties_logo.svg.png",
     title: "Revitalizing Waterfront Sales",
     metrics: [
       { value: "$15M", label: "Unlocked" },
@@ -112,6 +120,8 @@ export const caseStudies: ProofCaseStudy[] = [
   {
     id: "versace",
     logo: "VERSACE",
+    sourceLogo:
+      "https://static.vecteezy.com/system/resources/previews/024/131/299/non_2x/versace-brand-symbol-with-name-brown-logo-clothes-design-icon-abstract-illustration-with-black-background-free-vector.jpg",
     title: "The Ultimate Luxury Experience",
     metrics: [
       { value: "$20M+", label: "Sales" },
@@ -130,10 +140,34 @@ export const caseStudies: ProofCaseStudy[] = [
 ];
 
 export const trustedLogos = [
-  "DANUBE",
-  "EMAAR",
-  "DAMAC",
-  "SOBHA",
-  "NAKHEEL",
-  "VERSACE",
+  {
+    name: "DANUBE",
+    image:
+      "https://yt3.googleusercontent.com/ytc/AIdro_n-x-MUm9n5dl840F716JA1WeMMDgRtqwCxj98hfxchN1I=s900-c-k-c0x00ffffff-no-rj",
+  },
+  {
+    name: "EMAAR",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKPRXmffFUFhstsSry7-v40QNQRZnct8SclA&s",
+  },
+  {
+    name: "DAMAC",
+    image:
+      "https://usuaebusiness.org/wp-content/uploads/2025/02/DAMAC-logo.png",
+  },
+  {
+    name: "SOBHA",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWA2aqWWmrh8e9BG_NqwpKcggOY-EzpXbD1w&s",
+  },
+  {
+    name: "NAKHEEL",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Nakheel_Properties_logo.svg/960px-Nakheel_Properties_logo.svg.png",
+  },
+  {
+    name: "VERSACE",
+    image:
+      "https://static.vecteezy.com/system/resources/previews/024/131/299/non_2x/versace-brand-symbol-with-name-brown-logo-clothes-design-icon-abstract-illustration-with-black-background-free-vector.jpg",
+  },
 ];

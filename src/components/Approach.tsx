@@ -41,35 +41,6 @@ const Approach: React.FC = () => {
                 between the AI and your business — making sure the system bends,
                 not you.
               </p>
-
-              <div className="space-y-4">
-                <p className="text-sm uppercase tracking-widest text-brand-primary font-bold opacity-80">
-                  We handle setup, integration, and last-mile execution:
-                </p>
-                <ul className="space-y-4">
-                  {[
-                    "Work with your CRM, not around it",
-                    "Speak in your brand’s voice",
-                    "Escalate intelligently when automation isn’t enough",
-                  ].map((item, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 * i }}
-                      className="flex items-center gap-3 text-(--foreground)"
-                    >
-                      <div className="w-1.5 h-1.5 rounded-full bg-brand-primary shadow-[0_0_10px_rgba(var(--brand-primary-rgb),0.5)]" />
-                      {item}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-
-              <p className="text-base italic opacity-70 border-l-2 border-brand-primary/30 pl-4">
-                When something breaks, underperforms, or needs tuning — that’s
-                our responsibility.
-              </p>
             </div>
 
             <div className="mt-10 flex flex-col gap-4 justify-center lg:justify-start">

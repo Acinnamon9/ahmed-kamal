@@ -6,6 +6,7 @@ import JourneyTimeline from "./components/journey/Timeline";
 import LayoutToggle from "./components/ui/LayoutToggle";
 import InteractiveBackground from "./components/ui/InteractiveBackground";
 import OnboardingTimeline from "./components/OnboardingTimeline";
+import ChatBot from "./components/ChatBot";
 
 // Lazy load non-critical sections
 const AITeam = lazy(() => import("./components/AITeam"));
@@ -49,6 +50,7 @@ function App() {
       <InteractiveBackground />
       <Navbar />
       <LayoutToggle />
+      <ChatBot />
 
       <div className="flex flex-col">
         {PAGE_SECTIONS.map(({ id, Component, zIndex, isLazy }) => {

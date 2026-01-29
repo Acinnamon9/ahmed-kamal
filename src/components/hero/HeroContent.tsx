@@ -2,14 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import Typewriter from "../ui/Typewriter";
 import { itemVariants } from "../../animations";
-import { trustedLogos } from "../../constants/proofData";
 import { useIsMobile } from "../../hooks/useIsMobile";
 
-interface HeroContentProps {
-  showTrustedBy?: boolean;
-}
-
-const HeroContent: React.FC<HeroContentProps> = ({ showTrustedBy = true }) => {
+const HeroContent: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
@@ -49,39 +44,6 @@ const HeroContent: React.FC<HeroContentProps> = ({ showTrustedBy = true }) => {
           while you sleep.
         </span>
       </motion.p>
-
-      {/* Trusted By Strip - Infinite Horizontal Scroller */}
-      {showTrustedBy && (
-        <motion.div variants={itemVariants} className="mt-6 sm:mt-7 md:mt-8">
-          <div className="text-[9px] sm:text-[10px] font-bold text-(--muted-foreground) uppercase tracking-[0.25em] sm:tracking-[0.3em] mb-4 sm:mb-5 md:mb-6 opacity-60">
-            Trusted by Forward-Thinking Enterprises
-          </div>
-
-          <div className="relative w-full overflow-hidden">
-            {/* Infinite Horizontal Scroller */}
-
-            <motion.div
-              className="flex gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center whitespace-nowrap"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{
-                duration: 25,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            >
-              {/* Double the logos to create the infinite loop effect */}
-              {[...trustedLogos, ...trustedLogos].map((logo, idx) => (
-                <span
-                  key={idx}
-                  className="text-base sm:text-lg md:text-xl font-black text-(--foreground) tracking-tighter opacity-30 hover:opacity-100 transition-opacity duration-500 cursor-default"
-                >
-                  {logo}
-                </span>
-              ))}
-            </motion.div>
-          </div>
-        </motion.div>
-      )}
     </motion.div>
   );
 };

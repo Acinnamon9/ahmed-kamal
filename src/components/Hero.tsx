@@ -5,7 +5,8 @@ import { containerVariants, itemVariants } from "../animations";
 import HeroBackground from "./hero/HeroBackground";
 import HeroBadge from "./hero/HeroBadge";
 import HeroCTA from "./hero/HeroCTA";
-import HeroRobotHead from "./hero/HeroRobotHead";
+import HeroTrustedBy from "./hero/HeroTrustedBy";
+import HeroCompliance from "./hero/HeroCompliance";
 
 /**
  * FEATURE TOGGLES
@@ -30,27 +31,27 @@ const Hero: React.FC = () => {
     <Section
       ref={containerRef}
       id="hero"
-      className="bg-linear-to-t from-(--muted) to-(--background) min-h-screen pt-32 sm:pt-48 lg:pt-64 flex items-center relative overflow-hidden"
+      className="pt-40 pb-20 sm:pt-56 sm:pb-32 lg:pt-64 lg:pb-40 relative overflow-hidden"
     >
       <HeroBackground />
 
-      <Container className="relative z-10 w-full px-4 sm:px-6 md:px-8 lg:px-12">
+      <Container className="relative z-10 w-full px-4 sm:px-6 md:px-8 lg:px-12 max-w-[1700px]">
         <motion.div
           className="max-w-4xl mx-auto text-center flex flex-col items-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <HeroRobotHead />
+          {/* <HeroRobotHead /> */}
 
           {HERO_CONFIG.showBadge && <HeroBadge />}
 
           <motion.h1
             variants={itemVariants}
             style={{ opacity: headlineOpacity, y: headlineY }}
-            className="text-5xl sm:text-6xl md:text-7xl font-black leading-[1.1] text-(--foreground) mb-8 tracking-tighter max-w-5xl"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.05] text-(--foreground) mb-8 tracking-tighter max-w-none"
           >
-            AI Agents That Call, Qualify, and Book Leads{" "}
+            AI Agents That Call, Qualify, and Book Appointments{" "}
             <span className="bg-linear-to-r from-brand-primary to-brand-primary/60 bg-clip-text text-transparent">
               Automatically
             </span>
@@ -64,11 +65,10 @@ const Hero: React.FC = () => {
           </motion.p>
 
           <HeroCTA />
-
-          {/* Benefits List - Hidden if HERO_CONFIG.showBenefits is false */}
-          {/* (Logic moved out but could be added as HeroBenefits if needed) */}
         </motion.div>
       </Container>
+      <HeroTrustedBy />
+      <HeroCompliance />
     </Section>
   );
 };
