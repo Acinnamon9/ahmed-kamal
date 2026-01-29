@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
             style={{ opacity: headlineOpacity, y: headlineY }}
             className="text-5xl sm:text-6xl md:text-7xl font-black leading-[1.1] text-(--foreground) mb-8 tracking-tighter max-w-5xl"
           >
-            AI Agents That Call, Qualify, and Book Leads —{" "}
+            AI Agents That Call, Qualify, and Book Leads{" "}
             <span className="bg-linear-to-r from-brand-primary to-brand-primary/60 bg-clip-text text-transparent">
               Automatically
             </span>

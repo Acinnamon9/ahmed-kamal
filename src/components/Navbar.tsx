@@ -29,12 +29,18 @@ const Navbar: React.FC = () => {
       >
         <div className="flex items-center justify-between relative z-10">
           {/* Logo */}
-          <a href="/" className="transition-opacity hover:opacity-80">
+          <a
+            href="/"
+            className="flex items-center gap-2.5 transition-opacity hover:opacity-80"
+          >
             <img
-              src="https://client-of-vivek.vercel.app/assets/AX_logo_transparent.png"
-              alt="Ravan.ai"
+              src="https://github.com/Acinnamon9/Client-of-vivek/blob/main/public/assets/AX_logo_transparent.png?raw=true"
+              alt="AtomicX"
               className="h-7 sm:h-8 md:h-9 lg:h-10 w-auto object-contain"
             />
+            <span className="text-xl sm:text-2xl font-bold text-(--foreground) tracking-tight">
+              AtomicX
+            </span>
           </a>
 
           {/* Desktop Links */}
