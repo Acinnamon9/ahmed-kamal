@@ -2,7 +2,14 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { WidgetProvider } from "./contexts/WidgetContext.tsx";
 import { ThemeProvider } from "./contexts/ThemeContext.tsx";
+import { FORCED_ASSETS } from "./assets-manifest";
 import "./index.css";
+
+// Force Vite/Vercel to recognize these assets as used
+// console.log("Assets forced:", FORCED_ASSETS.length);
+if (typeof window !== "undefined" && (window as any)._force_assets) {
+  console.log(FORCED_ASSETS);
+}
 
 class ReactWidget extends HTMLElement {
   private root: ReactDOM.Root | null = null;
@@ -16,7 +23,7 @@ class ReactWidget extends HTMLElement {
     const container = document.createElement("div");
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "https://vite-react-one-jet-80.vercel.app/style.css";
+    link.href = "https://client-of-vivek.vercel.app/style.css";
 
     // Append the stylesheet and container to the Shadow DOM
     this.shadowRoot?.appendChild(link);

@@ -32,8 +32,7 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Sales Representative",
     replaces: "Outbound SDR Team",
     replacesValue: "$15k/mo",
-    image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/assets/Sales representative.png",
+    image: "https://client-of-vivek.vercel.app/assets/Sales representative.png",
     features: [
       "Calls inbound leads in under 3 minutes",
       "Qualifies prospects via logic-based voice",
@@ -50,8 +49,7 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Receptionist",
     replaces: "Front Desk & Admin",
     replacesValue: "$4k/mo",
-    image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/assets/Receptionist.png",
+    image: "https://client-of-vivek.vercel.app/assets/Receptionist.png",
     features: [
       "Answers every inbound call instantly",
       "Routes inquiries with zero hold time",
@@ -68,8 +66,7 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Support Agent",
     replaces: "Tier 1 Support Staff",
     replacesValue: "$4k/mo",
-    image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/assets/Customer service.png",
+    image: "https://client-of-vivek.vercel.app/assets/Customer service.png",
     features: [
       "Resolves common issues 24/7/365",
       "Available via Chat, SMS, and Email",
@@ -87,7 +84,7 @@ export const workforceRoles: WorkforceRole[] = [
     replaces: "Marketing & Ad Agency",
     replacesValue: "$5k/mo",
     image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/assets/Social media influencer.png",
+      "https://client-of-vivek.vercel.app/assets/Social media influencer.png",
     features: [
       "Creates & posts viral content daily",
       "Manages paid ad campaigns 24/7",
@@ -104,8 +101,7 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Lead Nurturer",
     replaces: "Email & WhatsApp SDR",
     replacesValue: "$5k/mo",
-    image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/assets/Lead Nurturer.png",
+    image: "https://client-of-vivek.vercel.app/assets/Lead Nurturer.png",
     features: [
       "Runs 60-day follow-up sequences",
       "Warms cold leads with context",
@@ -122,8 +118,7 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Appointment Setter",
     replaces: "Administrative SDR",
     replacesValue: "$8k/mo",
-    image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/assets/Sales representative.png",
+    image: "https://client-of-vivek.vercel.app/assets/Sales representative.png",
     features: [
       "Eliminates no-shows via smart follow-up",
       "Syncs availability across team",
@@ -140,8 +135,7 @@ export const workforceRoles: WorkforceRole[] = [
     title: "AI Funnel Optimizer",
     replaces: "CRO Specialist Staff",
     replacesValue: "$10k/mo",
-    image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/assets/AB tester.png",
+    image: "https://client-of-vivek.vercel.app/assets/AB tester.png",
     features: [
       "Identifies friction in buyers journey",
       "Suggests copy & flow improvements",
@@ -159,7 +153,7 @@ export const workforceRoles: WorkforceRole[] = [
     replaces: "Customer Success Team",
     replacesValue: "$6k/mo",
     image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/assets/Onboarding specialist.png",
+      "https://client-of-vivek.vercel.app/assets/Onboarding specialist.png",
     features: [
       "Guides new users step-by-step 24/7",
       "Reduces day-0 churn via education",

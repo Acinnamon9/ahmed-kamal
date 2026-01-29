@@ -133,7 +133,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: "https://client-of-vivek.vercel.app/E-commerce.png",
+    image:
+      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/E-commerce.png",
     description:
       "Recover abandoned carts with personalized voice calls and verify COD orders instantly to eliminate RTO losses.",
   },
@@ -155,7 +156,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: "https://client-of-vivek.vercel.app/Supply Chain Management.png",
+    image:
+      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/Supply Chain Management.png",
     description:
       "Optimize last-mile efficiency by resolving address conflicts and coordinating delivery windows via persistent customer loops.",
   },
@@ -177,7 +179,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: "https://client-of-vivek.vercel.app/Hospitality.png",
+    image:
+      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/Hospitality.png",
     description:
       "Never miss a booking with a 24/7 AI concierge that handles reservations, FAQs, and local recommendations across 40+ languages.",
   },
@@ -199,7 +202,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: "https://client-of-vivek.vercel.app/Automotive.png",
+    image:
+      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/Automotive.png",
     description:
       "Maximize workshop yield with agents that proactively book service slots and follow-up on sales leads before they go cold.",
   },
@@ -221,7 +225,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: "https://client-of-vivek.vercel.app/Professional services.png",
+    image:
+      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/Professional services.png",
     description:
       "Capture and score high-value leads instantly, providing summarized insights to your team to focus work on the winners.",
   },
