@@ -32,6 +32,7 @@ export default defineConfig({
       fileName: "react-widget-uv",
       formats: ["iife"],
     },
+    copyPublicDir: true,
     rollupOptions: {
       // Remove external dependencies to bundle them
       // external: ['react', 'react-dom'],
