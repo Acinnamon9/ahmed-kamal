@@ -19,6 +19,7 @@ export default defineConfig({
     port: process.env.PORT as unknown as number,
   },
   plugins: [react(), tailwindcss(), vercel()],
+  publicDir: "public",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

@@ -43,8 +43,7 @@ export const UNIVERSAL_BASELINE: Industry = {
     },
   ],
   buttonText: "See Universal Impact",
-  image:
-    "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/Global Status.png",
+  image: "https://client-of-vivek.vercel.app/Global Status.png",
   description:
     "Our core intelligence layer provides immediate efficiency across every operational node, slashing response times and standardizing quality.",
 };
@@ -68,8 +67,7 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/Real Estate.png",
+    image: "https://client-of-vivek.vercel.app/Real Estate.png",
     description:
       "Agents bridge the gap between portal enquiry and viewing, qualifying buyers instantly and syncing data directly to your CRM.",
   },
@@ -91,8 +89,7 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/Healthcare.png",
+    image: "https://client-of-vivek.vercel.app/Healthcare.png",
     description:
       "AI manages the entire patient intake lifecycle, from instant slot booking to insurance verification and automated follow-ups.",
   },
@@ -114,8 +111,7 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/Lending and Finance.png",
+    image: "https://client-of-vivek.vercel.app/Lending and Finance.png",
     description:
       "Standardize complex document intake and KYC with OCR-enabled agents that guide applicants through the process in real-time.",
   },
@@ -137,8 +133,7 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/E-commerce.png",
+    image: "https://client-of-vivek.vercel.app/E-commerce.png",
     description:
       "Recover abandoned carts with personalized voice calls and verify COD orders instantly to eliminate RTO losses.",
   },
@@ -160,8 +155,7 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/Supply Chain Management.png",
+    image: "https://client-of-vivek.vercel.app/Supply Chain Management.png",
     description:
       "Optimize last-mile efficiency by resolving address conflicts and coordinating delivery windows via persistent customer loops.",
   },
@@ -183,8 +177,7 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/Hospitality.png",
+    image: "https://client-of-vivek.vercel.app/Hospitality.png",
     description:
       "Never miss a booking with a 24/7 AI concierge that handles reservations, FAQs, and local recommendations across 40+ languages.",
   },
@@ -206,8 +199,7 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/Automotive.png",
+    image: "https://client-of-vivek.vercel.app/Automotive.png",
     description:
       "Maximize workshop yield with agents that proactively book service slots and follow-up on sales leads before they go cold.",
   },
@@ -229,8 +221,7 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image:
-      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/Professional services.png",
+    image: "https://client-of-vivek.vercel.app/Professional services.png",
     description:
       "Capture and score high-value leads instantly, providing summarized insights to your team to focus work on the winners.",
   },
