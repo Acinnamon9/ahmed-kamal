@@ -25,7 +25,7 @@ export const timelineEvents: LeadProblemTimelineEvent[] = [
     result: "AI calls immediately",
     type: "won",
     image:
-      "https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Lead submits form.jpg",
+      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/assets/Lead submits form.jpg",
   },
   {
     time: "3 min",
@@ -33,7 +33,7 @@ export const timelineEvents: LeadProblemTimelineEvent[] = [
     result: "Your SDR hasn't seen it yet",
     type: "lost",
     image:
-      "https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Peak Interest Window.jpg",
+      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/assets/Peak Interest Window.jpg",
   },
   {
     time: "1 hour",
@@ -41,7 +41,7 @@ export const timelineEvents: LeadProblemTimelineEvent[] = [
     result: "21x less likely to convert",
     type: "lost",
     image:
-      "https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/Lead Goes Cold.jpg",
+      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/assets/Lead Goes Cold.jpg",
   },
   {
     time: "24 hours",
@@ -49,6 +49,6 @@ export const timelineEvents: LeadProblemTimelineEvent[] = [
     result: "Already bought from competitor",
     type: "lost",
     image:
-      "https://vite-react-kkfb43u6q-abhijeets-projects-1922facd.vercel.app/assets/First Contact Attempt.jpg",
+      "https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/assets/First Contact Attempt.jpg",
   },
 ];

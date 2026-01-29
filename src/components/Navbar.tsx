@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <a href="/" className="transition-opacity hover:opacity-80">
             <img
-              src="https://vite-react-knv2dkr5t-abhijeets-projects-1922facd.vercel.app//assets/AX_logo_transparent.png"
+              src="https://raw.githubusercontent.com/Acinnamon9/vite-react/main/public/assets/AX_logo_transparent.png"
               alt="Ravan.ai"
               className="h-7 sm:h-8 md:h-9 lg:h-10 w-auto object-contain"
             />

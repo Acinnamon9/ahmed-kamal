@@ -8,7 +8,7 @@ import { cn } from "../lib/utils";
 const DEMO_STEPS = [
   {
     id: "voice",
-    label: "Instant Website Conversations",
+    label: "Instant Voice Conversations",
     description:
       "AI speech-to-speech bot that engages visitors and converts leads 24/7",
     icon: <MessageSquare className="w-6 h-6" />,
