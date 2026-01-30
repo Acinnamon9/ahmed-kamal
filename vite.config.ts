@@ -26,23 +26,7 @@ export default defineConfig({
     },
   },
   build: {
-    lib: {
-      entry: path.resolve(__dirname, "src/widget.tsx"),
-      name: "ReactWidget",
-      fileName: "react-widget-uv",
-      formats: ["iife"],
-    },
-    copyPublicDir: true,
-    rollupOptions: {
-      // Remove external dependencies to bundle them
-      // external: ['react', 'react-dom'],
-      output: {
-        // Remove globals mapping since React and ReactDOM will be bundled
-        // globals: {
-        //   react: 'React',
-        //   'react-dom': 'ReactDOM',
-        // },
-      },
-    },
+    outDir: "dist",
+    sourcemap: true,
   },
 });
