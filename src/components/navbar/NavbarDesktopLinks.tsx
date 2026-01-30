@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Button from "../ui/Button";
 import { cn } from "../../lib/utils";
+import { useBooking } from "../../context/BookingContext";
 
 interface NavbarDesktopLinksProps {
   navLinks: { label: string; href: string }[];
@@ -16,6 +17,8 @@ const NavbarDesktopLinks: React.FC<NavbarDesktopLinksProps> = ({
   scrollToSection,
   setMobileMenuOpen,
 }) => {
+  const { openBooking } = useBooking();
+
   return (
     <div className="hidden lg:flex items-center gap-2 pointer-events-auto">
       {navLinks.map((link) => {
@@ -60,7 +63,7 @@ const NavbarDesktopLinks: React.FC<NavbarDesktopLinksProps> = ({
         variant="glass-primary"
         size="xl"
         className="px-10 rounded-[20px]"
-        onClick={() => window.open("https://atomicx.ravan.ai/book", "_blank")}
+        onClick={openBooking}
       >
         Book Demo
       </Button>

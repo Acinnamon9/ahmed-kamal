@@ -15,11 +15,10 @@ const FAQHeader: React.FC = () => {
         Strategic Briefing
       </Badge>
       <h2 className="text-4xl sm:text-6xl font-black mt-6 tracking-tighter text-(--foreground) uppercase">
-        Knowledge Base
+        FAQ
       </h2>
       <p className="text-lg text-(--muted-foreground) mt-4 max-w-2xl mx-auto font-medium opacity-80">
-        Operational insights and technical protocols for AtomicX
-        implementations.
+        Frequently Asked Questions
       </p>
     </div>
   );

@@ -51,7 +51,7 @@ const ROISliderGroup: React.FC<ROISliderGroupProps> = ({
         label="Current Close Rate"
         valueDisplay={`${closeRate}%`}
         min="1"
-        max="20"
+        max="30"
         step="0.5"
         value={closeRate}
         onChange={(e) => setCloseRate(parseFloat(e.target.value))}

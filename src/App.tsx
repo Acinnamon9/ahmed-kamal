@@ -7,6 +7,8 @@ import LayoutToggle from "./components/ui/LayoutToggle";
 import InteractiveBackground from "./components/ui/InteractiveBackground";
 import OnboardingTimeline from "./components/OnboardingTimeline";
 import ChatBot from "./components/ChatBot";
+import { BookingProvider } from "./context/BookingContext";
+import BookingModal from "./components/ui/BookingModal";
 
 // Lazy load non-critical sections
 const AITeam = lazy(() => import("./components/AITeam"));
@@ -46,39 +48,42 @@ const PAGE_SECTIONS = [
 
 function App() {
   return (
-    <div className="relative font-jakarta bg-(--background) selection:bg-brand-primary/20 selection:text-brand-primary min-h-screen">
-      <InteractiveBackground />
-      <Navbar />
-      <LayoutToggle />
-      <ChatBot />
+    <BookingProvider>
+      <div className="relative font-jakarta bg-(--background) selection:bg-brand-primary/20 selection:text-brand-primary min-h-screen">
+        <InteractiveBackground />
+        <Navbar />
+        <BookingModal />
+        <LayoutToggle />
+        <ChatBot />
 
-      <div className="flex flex-col">
-        {PAGE_SECTIONS.map(({ id, Component, zIndex, isLazy }) => {
-          const content = (
-            <div
-              key={id}
-              className="relative bg-transparent"
-              style={{ zIndex }}
-            >
-              <Component />
-            </div>
-          );
-
-          if (isLazy) {
-            return (
-              <Suspense
+        <div className="flex flex-col">
+          {PAGE_SECTIONS.map(({ id, Component, zIndex, isLazy }) => {
+            const content = (
+              <div
                 key={id}
-                fallback={<div className="h-screen bg-transparent" />}
+                className="relative bg-transparent"
+                style={{ zIndex }}
               >
-                {content}
-              </Suspense>
+                <Component />
+              </div>
             );
-          }
 
-          return content;
-        })}
+            if (isLazy) {
+              return (
+                <Suspense
+                  key={id}
+                  fallback={<div className="h-screen bg-transparent" />}
+                >
+                  {content}
+                </Suspense>
+              );
+            }
+
+            return content;
+          })}
+        </div>
       </div>
-    </div>
+    </BookingProvider>
   );
 }
 
