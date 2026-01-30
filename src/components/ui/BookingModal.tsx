@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Calendar, Loader2 } from "lucide-react";
+import { X, Mic, Loader2, Sparkles, Video, Smartphone } from "lucide-react";
 import { useBooking } from "../../context/BookingContext";
 
 const BOOKING_URL = "https://link.quickadpro.com/widget/bookings/atomicx";
@@ -70,66 +70,132 @@ const BookingModal: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.85, y: 40 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative z-[10000] w-full max-w-4xl h-[85vh] max-h-[750px] overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-transparent shadow-2xl backdrop-blur-xl"
+            className="relative z-[10000] w-full max-w-6xl h-[90vh] max-h-[780px] overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/15 via-white/5 to-transparent shadow-2xl backdrop-blur-2xl flex flex-col md:flex-row"
           >
-            {/* Header */}
-            <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black/40 to-transparent z-10 pointer-events-none" />
-            <div className="absolute top-4 left-6 flex items-center gap-3 z-20">
-              <div className="w-10 h-10 rounded-xl bg-brand-primary/20 border border-brand-primary/30 flex items-center justify-center">
-                <Calendar className="w-5 h-5 text-brand-primary" />
-              </div>
-              <div>
-                <h3 className="text-white font-bold text-lg tracking-tight">
-                  Book Your Demo
-                </h3>
-                <p className="text-white/50 text-xs font-medium">
-                  Choose a time that works for you
-                </p>
-              </div>
-            </div>
+            {/* Close Button - Moved Inside */}
+            <button
+              onClick={closeBooking}
+              className="absolute top-6 right-6 p-2.5 rounded-full bg-white/5 text-white/50 hover:text-white hover:bg-white/10 transition-all duration-300 z-[10001] border border-white/10 group backdrop-blur-md"
+            >
+              <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
+            </button>
 
-            {/* Scan Lines Overlay */}
-            <div className="absolute inset-0 pointer-events-none opacity-5 z-30">
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-size-[100%_2px,3px_100%]" />
-            </div>
+            {/* Left Side: Booking Section */}
+            <div className="relative flex-1 h-full min-h-[400px] md:min-h-0 bg-white">
+              {/* Scan Lines Overlay (subtle texture) */}
+              <div className="absolute inset-0 pointer-events-none opacity-[0.03] z-10">
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-size-[100%_2px,3px_100%]" />
+              </div>
 
-            {/* Loading State */}
-            <AnimatePresence>
-              {isLoading && (
-                <motion.div
-                  initial={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute inset-0 flex flex-col items-center justify-center bg-black/50 z-20"
-                >
+              {/* Loading State - scoped to calendar */}
+              <AnimatePresence>
+                {isLoading && (
                   <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 1.5,
-                      ease: "linear",
-                    }}
-                    className="mb-4"
+                    initial={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 z-20 backdrop-blur-sm"
                   >
-                    <Loader2 className="w-10 h-10 text-brand-primary" />
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: 1.5,
+                        ease: "linear",
+                      }}
+                      className="mb-4"
+                    >
+                      <Loader2 className="w-10 h-10 text-brand-primary" />
+                    </motion.div>
+                    <p className="text-white/60 text-sm font-medium">
+                      Initializing secure booking...
+                    </p>
                   </motion.div>
-                  <p className="text-white/60 text-sm font-medium">
-                    Loading calendar...
+                )}
+              </AnimatePresence>
+
+              {/* iFrame */}
+              <iframe
+                src={BOOKING_URL}
+                onLoad={handleIframeLoad}
+                className="w-full h-full border-0"
+                title="Book a Demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              />
+            </div>
+
+            {/* Right Side: Info Section */}
+            <div className="w-full md:w-[380px] lg:w-[420px] p-8 md:p-10 flex flex-col justify-center border-t md:border-t-0 md:border-l border-white/10 bg-black/40 backdrop-blur-md relative overflow-hidden">
+              <div className="relative z-10">
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="w-12 h-12 rounded-xl bg-brand-primary/20 border border-brand-primary/30 flex items-center justify-center mb-6 shadow-lg shadow-brand-primary/10"
+                >
+                  <Mic className="w-6 h-6 text-brand-primary" />
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight leading-tight">
+                    Deploy Your <span className="text-brand-primary">AI Persona</span>
+                  </h3>
+                  <p className="text-white/60 text-base leading-relaxed mb-8">
+                    Master your outreach with AI agents that handle phone calls with human-level nuance and social media presenters that maintain your presence 24/7.
                   </p>
                 </motion.div>
-              )}
-            </AnimatePresence>
 
-            {/* iFrame */}
-            <iframe
-              src={BOOKING_URL}
-              onLoad={handleIframeLoad}
-              className="w-full h-full border-0 pt-14"
-              title="Book a Demo"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            />
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="space-y-4"
+                >
+                  {[
+                    { icon: Smartphone, text: "Phone Agents (Sub-100ms Latency)" },
+                    { icon: Video, text: "AI Social Media Presenters" },
+                    { icon: Sparkles, text: "Digital Identity & Voice Cloning" },
+                    { icon: Mic, text: "Cross-Platform Brand Integration" },
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5 + index * 0.1 }}
+                      className="flex items-center gap-3.5 group"
+                    >
+                      <div className="flex-shrink-0 w-7 h-7 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:border-brand-primary/50 transition-colors">
+                        <item.icon className="w-3.5 h-3.5 text-brand-primary" />
+                      </div>
+                      <span className="text-white/80 text-sm font-medium">{item.text}</span>
+                    </motion.div>
+                  ))}
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8 }}
+                  className="mt-10 pt-8 border-t border-white/5"
+                >
+                  <p className="text-white/40 text-xs italic leading-relaxed">
+                    "The transition to AI voice agents was seamless. Our digital identity has never been stronger."
+                  </p>
+                  <p className="text-white/30 text-[10px] mt-2 font-medium uppercase tracking-[0.2em]">
+                    — Strategic Identity Partners
+                  </p>
+                </motion.div>
+              </div>
+
+              {/* Subtle background glow for the text area */}
+              <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-brand-primary/5 to-transparent pointer-events-none" />
+            </div>
 
             {/* Bottom Gradient Fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-black/20 to-transparent pointer-events-none z-0" />
           </motion.div>
         </div>
       )}
