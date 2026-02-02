@@ -4,6 +4,8 @@
  * This includes timeline events used to illustrate lead spoilage.
  */
 
+import { ASSETS_URL } from "./links";
+
 /**
  * Represents an event in the lead conversion timeline, used to illustrate 'won' or 'lost' opportunities.
  */
@@ -24,28 +26,27 @@ export const timelineEvents: LeadProblemTimelineEvent[] = [
     event: "Lead Submits Form",
     result: "AI calls immediately",
     type: "won",
-    image: "https://client-of-vivek.vercel.app/assets/Lead submits form.jpg",
+    image: `${ASSETS_URL}/Lead submits form.jpg`,
   },
   {
     time: "3 min",
     event: "Peak Interest Window",
     result: "Your SDR hasn't seen it yet",
     type: "lost",
-    image: "https://client-of-vivek.vercel.app/assets/Peak Interest Window.jpg",
+    image: `${ASSETS_URL}/Peak Interest Window.jpg`,
   },
   {
     time: "1 hour",
     event: "Lead Goes Cold",
     result: "21x less likely to convert",
     type: "lost",
-    image: "https://client-of-vivek.vercel.app/assets/Lead Goes Cold.jpg",
+    image: `${ASSETS_URL}/Lead Goes Cold.jpg`,
   },
   {
     time: "24 hours",
     event: "First Contact Attempt",
     result: "Already bought from competitor",
     type: "lost",
-    image:
-      "https://client-of-vivek.vercel.app/assets/First Contact Attempt.jpg",
+    image: `${ASSETS_URL}/First Contact Attempt.jpg`,
   },
 ];

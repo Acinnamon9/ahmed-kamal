@@ -4,6 +4,7 @@ import { WidgetProvider } from "./contexts/WidgetContext.tsx";
 import { ThemeProvider } from "./contexts/ThemeContext.tsx";
 import { FORCED_ASSETS } from "./assets-manifest";
 import "./index.css";
+import { BASE_URL } from "./constants/links";
 
 // Force Vite/Vercel to recognize these assets as used
 // console.log("Assets forced:", FORCED_ASSETS.length);
@@ -23,7 +24,7 @@ class ReactWidget extends HTMLElement {
     const container = document.createElement("div");
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "https://client-of-vivek.vercel.app/style.css";
+    link.href = `${BASE_URL}/style.css`;
 
     // Append the stylesheet and container to the Shadow DOM
     this.shadowRoot?.appendChild(link);
