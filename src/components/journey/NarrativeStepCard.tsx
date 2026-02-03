@@ -10,15 +10,27 @@ interface NarrativeStepCardProps {
   index: number;
 }
 
+/**
+ * NarrativeStepCard Component
+ * Represents a single stage in a "Revenue Leak" story.
+ * Features a 3D tilt effect and a details modal.
+ */
 const NarrativeStepCard: React.FC<NarrativeStepCardProps> = ({
   card,
   index,
 }) => {
+  // state: controls the visibility of the detail modal
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Highlight logic: the first card in the sequence usually gets a special 'glow' or focus
   const isFirst = index === 0;
 
   return (
     <>
+      {/* 
+        Main Card Wrapper:
+        - Animated fade-in with a stagger effect (delay: index * 0.1)
+      */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -29,7 +41,8 @@ const NarrativeStepCard: React.FC<NarrativeStepCardProps> = ({
           isFirst ? "lg:col-span-1" : "lg:col-span-1",
         )}
       >
-        <InteractiveTilt className="h-full">
+        {/* Adds a subtle 3D tilt effect when hovering/moving the mouse over the card */}
+        <InteractiveTilt className="h-full" strength={4}>
           <button
             onClick={() => setIsModalOpen(true)}
             className={cn(
@@ -39,13 +52,14 @@ const NarrativeStepCard: React.FC<NarrativeStepCardProps> = ({
                 : "bg-linear-to-b from-white/10 to-transparent shadow-xl",
             )}
           >
+            {/* The inner card body with glassmorphism (backdrop-blur) */}
             <div
               className={cn(
                 "relative h-full flex flex-col p-6 rounded-[23px] backdrop-blur-xl overflow-hidden",
                 isFirst ? "bg-(--card)/90" : "bg-(--card)/40",
               )}
             >
-              {/* 1. Large Numbering Index */}
+              {/* 1. Large Background Number (e.g., 01, 02) */}
               <div className="absolute top-4 right-6 pointer-events-none">
                 <span
                   className={cn(
@@ -57,7 +71,7 @@ const NarrativeStepCard: React.FC<NarrativeStepCardProps> = ({
                 </span>
               </div>
 
-              {/* 2. Top Metric / Badge */}
+              {/* 2. Top Metric / Badge (e.g., "90% Leak") */}
               <div className="flex items-center justify-between mb-6 relative z-10">
                 <div
                   className={cn(
@@ -71,24 +85,17 @@ const NarrativeStepCard: React.FC<NarrativeStepCardProps> = ({
                 </div>
               </div>
 
-              {/* 3. Image with Scanner Effect */}
+              {/* 3. The Visual Image */}
               <div className="relative w-full aspect-square rounded-xl overflow-hidden border border-white/10 mb-6 group-hover:border-white/20 transition-all">
                 <img
                   src={card.image}
                   alt={card.title}
-                  className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 ease-out group-hover:scale-105 delay-200"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
-                {/* Scanner Line */}
-                <div
-                  className={cn(
-                    "absolute top-0 left-0 w-full h-0.5 shadow-[0_0_10px_rgba(34,211,238,0.8)] animate-[scan_3s_linear_infinite]",
-                    isFirst ? "bg-brand-primary" : "bg-white/50",
-                  )}
-                />
               </div>
 
-              {/* 4. Text Content */}
+              {/* 4. Textual Content (Title & Description) */}
               <div className="flex-1 space-y-3 relative z-10">
                 <h4
                   className={cn(
@@ -98,12 +105,12 @@ const NarrativeStepCard: React.FC<NarrativeStepCardProps> = ({
                 >
                   {card.title}
                 </h4>
-                <p className="text-sm text-(--muted-foreground) leading-relaxed">
+                <p className="text-base text-(--muted-foreground) leading-relaxed">
                   {card.description}
                 </p>
               </div>
 
-              {/* Visual indicator for sequence */}
+              {/* Separator line for aesthetic flow between cards on large screens */}
               {!isFirst && (
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 w-px h-12 bg-linear-to-b from-transparent via-white/10 to-transparent hidden lg:block" />
               )}
@@ -112,8 +119,10 @@ const NarrativeStepCard: React.FC<NarrativeStepCardProps> = ({
         </InteractiveTilt>
       </motion.div>
 
+      {/* Details Modal: shown when the card is clicked */}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <div className="flex flex-col md:flex-row h-full max-h-[90vh]">
+          {/* Left/Top: Expanded image view */}
           <div className="w-full md:w-3/5 h-64 md:h-auto relative bg-black/20">
             <img
               src={card.image}
@@ -121,6 +130,7 @@ const NarrativeStepCard: React.FC<NarrativeStepCardProps> = ({
               className="w-full h-full object-contain"
             />
           </div>
+          {/* Right/Bottom: Expanded text content */}
           <div className="w-full md:w-2/5 p-8 flex flex-col justify-center bg-card">
             <div
               className={cn(

@@ -28,9 +28,16 @@ interface RoleCardProps {
 
 /**
  * RoleCard Component
+ *
  * Redesigned into a high-end "AI Agent Dossier".
+ * Each card represents a specialized AI agent with its own capabilities,
+ * replacement targets, and projected efficiency metrics.
+ *
+ * Uses React.memo to prevent unnecessary re-renders during layout transitions
+ * or marquee animations.
  */
 const RoleCard: React.FC<RoleCardProps> = React.memo(({ role }) => {
+  // isModalOpen: controls the expanded 'dossier' view of the AI agent
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -44,10 +51,11 @@ const RoleCard: React.FC<RoleCardProps> = React.memo(({ role }) => {
             variant="white"
             className="group relative overflow-hidden bg-(--card)/40 backdrop-blur-2xl border border-(--border) hover:border-brand-primary/40 transition-all duration-700 h-full p-px rounded-[24px]"
           >
-            {/* Iridescent Outer Border Effect */}
-            <div className="absolute inset-0 bg-linear-to-br from-brand-primary/20 via-transparent to-brand-success/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+            {/* Iridescent Outer Border Effect: Reveals on hover for a premium "tech" feel */}
+            <div className="absolute inset-0 bg-linear-to-br from-brand-primary/20 via-transparent to-brand-success/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
 
             <div className="relative bg-(--card)/80 rounded-[23px] h-full flex flex-col overflow-hidden">
+              {/* Header Image/Icon area */}
               <div className="relative h-32 md:h-40 shrink-0 w-full overflow-hidden">
                 <RoleCardPortrait
                   image={role.image}
@@ -57,6 +65,7 @@ const RoleCard: React.FC<RoleCardProps> = React.memo(({ role }) => {
                 <div className="absolute inset-0 bg-brand-primary/0 group-hover/card:bg-brand-primary/5 transition-colors duration-500" />
               </div>
 
+              {/* Main content: Information and key metrics preview */}
               <CardContent className="flex-1 p-4 md:p-6 flex flex-col">
                 <RoleCardInfo
                   title={role.title}
@@ -72,9 +81,14 @@ const RoleCard: React.FC<RoleCardProps> = React.memo(({ role }) => {
         </button>
       </InteractiveTilt>
 
+      {/* 
+        The Dossier Modal:
+        An expanded view that allows deeper inspection of the agent's 
+        capabilities and technical specs.
+      */}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <div className="flex flex-col md:flex-row h-full max-h-[90vh]">
-          {/* Left: Portrait Area */}
+          {/* Left: Interactive Portrait Area with "Online" status indicator */}
           <div className="w-full md:w-1/2 h-64 md:h-auto relative bg-black/20 overflow-hidden">
             {role.image ? (
               <img
@@ -93,7 +107,7 @@ const RoleCard: React.FC<RoleCardProps> = React.memo(({ role }) => {
 
             <div className="absolute bottom-8 left-8">
               <div className="flex items-center gap-2 mb-2">
-                <span className="h-2 w-2 rounded-full bg-brand-success animate-pulse"></span>
+                <span className="h-2 w-2 rounded-full bg-brand-success animate-pulse" />
                 <span className="text-xs font-black tracking-widest text-brand-success uppercase">
                   Agent Online
                 </span>
@@ -104,8 +118,9 @@ const RoleCard: React.FC<RoleCardProps> = React.memo(({ role }) => {
             </div>
           </div>
 
-          {/* Right: Dossier Details */}
+          {/* Right: Technical Details & Capabilities Breakdown */}
           <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col bg-(--card) overflow-y-auto">
+            {/* Status Section */}
             <div className="mb-8">
               <div className="text-[10px] font-black text-brand-primary uppercase tracking-[0.3em] mb-4">
                 Workforce Deployment Status
@@ -120,6 +135,7 @@ const RoleCard: React.FC<RoleCardProps> = React.memo(({ role }) => {
               </div>
             </div>
 
+            {/* Expertise Section */}
             <div className="mb-8">
               <div className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em] mb-6">
                 Expertise & Capabilities
@@ -139,6 +155,7 @@ const RoleCard: React.FC<RoleCardProps> = React.memo(({ role }) => {
               </div>
             </div>
 
+            {/* Performance Metrics Section */}
             <div className="mt-auto">
               <div className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em] mb-6">
                 Efficiency Metrics

@@ -7,11 +7,24 @@ import InteractiveTilt from "./ui/InteractiveTilt";
 import ROISliderGroup from "./roi/ROISliderGroup";
 import ROIResultCard from "./roi/ROIResultCard";
 
+/**
+ * ROICalculator Component
+ *
+ * An interactive tool that allows potential clients to estimate revenue growth
+ * by switching to AI-driven lead management.
+ */
 const ROICalculator: React.FC = () => {
+  // Input States: Managed locally to provide real-time feedback on calculation
   const [leads, setLeads] = useState(300);
   const [dealValue, setDealValue] = useState(1000);
   const [closeRate, setCloseRate] = useState(7);
 
+  /**
+   * REVENUE PROJECTION LOGIC:
+   * 1. currentRevenue: Based on existing manual closure rates.
+   * 2. projectedRevenue: A 30% conservative baseline uplift achieved by
+   *    eliminating response latency and ensuring 100% follow-up.
+   */
   const currentRevenue = leads * (closeRate / 100) * dealValue;
   const projectedRevenue = currentRevenue * 0.3;
 
@@ -20,18 +33,23 @@ const ROICalculator: React.FC = () => {
       id="roi"
       className="bg-transparent overflow-hidden relative py-24 md:py-32"
     >
-      {/* Background Decor - Theme Consistent */}
+      {/* 
+        Thematic Background Decor: 
+        Soft localized glows that match the site's hero gradient colors.
+      */}
       <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-(--hero-gradient-from) rounded-full blur-[120px] opacity-20"></div>
-        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-(--hero-gradient-to) rounded-full blur-[100px] opacity-10"></div>
+        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-(--hero-gradient-from) rounded-full blur-[120px] opacity-20" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-(--hero-gradient-to) rounded-full blur-[100px] opacity-10" />
       </div>
 
       <Container className="relative z-10">
+        {/* Main Glassmorphic Panel Wrapper */}
         <div className="relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl overflow-hidden py-10 px-6 md:px-12">
-          {/* Glass Gradient Overlay */}
+          {/* Internal Glass Flow Overlay: creates a subtle chromatic variation */}
           <div className="absolute inset-0 bg-linear-to-br from-brand-primary/5 via-transparent to-brand-primary/5 pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center max-w-6xl mx-auto relative z-10">
+            {/* Left Column: Educational Copy & Action */}
             <div className="max-w-xl text-center lg:text-left">
               <div className="mb-6">
                 <span className="text-[10px] font-black text-brand-link uppercase tracking-[0.3em] opacity-80">
@@ -47,7 +65,9 @@ const ROICalculator: React.FC = () => {
                 workflows. Our AI eliminates response delay and maximizes every
                 unit of inbound lead traffic.
               </p>
+
               <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                {/* Magnetic Interaction: Makes the button feel physically reactive */}
                 <Magnetic>
                   <Button
                     size="xl"
@@ -65,6 +85,7 @@ const ROICalculator: React.FC = () => {
               </div>
             </div>
 
+            {/* Right Column: Interactive Slider Suite */}
             <InteractiveTilt>
               <Card
                 variant="white"
@@ -80,10 +101,11 @@ const ROICalculator: React.FC = () => {
                     setCloseRate={setCloseRate}
                   />
 
+                  {/* Result Panel: Reacts instantly to state changes above */}
                   <ROIResultCard projectedRevenue={projectedRevenue} />
                 </div>
 
-                {/* Technical Accent */}
+                {/* Subtle Technical 'Glow' accent in the corner */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-link/5 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
               </Card>
             </InteractiveTilt>

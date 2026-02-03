@@ -10,7 +10,7 @@ import ChatBot from "./components/ChatBot";
 import { BookingProvider } from "./context/BookingContext";
 import BookingModal from "./components/ui/BookingModal";
 
-// Lazy load non-critical sections
+// Lazy load non-critical sections to optimize initial bundle size
 const AITeam = lazy(() => import("./components/AITeam"));
 const IndustrySolutions = lazy(() => import("./components/IndustrySolutions"));
 const ROICalculator = lazy(() => import("./components/ROICalculator"));
@@ -26,10 +26,8 @@ const Footer = lazy(() => import("./components/Footer"));
  */
 const PAGE_SECTIONS = [
   { id: "hero", Component: Hero, zIndex: 10, isLazy: false },
-
   { id: "journey", Component: JourneyTimeline, zIndex: 22, isLazy: false },
   { id: "ai-team", Component: AITeam, zIndex: 30, isLazy: true },
-
   {
     id: "onboarding",
     Component: OnboardingTimeline,
@@ -38,7 +36,6 @@ const PAGE_SECTIONS = [
   },
   { id: "demo", Component: InteractiveDemo, zIndex: 15, isLazy: false },
   { id: "approach", Component: Approach, zIndex: 55, isLazy: true },
-
   { id: "solutions", Component: IndustrySolutions, zIndex: 40, isLazy: true },
   { id: "roi", Component: ROICalculator, zIndex: 50, isLazy: true },
   { id: "social-proof", Component: SocialProof, zIndex: 60, isLazy: true },
@@ -46,16 +43,33 @@ const PAGE_SECTIONS = [
   { id: "footer", Component: Footer, zIndex: 90, isLazy: true },
 ];
 
+/**
+ * Main App Component
+ *
+ * This is the entry point of the application. It sets up the main layout,
+ * global context providers, and renders the page sections dynamically.
+ */
 function App() {
   return (
+    // BookingProvider: Manages the state and logic for the booking demo modal globally
     <BookingProvider>
       <div className="relative font-jakarta bg-(--background) selection:bg-brand-primary/20 selection:text-brand-primary min-h-screen">
+        {/* Animated background layer that follows or reacts to the mouse */}
         <InteractiveBackground />
+
+        {/* Global Navigation Bar */}
         <Navbar />
+
+        {/* Modal for Booking Demos - triggered by buttons across the site */}
         <BookingModal />
+
+        {/* Floating toggle for switching between layout modes or themes */}
         <LayoutToggle />
+
+        {/* Integrated ChatBot widget for lead capture/interaction */}
         <ChatBot />
 
+        {/* Main Content Area: Renders all page sections based on PAGE_SECTIONS config */}
         <div className="flex flex-col">
           {PAGE_SECTIONS.map(({ id, Component, zIndex, isLazy }) => {
             const content = (
@@ -68,6 +82,7 @@ function App() {
               </div>
             );
 
+            // Conditional rendering for lazy-loaded components to improve performance
             if (isLazy) {
               return (
                 <Suspense

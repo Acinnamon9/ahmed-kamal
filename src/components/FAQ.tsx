@@ -6,23 +6,36 @@ import FAQHeader from "./faq/FAQHeader";
 import { faqCategories } from "../constants/faqData";
 import { cn } from "../lib/utils";
 
+/**
+ * FAQ Component
+ *
+ * Provides categorized information using an "Operational Intelligence" interface.
+ * Users can switch between pillars (categories) like Architecture, Logistics, etc.,
+ * with smooth transitions between question sets.
+ */
 const FAQ: React.FC = () => {
+  // activeTab: tracks the currently selected FAQ category ID
   const [activeTab, setActiveTab] = useState(faqCategories[0].id);
 
+  // activeCategory: derived data for the currently selected category object
   const activeCategory =
     faqCategories.find((cat) => cat.id === activeTab) || faqCategories[0];
 
   return (
     <Section id="faq" className="font-jakarta py-24 md:py-32 bg-transparent">
       <Container>
+        {/* Main Glassmorphic FAQ Container */}
         <div className="relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl overflow-hidden py-10 px-6 md:px-12">
-          {/* Glass Gradient Overlay */}
+          {/* Internal gradient overlay for depth */}
           <div className="absolute inset-0 bg-linear-to-br from-brand-primary/5 via-transparent to-brand-primary/5 pointer-events-none" />
 
           <FAQHeader />
 
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 mt-16 max-w-6xl mx-auto relative z-10">
-            {/* Sidebar Navigation */}
+            {/* 
+              Operational Pillars Sidebar:
+              Allows users to navigate through different technical themes.
+            */}
             <div className="lg:w-1/3 flex flex-col gap-2">
               <div className="mb-6 px-4">
                 <span className="text-[10px] font-black text-brand-link uppercase tracking-[0.3em] opacity-80">
@@ -65,6 +78,7 @@ const FAQ: React.FC = () => {
                       </span>
                     </div>
 
+                    {/* Active vertical tab indicator */}
                     {activeTab === category.id && (
                       <motion.div
                         layoutId="activeTab"
@@ -76,7 +90,11 @@ const FAQ: React.FC = () => {
               </div>
             </div>
 
-            {/* Intelligence Pane */}
+            {/* 
+              Intelligence Pane:
+              Displays the FAQ list for the active category.
+              AnimatePresence ensures smooth 'entry/exit' when switching tabs.
+            */}
             <div className="lg:w-2/3 flex flex-col min-h-[500px]">
               <div className="mb-6 px-4 flex items-center justify-between border-b border-(--border)/30 pb-4">
                 <h3 className="text-xl font-black text-(--foreground) uppercase tracking-tighter">
@@ -112,45 +130,6 @@ const FAQ: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* Global Footer Card - Commented Out
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-24 max-w-4xl mx-auto"
-        >
-          <div className="relative overflow-hidden bg-brand-link/5 backdrop-blur-2xl border border-brand-link/20 rounded-[32px] p-12 text-center group">
-            <div className="relative z-10">
-              <h2 className="text-3xl font-black text-(--foreground) uppercase mb-4 tracking-tighter">
-                Still Processing?
-              </h2>
-              <p className="text-(--muted-foreground) mb-10 max-w-md mx-auto font-medium">
-                Our strategic engineers are ready to build a custom
-                implementation plan for your specific operational scale.
-              </p>
-              <button
-                onClick={() =>
-                  window.open("https://atomicx.ravan.ai/book", "_blank")
-                }
-                className="inline-flex items-center gap-3 bg-brand-link hover:bg-brand-link/90 text-black px-10 py-5 rounded-full font-black uppercase tracking-[0.2em] text-xs transition-all shadow-xl shadow-brand-link/20 scale-100 hover:scale-105"
-              >
-                Schedule Strategic Setup
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                >
-                  <path d="M7 17L17 7M17 7H7M17 7V17" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </motion.div>
-        */}
       </Container>
     </Section>
   );

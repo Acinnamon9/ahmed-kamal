@@ -7,26 +7,38 @@ interface SectorCardProps {
   onHover: (industry: Industry | null) => void;
 }
 
+/**
+ * SectorCard Component
+ *
+ * Represents a specialized AI implementation for a specific business vertical.
+ * Features a high-contrast layout emphasizing ROI metrics and visual context.
+ *
+ * Uses React.memo for efficient rendering in large grids.
+ */
 const SectorCard: React.FC<SectorCardProps> = React.memo(
   ({ industry, onHover }) => (
     <InteractiveTilt className="h-full">
       <div
         className="relative group bg-(--card)/30 backdrop-blur-xl border border-(--border)/50 rounded-[24px] p-5 flex flex-col h-full shadow-sm hover:bg-(--card)/50 transition-all duration-500 overflow-hidden"
-        onMouseEnter={() => onHover(industry)}
+        onMouseEnter={() => onHover(industry)} // Parent coordination for focal effects
         onMouseLeave={() => onHover(null)}
       >
-        {/* Snapshot Window */}
+        {/* 
+          Snapshot Window:
+          An aesthetic preview area that transitions from grayscale to full color 
+          on hover, symbolizing "bringing clarity/life" to the sector.
+        */}
         <div className="relative aspect-4/3 rounded-xl overflow-hidden mb-5 border border-white/5">
           <img
             src={industry.image}
             alt=""
             loading="lazy"
-            className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 ease-in-out group-hover:scale-105"
+            className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 ease-in-out group-hover:scale-105 delay-200"
           />
           <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-20" />
         </div>
 
-        {/* Content Area */}
+        {/* Content Area: Identification and context tags */}
         <div className="flex flex-col flex-1">
           <div className="flex items-baseline justify-between mb-4 gap-2">
             <h3 className="text-xl md:text-2xl font-black text-(--foreground) uppercase tracking-tighter leading-none">
@@ -52,7 +64,12 @@ const SectorCard: React.FC<SectorCardProps> = React.memo(
             {industry.description}
           </p>
 
-          {/* Metrics: Anchored to Bottom */}
+          {/* 
+            Metrics Section:
+            Dynamically colored based on value content. 
+            Green: Growth / Gains.
+            Red: Risk Reductions / Cost savings (indicated by '-' prefix).
+          */}
           <div className="mt-auto pt-4 border-t border-(--border)/40 space-y-3">
             {industry.metrics.map((metric: any, idx: number) => (
               <div key={idx} className="flex justify-between items-center">

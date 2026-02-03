@@ -5,7 +5,15 @@ import ProofHeader from "./proof/ProofHeader";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../lib/utils";
 
+/**
+ * SocialProof Component
+ *
+ * Showcases verified case studies using a "Mission Archive" interface.
+ * Users can browse through various client successes, each presented with
+ * specific metrics, situation analysis, and authenticated testimonials.
+ */
 const SocialProof: React.FC = () => {
+  // activeIndex: controls which case study is currently shown in the detail pane
   const [activeIndex, setActiveIndex] = useState(0);
   const activeStudy = caseStudies[activeIndex];
 
@@ -18,7 +26,11 @@ const SocialProof: React.FC = () => {
         <ProofHeader />
 
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 mt-16 max-w-7xl mx-auto">
-          {/* Mission Archive Sidebar */}
+          {/* 
+            Mission Archive Sidebar: 
+            A vertical (or horizontal on mobile) list of client logos and their 
+            headline growth metric. Acts as the primary navigation for proof points.
+          */}
           <div className="lg:w-1/3 flex flex-col gap-3">
             <div className="mb-4 px-4 flex items-center justify-between">
               <span className="text-[10px] font-black text-brand-link uppercase tracking-[0.3em] opacity-80">
@@ -69,6 +81,7 @@ const SocialProof: React.FC = () => {
                     )}
                   </div>
 
+                  {/* Active Indicator: Slides vertically on desktop to match selection */}
                   {activeIndex === idx && (
                     <motion.div
                       layoutId="activeReport"
@@ -80,7 +93,11 @@ const SocialProof: React.FC = () => {
             </div>
           </div>
 
-          {/* Operational Intelligence Pane */}
+          {/* 
+            Operational Intelligence Pane:
+            Detailed view for the selected case study. 
+            Uses AnimatePresence for a heavy 'slide-across' transition effect.
+          */}
           <div className="lg:w-2/3">
             <AnimatePresence mode="wait">
               <motion.div
@@ -91,11 +108,11 @@ const SocialProof: React.FC = () => {
                 transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                 className="relative bg-(--card)/30 backdrop-blur-xl border border-(--border)/30 rounded-[32px] p-6 md:p-8 overflow-hidden shadow-2xl"
               >
-                {/* Decorative Elements */}
+                {/* Visual Depth: soft corner glow and top divider line */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-brand-link/5 rounded-full blur-[100px] -mr-32 -mt-32" />
                 <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-brand-link/20 to-transparent" />
 
-                {/* Report Header */}
+                {/* Header: Displays Client Source Logo & Meta status */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 relative z-10">
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
@@ -120,20 +137,14 @@ const SocialProof: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Primary Data Output */}
+                {/* Metrics Breakdown */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 relative z-10">
                   {activeStudy.metrics.map((metric, idx) => (
                     <div
                       key={idx}
-                      className={cn(
-                        "p-4 rounded-xl border transition-all duration-500 group hover:bg-brand-link/10 hover:border-brand-link/30 hover:shadow-[0_0_20px_rgba(34,211,238,0.1)] bg-(--muted)/20 border-(--border)/30",
-                      )}
+                      className="p-4 rounded-xl border transition-all duration-500 group hover:bg-brand-link/10 hover:border-brand-link/30 hover:shadow-[0_0_20px_rgba(34,211,238,0.1)] bg-(--muted)/20 border-(--border)/30"
                     >
-                      <span
-                        className={cn(
-                          "block text-2xl font-black tracking-tighter mb-0.5 transition-colors duration-300 group-hover:text-brand-success text-(--foreground)",
-                        )}
-                      >
+                      <span className="block text-2xl font-black tracking-tighter mb-0.5 transition-colors duration-300 group-hover:text-brand-success text-(--foreground)">
                         {metric.value}
                       </span>
                       <span className="block text-[9px] font-black text-(--muted-foreground) uppercase tracking-[0.2em]">
@@ -143,7 +154,10 @@ const SocialProof: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Field Details */}
+                {/* 
+                  Situation vs Protocol Breakdown:
+                  A distinct side-by-side view comparing the 'Challenge' with the 'AI Solution'.
+                */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-t border-(--border)/30 pt-8 relative z-10">
                   <div className="bg-brand-error/5 border border-brand-error/10 p-6 rounded-2xl backdrop-blur-sm">
                     <span className="text-[12px] font-mono font-black text-brand-error uppercase tracking-[0.2em] block mb-3 text-center">
@@ -163,11 +177,12 @@ const SocialProof: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Authenticated Statement */}
-                {/* Authenticated Statement */}
+                {/* 
+                  Authenticated Statement: 
+                  High-end testimonial box with author avatar/initials and specialized quote icons.
+                */}
                 <div className="relative p-6 md:p-8 rounded-2xl bg-(--card)/40 border border-(--border)/30 z-10 group hover:border-brand-link/30 transition-colors duration-500">
                   <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-center">
-                    {/* Left: Author Profile */}
                     <div className="flex flex-row md:flex-col items-center justify-center gap-3 shrink-0 md:w-40 md:border-r border-white/10 md:pr-6">
                       <div className="w-12 h-12 rounded-full bg-brand-link/20 flex items-center justify-center font-black text-brand-link text-lg shadow-[0_0_20px_rgba(34,211,238,0.15)] mb-0 md:mb-2">
                         {activeStudy.author.charAt(0)}
@@ -182,7 +197,6 @@ const SocialProof: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Right: Testimonial */}
                     <div className="relative flex-1 text-center md:text-left">
                       <div className="hidden md:block absolute -top-4 -left-2 text-brand-link/20">
                         <svg

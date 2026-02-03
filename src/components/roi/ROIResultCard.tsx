@@ -43,7 +43,7 @@ const ROIResultCard: React.FC<ROIResultCardProps> = ({ projectedRevenue }) => {
         <div className="text-[10px] font-black text-(--muted-foreground) uppercase tracking-[0.3em] mb-4 opacity-80">
           Projected Monthly Revenue Uplift
         </div>
-        <div className="text-5xl sm:text-7xl font-black text-brand-link tracking-tighter mb-4 transition-transform group-hover:scale-105 duration-700 selection:bg-brand-link/30">
+        <div className="text-5xl sm:text-7xl font-black text-brand-link tracking-tighter mb-4 transition-transform group-hover:scale-105 duration-1000 delay-200 selection:bg-brand-link/30">
           {formatCurrency(projectedRevenue)}
         </div>
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-success/10 border border-brand-success/20">
@@ -52,9 +52,6 @@ const ROIResultCard: React.FC<ROIResultCardProps> = ({ projectedRevenue }) => {
           </span>
         </div>
       </div>
-
-      {/* Decorative Scan Line */}
-      <div className="absolute inset-0 bg-linear-to-b from-transparent via-brand-link/5 to-transparent h-1/2 w-full -translate-y-full group-hover:translate-y-[200%] transition-transform duration-2000 ease-linear pointer-events-none" />
     </div>
   );
 };

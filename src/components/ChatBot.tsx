@@ -10,8 +10,17 @@ interface Message {
   timestamp: Date;
 }
 
+/**
+ * ChatBot Component
+ *
+ * A floating AI assistant widget that provides lead capture and information.
+ * Features specialized branding, auto-scrolling, and integration with an external API.
+ */
 const ChatBot: React.FC = () => {
+  // isOpen: toggles the visibility of the expanded chat window
   const [isOpen, setIsOpen] = useState(false);
+
+  // messages: store of the current conversation history
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -20,10 +29,12 @@ const ChatBot: React.FC = () => {
       timestamp: new Date(),
     },
   ]);
+
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Helper to keep the chat scrolled to the most recent message
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -32,6 +43,11 @@ const ChatBot: React.FC = () => {
     scrollToBottom();
   }, [messages, isOpen]);
 
+  /**
+   * API Integration: handleStartChat
+   * Specifically triggers a "chat start" event on snowie.ai's backend
+   * when the user opens the widget for the first time.
+   */
   const handleStartChat = async () => {
     try {
       const response = await fetch("https://app.snowie.ai/api/start-thunder/", {
@@ -57,6 +73,10 @@ const ChatBot: React.FC = () => {
     }
   }, [isOpen]);
 
+  /**
+   * handleSendMessage:
+   * Adds user message to the UI, clears input, and simulates a bot response delay.
+   */
   const handleSendMessage = async (e?: React.FormEvent) => {
     e?.preventDefault();
     if (!inputValue.trim() || isLoading) return;
@@ -72,7 +92,8 @@ const ChatBot: React.FC = () => {
     setInputValue("");
     setIsLoading(true);
 
-    // Mocking response logic
+    // MOCKED AI RESPONSE LOGIC:
+    // This simulates the AI 'thinking' and typing back to the user.
     setTimeout(() => {
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -87,7 +108,10 @@ const ChatBot: React.FC = () => {
 
   return (
     <>
-      {/* Floating Button */}
+      {/* 
+        Floating Toggle Button:
+        Fixed to the bottom-right. Changes icon and color when active.
+      */}
       <motion.button
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -110,12 +134,16 @@ const ChatBot: React.FC = () => {
           )}
         </div>
 
+        {/* Pulsing notification ring when the chat is closed */}
         {!isOpen && (
           <span className="absolute inset-0 rounded-full border-2 border-brand-primary animate-ping opacity-20" />
         )}
       </motion.button>
 
-      {/* Chat Window */}
+      {/* 
+        Expanded Chat Window:
+        Uses AnimatePresence for smooth slide-up / fade-out animations.
+      */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -129,7 +157,7 @@ const ChatBot: React.FC = () => {
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             className="fixed bottom-24 right-6 z-100 w-[90vw] md:w-[400px] h-[600px] max-h-[70vh] flex flex-col glass-navbar-frosted overflow-hidden rounded-[2.5rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
           >
-            {/* Header */}
+            {/* Header: Displays bot status (Online/Offline) */}
             <div className="p-6 bg-linear-to-r from-brand-primary/10 to-brand-cerulean/10 border-b border-white/10 flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-brand-primary/20 flex items-center justify-center relative">
@@ -156,7 +184,7 @@ const ChatBot: React.FC = () => {
               </button>
             </div>
 
-            {/* Messages Area */}
+            {/* Scrollable Message Area */}
             <div className="flex-1 overflow-y-auto p-6 space-y-6 no-scrollbar bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-fixed opacity-90">
               {messages.map((msg) => (
                 <div
@@ -191,6 +219,8 @@ const ChatBot: React.FC = () => {
                   </span>
                 </div>
               ))}
+
+              {/* Bot Loading Indicator: Floating dots */}
               {isLoading && (
                 <div className="flex flex-col items-start mr-auto max-w-[85%]">
                   <div className="px-5 py-3.5 rounded-3xl bg-white/5 border border-white/5 rounded-tl-none">
@@ -229,7 +259,7 @@ const ChatBot: React.FC = () => {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input Area */}
+            {/* User Input Field */}
             <form
               onSubmit={handleSendMessage}
               className="p-6 bg-white/5 border-t border-white/10 relative"

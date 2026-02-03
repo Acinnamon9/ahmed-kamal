@@ -12,12 +12,26 @@ import { motion, AnimatePresence } from "framer-motion";
 import Button from "./ui/Button";
 import { cn } from "../lib/utils";
 
+/**
+ * IndustrySolutions Component
+ *
+ * Displays sector-specific AI implementations using a modular grid.
+ * Features an "Intelligence Suite" that can be expanded to show more sectors,
+ * and a "Universal Core" card that reacts to user interactions with other sectors.
+ */
 const IndustrySolutions: React.FC = () => {
+  // isExpanded: toggles between showing a preview or the full list of industries
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // hoveredIndustry: state passed to the CenterCard to highlight shared data/metrics
   const [hoveredIndustry, setHoveredIndustry] = useState<Industry | null>(null);
 
   useEffect(() => {
-    // Preload all industry images in the background
+    /**
+     * Performance Optimization: Image Preloading
+     * Fetches industry-related background images/icons in advance so they
+     * appear instantly without flickering when the user interacts or expands.
+     */
     industries.forEach((ind) => {
       if (ind.image) {
         const img = new Image();
@@ -39,10 +53,14 @@ const IndustrySolutions: React.FC = () => {
         <IndustryHeader />
 
         <div className="flex flex-col gap-12">
-          {/* Grid Suite with Integrated CenterCard */}
+          {/* 
+            The Sector Core Grid:
+            Uses AnimatePresence and 'layout' props from Framer Motion to smoothly
+            reflow cards when the list expands or contracts.
+          */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
             <AnimatePresence mode="popLayout">
-              {/* First Industry */}
+              {/* Fixed First Industry Card */}
               <motion.div
                 key={industries[0].id}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -56,7 +74,11 @@ const IndustrySolutions: React.FC = () => {
                 />
               </motion.div>
 
-              {/* Universal Core Anchor (Always Visible as 2nd Card) */}
+              {/* 
+                "Universal Core" Anchor Card:
+                Positioned statically as the 2nd item. It serves as a visual hub,
+                reacting to whichever sector the user is currently hovering over.
+              */}
               <motion.div
                 key="universal-core"
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -67,7 +89,10 @@ const IndustrySolutions: React.FC = () => {
                 <CenterCard hoveredIndustry={hoveredIndustry} />
               </motion.div>
 
-              {/* Remaining Industries */}
+              {/* 
+                Dynamic Industry List:
+                Slices the data based on 'isExpanded' state to show/hide extra sectors.
+              */}
               {(isExpanded ? industries.slice(1) : industries.slice(1, 2)).map(
                 (ind, idx) => (
                   <motion.div
@@ -93,9 +118,9 @@ const IndustrySolutions: React.FC = () => {
             </AnimatePresence>
           </div>
 
-          {/* Footer Controls */}
+          {/* Controls: Enquiry CTA and View More Toggle */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-4">
-            {/* Left Side: Enquire CTA */}
+            {/* Sector-specific Enquiry Trigger */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -129,7 +154,7 @@ const IndustrySolutions: React.FC = () => {
                   </span>
                 </Button>
 
-                {/* Tooltip */}
+                {/* Micro-Interaction: Hover tooltip for social proof/expectation setting */}
                 <div className="absolute bottom-full left-1/2 md:left-0 md:translate-x-0 -translate-x-1/2 mb-4 px-3 py-2 bg-brand-depth/90 backdrop-blur-md border border-white/10 rounded-lg text-[9px] font-black text-white uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap shadow-xl translate-y-2 group-hover:translate-y-0">
                   Custom analysis in 24h
                   <div className="absolute top-full left-1/2 md:left-8 -translate-x-1/2 border-8 border-transparent border-t-brand-depth/90"></div>
@@ -137,12 +162,13 @@ const IndustrySolutions: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Right Side: Expand Controller */}
+            {/* Layout Expansion Controller */}
             <motion.div layout className="order-2 md:order-2">
               <Button
                 variant="glass"
                 onClick={() => {
                   if (isExpanded) {
+                    // Scroll back to the top of the section when closing for better UX
                     document
                       .getElementById("solutions")
                       ?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -172,6 +198,8 @@ const IndustrySolutions: React.FC = () => {
                     />
                   </svg>
                 </span>
+
+                {/* Visual "New" or "Available" Ping Indicator */}
                 {!isExpanded && (
                   <span className="absolute -top-1 -right-1 flex h-3 w-3 pointer-events-none">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>

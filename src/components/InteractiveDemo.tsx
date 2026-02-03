@@ -38,9 +38,17 @@ const DEMO_STEPS = [
   },
 ];
 
+/**
+ * InteractiveDemo Component
+ *
+ * Showcases the core offerings (Widget, Calling, Automation) through an
+ * interactive step-by-step UI with auto-cycling and real-time visual feedback.
+ */
 const InteractiveDemo: React.FC = () => {
+  // activeStep: index of the current showcased feature
   const [activeStep, setActiveStep] = useState(0);
 
+  // Auto-switch steps every 4 seconds to create a dynamic 'storytelling' effect
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % DEMO_STEPS.length);
@@ -54,6 +62,7 @@ const InteractiveDemo: React.FC = () => {
       className="bg-transparent py-24 relative overflow-hidden"
     >
       <Container className="relative z-10">
+        {/* Section Header: Explaining the problem the demo solves */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -74,13 +83,17 @@ const InteractiveDemo: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Glassmorphic Container */}
+        {/* 
+          Main Showroom Glassmorphic Container:
+          Higher contrast glow and blurred backgrounds to highlight the demo content.
+        */}
         <div className="relative">
-          {/* Background Glow */}
+          {/* Subtle colored glow behind the main demo box */}
           <div className="absolute -inset-12 bg-brand-orange/5 blur-[80px] rounded-full pointer-events-none" />
 
           <div className="relative bg-white/5 dark:bg-white/[0.02] backdrop-blur-xl rounded-[2.5rem] border border-white/10 p-8 lg:p-12 lg:pb-24 shadow-2xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
+              {/* Left Column: Interactive Feature Cards */}
               <div className="space-y-6 relative z-10">
                 {DEMO_STEPS.map((step, index) => {
                   const isActive = activeStep === index;
@@ -91,19 +104,23 @@ const InteractiveDemo: React.FC = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      onClick={() => setActiveStep(index)}
+                      onClick={() => setActiveStep(index)} // Manual selection overrides auto-cycle
                       className={cn(
                         "group p-8 rounded-3xl border backdrop-blur-xl transition-all duration-500 cursor-pointer relative",
                         isActive
                           ? cn(
                               "shadow-2xl scale-[1.02]",
-                              step.bg.replace("/10", "/5"), // Using the brand bg at lower opacity
-                              step.border, // Using the brand border
+                              step.bg.replace("/10", "/5"),
+                              step.border,
                             )
                           : "bg-white/5 border-white/10 hover:bg-white/8",
                       )}
                     >
-                      {/* Active Indicator Line */}
+                      {/* 
+                        Feature Selection Visuals:
+                        - layoutId: slides the selection indicator between cards smoothly.
+                        - color transforms: changes icon/text colors based on 'active' brand colors.
+                      */}
                       {isActive && (
                         <>
                           <motion.div
@@ -114,7 +131,7 @@ const InteractiveDemo: React.FC = () => {
                             )}
                           />
 
-                          {/* Visual Connector (Beam) - Now attached to the card */}
+                          {/* Connection 'Beam' pointing from card towards the preview phone */}
                           <div
                             className="hidden lg:block absolute -right-12 top-1/2 -translate-y-1/2 w-12 h-px bg-linear-to-r from-current to-transparent z-0 pointer-events-none text-current"
                             style={{
@@ -137,7 +154,7 @@ const InteractiveDemo: React.FC = () => {
                             "w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border transition-all duration-500",
                             isActive
                               ? cn(
-                                  "bg-transparent dark:bg-transparent", // Reset
+                                  "bg-transparent dark:bg-transparent",
                                   step.color,
                                   step.border,
                                   "shadow-[0_0_20px_rgba(255,255,255,0.1)]",
@@ -178,8 +195,12 @@ const InteractiveDemo: React.FC = () => {
                 })}
               </div>
 
+              {/* Right Column: Visual Preview (Phone Mockup) */}
               <div className="w-full flex justify-center lg:justify-end relative z-10">
-                {/* Dynamic Glow effect behind phone */}
+                {/* 
+                  Dynamic Glow behind the phone:
+                  Changes color based on which feature step is currently active.
+                */}
                 <div
                   className={cn(
                     "absolute inset-0 blur-[100px] rounded-full opacity-30 animate-pulse transition-colors duration-1000",
@@ -190,6 +211,7 @@ const InteractiveDemo: React.FC = () => {
                         : "bg-brand-success/40",
                   )}
                 />
+                {/* HeroPhone: Detailed mock-up component showing simulated interface */}
                 <HeroPhone />
               </div>
             </div>

@@ -5,6 +5,12 @@ import Badge from "./ui/Badge";
 import Button from "./ui/Button";
 import AdaptationLayer from "./approach/AdaptationLayer";
 
+/**
+ * Approach Component
+ *
+ * Explains the "Philosophy" of AtomicX: adapting AI to fit existing
+ * user workflows rather than forcing users to change.
+ */
 const Approach: React.FC = () => {
   return (
     <Section
@@ -13,7 +19,7 @@ const Approach: React.FC = () => {
     >
       <Container className="relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-          {/* Left: Text Content */}
+          {/* Left Side: Brand Narrative & Supporting Copy */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -27,12 +33,14 @@ const Approach: React.FC = () => {
             >
               Core Philosophy
             </Badge>
+
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-(--foreground) tracking-tighter mb-8 leading-[1.1]">
               We Adapt AI to{" "}
               <span className="text-brand-primary">Your Business</span>.
               <br />
               <span className="opacity-40">Not the Other Way Around.</span>
             </h2>
+
             <div className="space-y-8 text-lg md:text-xl text-(--muted-foreground) font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0">
               <p className="text-(--foreground)">
                 Most AI platforms ship rigid workflows and expect your team to
@@ -71,7 +79,12 @@ const Approach: React.FC = () => {
                   </span>
                 </Button>
               </div>
-              {/* Micro-proof badge */}
+
+              {/* 
+                Micro-proof indicators:
+                Quick bullet points underneath the main CTA to reduce friction 
+                and provide immediate technical reassurance.
+              */}
               <div className="flex flex-wrap items-center gap-3 text-xs text-(--muted-foreground) justify-center lg:justify-start">
                 <span className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-success animate-pulse" />
@@ -87,7 +100,10 @@ const Approach: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Right: Visual Metaphor */}
+          {/* 
+            Right Side: AdaptationLayer Visual Metaphor 
+            A custom component that visually demonstrates the 'flexibility' concept.
+          */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}

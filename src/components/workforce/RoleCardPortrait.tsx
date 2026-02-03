@@ -19,10 +19,8 @@ const RoleCardPortrait: React.FC<RoleCardPortraitProps> = ({
           <motion.img
             src={image}
             alt={title}
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 opacity-80 group-hover:opacity-100"
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 delay-200 opacity-80 group-hover:opacity-100"
           />
-          {/* Scanline / Technical Overlay */}
-          <div className="absolute inset-0 bg-linear-to-b from-transparent via-brand-primary/5 to-transparent h-20 -translate-y-full group-hover:animate-scan pointer-events-none"></div>
           <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent"></div>
         </div>
       ) : (

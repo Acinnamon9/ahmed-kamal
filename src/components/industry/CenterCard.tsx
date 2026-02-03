@@ -10,11 +10,19 @@ interface CenterCardProps {
   hoveredIndustry: Industry | null;
 }
 
+/**
+ * CenterCard Component
+ *
+ * Displays the "Universal Baseline" — the core value proposition that
+ * applies to every business, regardless of industry.
+ * Acts as the anchor point in the industry grid.
+ */
 const CenterCard: React.FC<CenterCardProps> = () => {
   return (
     <InteractiveTilt className="h-full">
       <div className="relative overflow-hidden bg-brand-link/5 backdrop-blur-2xl border border-brand-link/20 rounded-[24px] p-6 flex flex-col h-full shadow-sm group">
         <div className="relative z-10 flex flex-col h-full text-center">
+          {/* Label indicating the cross-industry nature of these stats */}
           <div className="mb-1">
             <span className="text-brand-link text-[8px] font-black tracking-[0.3em] uppercase">
               Universal Core
@@ -30,7 +38,11 @@ const CenterCard: React.FC<CenterCardProps> = () => {
             {UNIVERSAL_BASELINE.description}
           </p>
 
-          {/* Core ROI Grid */}
+          {/* 
+            Core ROI Grid:
+            Standardized display for baseline performance improvements 
+            (time, efficiency, etc.) seen across the entire client base.
+          */}
           <div className="grid grid-cols-2 gap-y-6 gap-x-3 mb-8 flex-1 content-center">
             {UNIVERSAL_BASELINE.metrics.map((metric, idx) => (
               <div key={idx} className="flex flex-col items-center">

@@ -10,20 +10,39 @@ import HeroCompliance from "./hero/HeroCompliance";
 
 /**
  * FEATURE TOGGLES
+ * Centralized configuration to toggle specific features within the Hero section.
  */
 const HERO_CONFIG = {
   showBadge: true,
   showBenefits: false, // Currently disabled as per user request
 };
 
+/**
+ * Hero Component
+ *
+ * The main landing section of the website.
+ * Features scroll-linked animations (parallax/fade) and a high-impact responsive layout.
+ * Acts as the primary value proposition delivery vehicle.
+ */
 const Hero: React.FC = () => {
+  // Reference to the main section element to track its scroll position relative to viewport
   const containerRef = useRef<HTMLElement>(null);
 
+  /**
+   * scrollYProgress: A normalized value (0 to 1) representing the section's scroll state.
+   * "start start": top of section hits top of viewport.
+   * "end start": bottom of section hits top of viewport.
+   */
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
+  /**
+   * Animation Transforms:
+   * Dynamically adjusts opacity and vertical position as the user scrolls.
+   * This creates a 'disappearing' effect as the user moves deeper into the page.
+   */
   const headlineOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
   const headlineY = useTransform(scrollYProgress, [0, 0.4], [0, -40]);
 
@@ -31,21 +50,23 @@ const Hero: React.FC = () => {
     <Section
       ref={containerRef}
       id="hero"
-      className="pt-40 pb-20 sm:pt-56 sm:pb-32 lg:pt-64 lg:pb-40 relative overflow-hidden"
+      className="pt-40 pb-20 sm:pt-56 sm:pb-32 lg:pt-40 lg:pb-10 relative overflow-hidden"
     >
+      {/* Layer 0: Animated background gradients and particles */}
       <HeroBackground />
 
       <Container className="relative z-10 w-full px-4 sm:px-6 md:px-8 lg:px-12 max-w-[1700px]">
+        {/* Content Wrapper: handles entrance stagger animations */}
         <motion.div
           className="max-w-4xl mx-auto text-center flex flex-col items-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* <HeroRobotHead /> */}
-
+          {/* Optional Micro-copy badge for context */}
           {HERO_CONFIG.showBadge && <HeroBadge />}
 
+          {/* Main Value Proposition Headline with scroll-linked transform */}
           <motion.h1
             variants={itemVariants}
             style={{ opacity: headlineOpacity, y: headlineY }}
@@ -67,7 +88,11 @@ const Hero: React.FC = () => {
           <HeroCTA />
         </motion.div>
       </Container>
+
+      {/* Social Proof: Horizontal marquee of trusted brand logos */}
       <HeroTrustedBy />
+
+      {/* Trust & Safety: Security certifications display */}
       <HeroCompliance />
     </Section>
   );
