@@ -2,9 +2,19 @@ import React from "react";
 import { motion } from "framer-motion";
 import { integrationLogos } from "../../constants/integrationData";
 
+/**
+ * HeroVisual Component
+ *
+ * A high-impact visual composition representing the AI ecosystem.
+ * Features a central lady image, platform screenshots, and floating integration icons.
+ * Uses complex spatial logic to ensure floating elements don't obscure primary content.
+ */
 const HeroVisual: React.FC = () => {
-  // Predefined safe zones that don't overlap with the central lady/screenshot cluster
-  // These positions are calculated to stay clear of the center region [25% to 85% horizontally, 20% to 85% vertically]
+  /**
+   * safePositions
+   * Predefined "Safe Zones" that stay clear of the central focal points.
+   * Calculated to wrap around the central lady/screenshot cluster [25-85% H, 20-85% V].
+   */
   const safePositions = [
     { left: "-15%", top: "15%" }, // Top Left edge
     { left: "-12%", top: "45%" }, // Left Mid edge
@@ -19,7 +29,11 @@ const HeroVisual: React.FC = () => {
 
   return (
     <div className="relative w-full aspect-square md:aspect-video lg:aspect-square flex items-center justify-center lg:justify-end pr-0 lg:pr-12 overflow-visible">
-      {/* Floating Ecosystem - Integration Icons (Now staying clear of the main content) */}
+      {/* 
+        Floating Ecosystem Layer:
+        Renders various technology partners (Zendesk, Salesforce, etc.) 
+        moving in independent, randomized paths for a "liquid" UI feel.
+      */}
       <div className="absolute inset-0 z-30 pointer-events-none overflow-visible">
         {integrationLogos.map((logo, i) => {
           const pos = safePositions[i % safePositions.length];
@@ -41,6 +55,7 @@ const HeroVisual: React.FC = () => {
                 width: "48px",
                 height: "48px",
               }}
+              // Infinite orbital/floating paths
               animate={{
                 y: [0, i % 2 === 0 ? -25 : 25, i % 3 === 0 ? 10 : -10, 0],
                 x: [0, i % 3 === 0 ? -20 : 20, i % 2 === 0 ? 15 : -15, 0],
@@ -54,7 +69,7 @@ const HeroVisual: React.FC = () => {
                 scale: { duration: 0.8, delay: i * 0.1, repeat: 0 },
               }}
             >
-              {/* Subtle hover glow */}
+              {/* Subtle hover glow tied to the brand's primary color */}
               <div
                 className="absolute inset-0 blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300 rounded-full"
                 style={{ backgroundColor: logo.color }}
@@ -70,9 +85,9 @@ const HeroVisual: React.FC = () => {
         })}
       </div>
 
-      {/* Container for the overlapping main images */}
+      {/* Main Composite Image Cluster */}
       <div className="relative w-full max-w-[850px] z-10">
-        {/* Chat Screenshot - Grounded on the right */}
+        {/* Layer 1: Chat Platform Screenshot - Grounded on the right */}
         <motion.div
           initial={{ opacity: 0, x: 40, y: 20 }}
           whileInView={{ opacity: 1, x: 0, y: -120 }}
@@ -88,6 +103,7 @@ const HeroVisual: React.FC = () => {
               ease: "easeInOut",
             }}
           >
+            {/* Glassmorphic card frame */}
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 glass-card">
               <img
                 src="/chat_screenshot.png"
@@ -95,12 +111,16 @@ const HeroVisual: React.FC = () => {
                 className="w-full h-auto object-cover"
               />
             </div>
-            {/* Subtle glow behind screenshot */}
+            {/* Backlight glow to make the interface pop */}
             <div className="absolute -inset-4 bg-brand-primary/10 blur-3xl -z-10 rounded-full" />
           </motion.div>
         </motion.div>
 
-        {/* Pretty Woman - Fading in with scroll, moved further down and out */}
+        {/* 
+           Layer 2: User Persona (The Lady) 
+           Fades in and slides up on scroll, overlaying the screenshot to add a 
+           human dimension to the technology.
+        */}
         <motion.div
           initial={{ opacity: 0, y: 40, x: -20 }}
           whileInView={{ opacity: 1, y: 0, x: 0 }}
