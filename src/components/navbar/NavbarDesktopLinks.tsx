@@ -17,18 +17,23 @@ const NavbarDesktopLinks: React.FC<NavbarDesktopLinksProps> = ({
   scrollToSection,
   setMobileMenuOpen,
 }) => {
+  // useBooking Context: Provides the trigger to launch the demo scheduler modal
   const { openBooking } = useBooking();
 
   return (
     <div className="hidden lg:flex items-center gap-2 pointer-events-auto">
       {navLinks.map((link) => {
+        /**
+         * isActive Logic:
+         * Compares the current scroll-tracked active section against the link's href.
+         */
         const isActive = activeSection === link.href.replace("#", "");
         return (
           <Button
             key={link.label}
             onClick={() => {
               scrollToSection(link.href);
-              setMobileMenuOpen(false);
+              setMobileMenuOpen(false); // Ensure menu state is reset
             }}
             variant="glass"
             size="lg"
@@ -41,6 +46,11 @@ const NavbarDesktopLinks: React.FC<NavbarDesktopLinksProps> = ({
           >
             <span className="relative">
               {link.label}
+              {/* 
+                Active Section Indicator:
+                Uses Framer Motion's layoutId for a fluid, 'sliding' transition 
+                between navigation items as the user scrolls or clicks.
+              */}
               {isActive && (
                 <motion.span
                   layoutId="activeNav"

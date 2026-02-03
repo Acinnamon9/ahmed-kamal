@@ -11,6 +11,13 @@ interface NavbarMobileMenuProps {
   setMobileMenuOpen: (open: boolean) => void;
 }
 
+/**
+ * NavbarMobileMenu Component
+ *
+ * Renders the vertical menu for mobile users.
+ * Uses Framer Motion's AnimatePresence to handle height/opacity entrance
+ * and exit animations.
+ */
 const NavbarMobileMenu: React.FC<NavbarMobileMenuProps> = ({
   mobileMenuOpen,
   navLinks,
@@ -27,6 +34,7 @@ const NavbarMobileMenu: React.FC<NavbarMobileMenuProps> = ({
           exit={{ opacity: 0, height: 0, marginTop: 0 }}
           className="lg:hidden overflow-hidden relative z-10"
         >
+          {/* Menu container with top separator */}
           <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 pb-3 sm:pb-4 border-t border-(--border) pt-4 sm:pt-5 md:pt-6">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace("#", "");
@@ -44,13 +52,14 @@ const NavbarMobileMenu: React.FC<NavbarMobileMenuProps> = ({
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection(link.href);
-                    setMobileMenuOpen(false);
+                    setMobileMenuOpen(false); // Close menu after navigation
                   }}
                 >
                   {link.label}
                 </Button>
               );
             })}
+            {/* Primary Action Button for Mobile: Opens the external Ravan.ai scheduler */}
             <Button
               variant="glass-primary"
               size="lg"
