@@ -49,7 +49,6 @@ const Hero: React.FC = () => {
   return (
     <Section
       ref={containerRef}
-      id="hero"
       className="pt-40 pb-20 sm:pt-56 sm:pb-32 lg:pt-40 lg:pb-10 relative overflow-hidden"
     >
       {/* Layer 0: Animated background gradients and particles */}

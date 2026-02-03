@@ -14,7 +14,6 @@ import AdaptationLayer from "./approach/AdaptationLayer";
 const Approach: React.FC = () => {
   return (
     <Section
-      id="approach"
       className="py-24 md:py-32 relative overflow-hidden bg-transparent"
     >
       <Container className="relative z-10">

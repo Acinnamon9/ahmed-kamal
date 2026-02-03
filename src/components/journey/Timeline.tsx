@@ -31,7 +31,6 @@ const JourneyTimeline: React.FC = () => {
 
   return (
     <Section
-      id="journey-timeline"
       className="bg-transparent py-20 md:py-28 relative overflow-hidden"
     >
       {/* Decorative background effects (mesh, glows, etc.) */}

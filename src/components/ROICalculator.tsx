@@ -30,7 +30,6 @@ const ROICalculator: React.FC = () => {
 
   return (
     <Section
-      id="roi"
       className="bg-transparent overflow-hidden relative py-24 md:py-32"
     >
       {/* 

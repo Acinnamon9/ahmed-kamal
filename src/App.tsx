@@ -26,21 +26,21 @@ const Footer = lazy(() => import("./components/Footer"));
  */
 const PAGE_SECTIONS = [
   { id: "hero", Component: Hero, zIndex: 10, isLazy: false },
-  { id: "journey", Component: JourneyTimeline, zIndex: 22, isLazy: false },
+  { id: "journey", Component: JourneyTimeline, zIndex: 20, isLazy: false },
   { id: "ai-team", Component: AITeam, zIndex: 30, isLazy: true },
   {
     id: "onboarding",
     Component: OnboardingTimeline,
-    zIndex: 35,
-    isLazy: false,
+    zIndex: 40,
+    isLazy: true,
   },
-  { id: "demo", Component: InteractiveDemo, zIndex: 15, isLazy: false },
-  { id: "approach", Component: Approach, zIndex: 55, isLazy: true },
-  { id: "solutions", Component: IndustrySolutions, zIndex: 40, isLazy: true },
-  { id: "roi", Component: ROICalculator, zIndex: 50, isLazy: true },
-  { id: "social-proof", Component: SocialProof, zIndex: 60, isLazy: true },
-  { id: "faq", Component: FAQ, zIndex: 70, isLazy: true },
-  { id: "footer", Component: Footer, zIndex: 90, isLazy: true },
+  { id: "demo", Component: InteractiveDemo, zIndex: 50, isLazy: true },
+  { id: "approach", Component: Approach, zIndex: 60, isLazy: true },
+  { id: "solutions", Component: IndustrySolutions, zIndex: 70, isLazy: true },
+  { id: "roi", Component: ROICalculator, zIndex: 80, isLazy: true },
+  { id: "social-proof", Component: SocialProof, zIndex: 90, isLazy: true },
+  { id: "faq", Component: FAQ, zIndex: 100, isLazy: true },
+  { id: "footer", Component: Footer, zIndex: 110, isLazy: true },
 ];
 
 /**
@@ -75,6 +75,7 @@ function App() {
             const content = (
               <div
                 key={id}
+                id={id}
                 className="relative bg-transparent"
                 style={{ zIndex }}
               >
@@ -87,7 +88,7 @@ function App() {
               return (
                 <Suspense
                   key={id}
-                  fallback={<div className="h-screen bg-transparent" />}
+                  fallback={<div className="min-h-[50vh] bg-transparent" />}
                 >
                   {content}
                 </Suspense>

@@ -32,7 +32,6 @@ const InteractiveDemo: React.FC = () => {
 
   return (
     <Section
-      id="demo"
       className="bg-transparent py-24 relative overflow-hidden"
     >
       <Container className="relative z-10">

@@ -30,7 +30,6 @@ const AITeam: React.FC = () => {
 
   return (
     <Section
-      id="ai-team"
       className="font-jakarta bg-transparent py-16 sm:py-20 relative overflow-hidden"
     >
       {/* 

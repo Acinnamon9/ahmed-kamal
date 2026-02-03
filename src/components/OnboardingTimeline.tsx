@@ -32,7 +32,6 @@ const OnboardingTimeline: React.FC = () => {
 
   return (
     <Section
-      id="timeline"
       className="bg-transparent py-32 relative overflow-hidden"
     >
       {/* Visual Background Accent: Large atmospheric glow */}

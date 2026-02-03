@@ -22,7 +22,7 @@ const FAQ: React.FC = () => {
     faqCategories.find((cat) => cat.id === activeTab) || faqCategories[0];
 
   return (
-    <Section id="faq" className="font-jakarta py-24 md:py-32 bg-transparent">
+    <Section className="font-jakarta py-24 md:py-32 bg-transparent">
       <Container>
         {/* Main Glassmorphic FAQ Container */}
         <div className="relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl overflow-hidden py-10 px-6 md:px-12">

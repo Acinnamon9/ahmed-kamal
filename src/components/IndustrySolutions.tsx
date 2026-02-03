@@ -46,7 +46,6 @@ const IndustrySolutions: React.FC = () => {
 
   return (
     <Section
-      id="solutions"
       className="font-jakarta py-16 md:py-20 overflow-hidden bg-transparent"
     >
       <Container>
