@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Badge from "../ui/Badge";
 
 const IndustryHeader: React.FC = () => {
   return (
@@ -11,9 +12,12 @@ const IndustryHeader: React.FC = () => {
         className="flex items-center justify-center gap-4 mb-8"
       >
         <div className="h-px w-10 bg-linear-to-r from-transparent to-brand-link/40"></div>
-        <span className="text-[10px] font-black tracking-[0.5em] text-brand-link uppercase">
+        <Badge
+          variant="outline"
+          className="text-brand-link border-brand-link/20 bg-brand-link/5 tracking-[0.4em]"
+        >
           Impact In Scale
-        </span>
+        </Badge>
         <div className="h-px w-10 bg-linear-to-l from-transparent to-brand-link/40"></div>
       </motion.div>
 

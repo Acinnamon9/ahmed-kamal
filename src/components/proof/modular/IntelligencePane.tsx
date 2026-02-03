@@ -17,28 +17,28 @@ const IntelligencePane: React.FC<IntelligencePaneProps> = ({ activeStudy }) => {
       <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-brand-link/20 to-transparent" />
 
       {/* Header: Displays Client Source Logo & Meta status */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 relative z-10">
-        <div className="space-y-3">
-          <div className="flex items-center gap-3">
-            {activeStudy.sourceLogo ? (
-              <img
-                src={activeStudy.sourceLogo}
-                alt={activeStudy.logo}
-                className="h-8 w-auto grayscale brightness-200"
-              />
-            ) : (
-              <span className="text-2xl font-black text-(--foreground) tracking-tighter">
-                {activeStudy.logo}
-              </span>
-            )}
-            <span className="text-[9px] font-black text-brand-link uppercase tracking-widest px-2 py-0.5 bg-brand-link/10 border border-brand-link/20 rounded">
-              Operational Log
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 relative z-10">
+        <div className="flex items-center gap-4">
+          {activeStudy.sourceLogo && (
+            <img
+              src={activeStudy.sourceLogo}
+              alt={activeStudy.logo}
+              className="h-20 w-auto grayscale brightness-200 object-contain"
+            />
+          )}
+          <div className="flex flex-col">
+            <span className="text-2xl font-black text-(--foreground) tracking-tighter uppercase leading-none">
+              {activeStudy.logo}
             </span>
           </div>
-          <h3 className="text-xl md:text-2xl font-black text-(--foreground) uppercase tracking-tighter leading-none max-w-xl">
-            {activeStudy.title}
-          </h3>
         </div>
+
+        {/* Vertical Divider Line */}
+        <div className="hidden md:block w-px h-12 bg-(--border)/40" />
+
+        <h3 className="text-lg md:text-xl font-black text-(--foreground) uppercase tracking-tighter leading-tight max-w-xs text-right">
+          {activeStudy.title}
+        </h3>
       </div>
 
       {/* Metrics Breakdown */}

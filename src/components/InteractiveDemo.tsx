@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Section, Container } from "./ui/Layout";
 import HeroPhone from "./hero/HeroPhone";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../lib/utils";
 import DemoHeader from "./demo/DemoHeader";
 import DemoFeatureCard from "./demo/DemoFeatureCard";
@@ -18,22 +19,8 @@ const InteractiveDemo: React.FC = () => {
   // activeStep: index of the current showcased feature
   const [activeStep, setActiveStep] = useState(0);
 
-  /**
-   * Auto-Cycle Logic:
-   * Switches the active step every 4 seconds to ensure the 'story' progresses
-   * automatically if the user doesn't interact manually.
-   */
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % DEMO_STEPS.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
-    <Section
-      className="bg-transparent py-24 relative overflow-hidden"
-    >
+    <Section className="bg-transparent py-24 relative overflow-hidden">
       <Container className="relative z-10">
         <DemoHeader />
 
@@ -46,7 +33,7 @@ const InteractiveDemo: React.FC = () => {
           <div className="absolute -inset-12 bg-brand-orange/5 blur-[80px] rounded-full pointer-events-none" />
 
           <div className="relative bg-white/5 dark:bg-white/[0.02] backdrop-blur-xl rounded-[2.5rem] border border-white/10 p-8 lg:p-12 lg:pb-24 shadow-2xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-10 items-center relative">
               {/* Left Column: Interactive Feature Cards */}
               <div className="space-y-6 relative z-10">
                 {DEMO_STEPS.map((step, index) => (
@@ -55,30 +42,58 @@ const InteractiveDemo: React.FC = () => {
                     step={step}
                     isActive={activeStep === index}
                     index={index}
-                    onClick={() => setActiveStep(index)}
+                    onClick={() => {
+                      setActiveStep(index);
+                      if (step.action === "open-chatbot") {
+                        window.dispatchEvent(new CustomEvent("open-chatbot"));
+                      }
+                    }}
                   />
                 ))}
               </div>
 
-              {/* Right Column: Visual Preview (Phone Mockup) */}
-              <div className="w-full flex justify-center lg:justify-end relative z-10">
+              {/* Right Column: Visual Preview (Phone Mockup or Automation Image) */}
+              <div className="w-full flex justify-center lg:justify-end relative z-10 min-h-[780px] items-center">
                 {/* 
-                  Dynamic Glow behind the phone:
+                  Dynamic Glow behind the content:
                   Changes color based on which feature step is currently active.
                 */}
                 <div
                   className={cn(
                     "absolute inset-0 blur-[100px] rounded-full opacity-30 animate-pulse transition-colors duration-1000",
-                    activeStep === 0
-                      ? "bg-brand-orange/40"
-                      : activeStep === 1
-                        ? "bg-brand-primary/40"
-                        : "bg-brand-success/40",
+                    DEMO_STEPS[activeStep].bg,
                   )}
                 />
 
-                {/* HeroPhone: Detailed mock-up component showing simulated interface */}
-                <HeroPhone />
+                <AnimatePresence mode="wait">
+                  {DEMO_STEPS[activeStep].visualType === "automation" ? (
+                    <motion.div
+                      key="automation-image"
+                      initial={{ opacity: 0, scale: 0.9, x: 20 }}
+                      animate={{ opacity: 1, scale: 1, x: 0 }}
+                      exit={{ opacity: 0, scale: 0.9, x: -20 }}
+                      transition={{ duration: 0.5 }}
+                      className="relative w-full max-w-[420px] aspect-3/4 rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
+                    >
+                      <img
+                        src="/AI automation.png"
+                        alt="AI Automation Workflow"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/60 to-transparent pointer-events-none" />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="phone-mockup"
+                      initial={{ opacity: 0, scale: 0.9, x: 20 }}
+                      animate={{ opacity: 1, scale: 1, x: 0 }}
+                      exit={{ opacity: 0, scale: 0.9, x: -20 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <HeroPhone />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
           </div>

@@ -68,6 +68,12 @@ const ChatBot: React.FC = () => {
   };
 
   useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener("open-chatbot", handleOpen);
+    return () => window.removeEventListener("open-chatbot", handleOpen);
+  }, []);
+
+  useEffect(() => {
     if (isOpen && messages.length === 1) {
       handleStartChat();
     }
@@ -155,17 +161,17 @@ const ChatBot: React.FC = () => {
             }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 right-6 z-100 w-[90vw] md:w-[400px] h-[600px] max-h-[70vh] flex flex-col glass-navbar-frosted overflow-hidden rounded-[2.5rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+            className="fixed bottom-24 right-6 z-100 w-[90vw] md:w-[400px] h-[600px] max-h-[70vh] flex flex-col bg-(--card)/90 backdrop-blur-xl overflow-hidden rounded-[2.5rem] border border-(--border)/50 shadow-[0_20px_50px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
           >
             {/* Header: Displays bot status (Online/Offline) */}
-            <div className="p-6 bg-linear-to-r from-brand-primary/10 to-brand-cerulean/10 border-b border-white/10 flex items-center justify-between">
+            <div className="p-6 bg-linear-to-r from-brand-primary/10 to-brand-cerulean/10 border-b border-(--border)/40 flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-brand-primary/20 flex items-center justify-center relative">
                   <Bot className="w-6 h-6 text-brand-primary" />
-                  <span className="absolute bottom-0 right-0 w-3 h-3 bg-brand-success rounded-full border-2 border-brand-dark" />
+                  <span className="absolute bottom-0 right-0 w-3 h-3 bg-brand-success rounded-full border-2 border-(--card)" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg text-white leading-tight">
+                  <h3 className="font-bold text-lg text-(--foreground) leading-tight">
                     AI Assistant
                   </h3>
                   <div className="flex items-center gap-1.5">
@@ -178,7 +184,7 @@ const ChatBot: React.FC = () => {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-white/40 hover:text-white transition-colors p-2 hover:bg-white/5 rounded-full"
+                className="text-(--muted-foreground) hover:text-(--foreground) transition-colors p-2 hover:bg-(--foreground)/5 rounded-full"
               >
                 <Minimize2 className="w-5 h-5" />
               </button>
@@ -197,21 +203,21 @@ const ChatBot: React.FC = () => {
                   )}
                 >
                   <div className="flex items-center gap-2 mb-1.5 px-2">
-                    <span className="text-[10px] uppercase tracking-widest text-white/40 font-bold">
+                    <span className="text-[10px] uppercase tracking-widest text-(--muted-foreground) font-bold">
                       {msg.sender === "bot" ? "System Agent" : "You"}
                     </span>
                   </div>
                   <div
                     className={cn(
-                      "px-5 py-3.5 rounded-3xl text-sm leading-relaxed shadow-lg",
+                      "px-5 py-3.5 rounded-3xl text-sm leading-relaxed shadow-sm",
                       msg.sender === "user"
                         ? "bg-brand-primary text-white rounded-tr-none"
-                        : "bg-white/10 text-white backdrop-blur-md border border-white/5 rounded-tl-none",
+                        : "bg-(--foreground)/5 text-(--foreground) backdrop-blur-md border border-(--border)/30 rounded-tl-none",
                     )}
                   >
                     {msg.text}
                   </div>
-                  <span className="text-[10px] text-white/20 mt-1.5 px-2 font-medium">
+                  <span className="text-[10px] text-(--muted-foreground)/60 mt-1.5 px-2 font-medium">
                     {msg.timestamp.toLocaleTimeString([], {
                       hour: "2-digit",
                       minute: "2-digit",
@@ -262,7 +268,7 @@ const ChatBot: React.FC = () => {
             {/* User Input Field */}
             <form
               onSubmit={handleSendMessage}
-              className="p-6 bg-white/5 border-t border-white/10 relative"
+              className="p-6 bg-(--foreground)/5 border-t border-(--border)/40 relative"
             >
               <div className="relative group">
                 <input
@@ -270,7 +276,7 @@ const ChatBot: React.FC = () => {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder="Type your message..."
-                  className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 pl-5 pr-14 text-sm text-white focus:outline-none focus:border-brand-primary/50 transition-all placeholder:text-white/20"
+                  className="w-full bg-(--background)/50 border border-(--border)/40 rounded-2xl py-4 pl-5 pr-14 text-sm text-(--foreground) focus:outline-none focus:border-brand-primary/50 transition-all placeholder:text-(--muted-foreground)/40"
                 />
                 <button
                   type="submit"
@@ -286,8 +292,8 @@ const ChatBot: React.FC = () => {
                 </button>
               </div>
               <div className="mt-3 flex items-center justify-center gap-2">
-                <Sparkles className="w-3 h-3 text-brand-primary/40" />
-                <span className="text-[10px] text-white/20 uppercase tracking-[0.2em] font-bold">
+                <Sparkles className="w-3 h-3 text-brand-primary/60" />
+                <span className="text-[10px] text-(--muted-foreground) uppercase tracking-[0.2em] font-bold">
                   Powered by AtomicX AI
                 </span>
               </div>

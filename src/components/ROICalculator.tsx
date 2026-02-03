@@ -4,6 +4,7 @@ import { Card } from "./ui/Card";
 import Button from "./ui/Button";
 import Magnetic from "./ui/Magnetic";
 import InteractiveTilt from "./ui/InteractiveTilt";
+import Badge from "./ui/Badge";
 import ROISliderGroup from "./roi/ROISliderGroup";
 import ROIResultCard from "./roi/ROIResultCard";
 
@@ -29,9 +30,7 @@ const ROICalculator: React.FC = () => {
   const projectedRevenue = currentRevenue * 0.3;
 
   return (
-    <Section
-      className="bg-transparent overflow-hidden relative py-24 md:py-32"
-    >
+    <Section className="bg-transparent overflow-hidden relative py-24 md:py-32">
       {/* 
         Thematic Background Decor: 
         Soft localized glows that match the site's hero gradient colors.
@@ -51,9 +50,12 @@ const ROICalculator: React.FC = () => {
             {/* Left Column: Educational Copy & Action */}
             <div className="max-w-xl text-center lg:text-left">
               <div className="mb-6">
-                <span className="text-[10px] font-black text-brand-link uppercase tracking-[0.3em] opacity-80">
+                <Badge
+                  variant="outline"
+                  className="text-brand-link border-brand-link/20 bg-brand-link/5 tracking-[0.3em] font-black"
+                >
                   Performance Analytics
-                </span>
+                </Badge>
               </div>
               <h2 className="text-5xl sm:text-6xl font-black text-(--foreground) mb-8 leading-[1.05] tracking-tighter uppercase">
                 Project Your <br />
@@ -85,7 +87,7 @@ const ROICalculator: React.FC = () => {
             </div>
 
             {/* Right Column: Interactive Slider Suite */}
-            <InteractiveTilt>
+            <InteractiveTilt strength={5}>
               <Card
                 variant="white"
                 className="p-8 sm:p-12 shadow-2xl relative overflow-hidden bg-(--card)/40 backdrop-blur-xl border border-(--border)/30"

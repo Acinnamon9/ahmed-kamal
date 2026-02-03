@@ -2,16 +2,8 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { integrationLogos } from "../../constants/integrationData";
 
-// Fixed positions for the 4 visible integration slots
-const SLOT_POSITIONS = [
-  { x: 0, y: -200, label: "top" },
-  { x: 220, y: 0, label: "right" },
-  { x: 0, y: 200, label: "bottom" },
-  { x: -220, y: 0, label: "left" },
-];
-
 const AdaptationLayer: React.FC = () => {
-  const [activeIndices, setActiveIndices] = useState([0, 1, 2, 3]);
+  const [activeIndices, setActiveIndices] = useState([0, 1, 2, 3, 4, 5]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -64,48 +56,11 @@ const AdaptationLayer: React.FC = () => {
             />
           ))}
         </AnimatePresence>
-
-        <motion.div
-          className="absolute bottom-10 left-10 text-[10px] uppercase tracking-widest text-(--muted-foreground) opacity-40 font-medium"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.4 }}
-        >
-          Cluster: Flow
-        </motion.div>
-      </div>
-
-      {/* CLUSTER 2: CONTEXT */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center">
-        {[...Array(12)].map((_, i) => (
-          <motion.div
-            key={`ctx-${i}`}
-            className="absolute bg-brand-secondary/10 border border-brand-secondary/20 rounded-sm"
-            style={{
-              width: Math.random() * 40 + 20,
-              height: Math.random() * 10 + 4,
-              left: `${Math.random() * 80 + 10}%`,
-              top: `${Math.random() * 80 + 10}%`,
-            }}
-            animate={{
-              y: [0, -10, 0],
-              opacity: [0.1, 0.3, 0.1],
-            }}
-            transition={{
-              duration: 5 + Math.random() * 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-        <div className="absolute top-1/2 right-10 -translate-y-1/2 text-[10px] uppercase tracking-widest text-(--muted-foreground) opacity-30 font-medium vertical-rl rotate-180">
-          Context Field
-        </div>
       </div>
 
       {/* LAYER 2: ATOMICX */}
       <motion.div
-        className="absolute z-10 w-[480px] h-[380px] rounded-[80px] border border-white/5 bg-brand-depth/40 backdrop-blur-2xl shadow-2xl flex flex-col items-center justify-center"
+        className="absolute z-10 w-[480px] h-[480px] rounded-full border border-white/5 bg-brand-depth/40 backdrop-blur-2xl shadow-2xl flex flex-col items-center justify-center"
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
@@ -118,7 +73,7 @@ const AdaptationLayer: React.FC = () => {
         }}
       >
         <motion.div
-          className="absolute inset-0 rounded-[80px] border-2 border-brand-primary/10 opacity-50"
+          className="absolute inset-0 rounded-full border-2 border-brand-primary/10 opacity-50"
           animate={{ scale: [1, 1.02, 1], opacity: [0.3, 0.6, 0.3] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -130,7 +85,7 @@ const AdaptationLayer: React.FC = () => {
           </span>
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 h-1/2 overflow-hidden pointer-events-none rounded-b-[80px]">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-full">
           <motion.div
             className="absolute bottom-[-10px] left-1/4 w-2 h-2 bg-rose-500/50 rounded-full blur-[2px]"
             animate={{ y: -60, scale: 0, opacity: 0 }}
@@ -144,64 +99,63 @@ const AdaptationLayer: React.FC = () => {
         </div>
       </motion.div>
 
-      {/* INTEGRATION SLOTS - 4 Fixed Positions with Swapping Animation */}
-      <div className="absolute inset-0 z-40 pointer-events-none flex items-center justify-center">
-        {SLOT_POSITIONS.map((position, slotIdx) => {
-          const logoIdx = activeIndices[slotIdx];
-          const logo = integrationLogos[logoIdx];
-          const tilt =
-            position.label === "left" ? -6 : position.label === "right" ? 6 : 0;
+      {/* INTEGRATION ORBIT - Circular motion around the center */}
+      <motion.div
+        className="absolute inset-0 z-40 pointer-events-none flex items-center justify-center"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+      >
+        {[...Array(6)].map((_, slotIdx) => {
+          const logoIdx = activeIndices[slotIdx % activeIndices.length];
+          const logo = integrationLogos[logoIdx % integrationLogos.length];
+
+          // Calculate circular positions statically within the rotating parent
+          const radius = 240;
+          const angle = slotIdx * (360 / 6);
+          const x = Math.cos((angle * Math.PI) / 180) * radius;
+          const y = Math.sin((angle * Math.PI) / 180) * radius;
 
           return (
             <div
               key={`slot-${slotIdx}`}
               className="absolute"
               style={{
-                transform: `translate(${position.x}px, ${position.y}px)`,
+                transform: `translate(${x}px, ${y}px)`,
               }}
             >
-              {/* Static connection line */}
+              {/* Dynamic connection line pointing inwards to the center */}
               <div
-                className="absolute left-1/2 top-1/2 w-px origin-center"
+                className="absolute left-1/2 top-1/2 w-px origin-top transition-all duration-1000"
                 style={{
-                  height: Math.sqrt(position.x ** 2 + position.y ** 2) - 40,
+                  height: radius - 60,
                   background:
-                    "linear-gradient(to bottom, rgba(6, 182, 212, 0.3), rgba(6, 182, 212, 0.05))",
-                  transform: `translate(-50%, -50%) rotate(${Math.atan2(-position.y, -position.x) * (180 / Math.PI) + 90}deg)`,
+                    "linear-gradient(to bottom, rgba(6, 182, 212, 0.6), transparent)",
+                  transform: `rotate(${angle + 90}deg)`,
                 }}
               />
 
-              {/* Animated Logo Card */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={logoIdx}
-                  className="relative pointer-events-auto cursor-pointer"
-                  initial={{ opacity: 0, scale: 0.5, rotate: tilt * 2 }}
-                  animate={{ opacity: 1, scale: 1, rotate: tilt }}
-                  exit={{ opacity: 0, scale: 0.5, rotate: -tilt * 2 }}
-                  whileHover={{ scale: 1.1, rotate: 0, zIndex: 100 }}
-                  transition={{
-                    duration: 0.5,
-                    type: "spring",
-                    stiffness: 200,
-                    damping: 20,
-                  }}
-                >
-                  {/* Card */}
-                  <div
-                    className="relative w-14 h-14 rounded-xl bg-(--card) border border-white/10 shadow-xl flex items-center justify-center p-3 group hover:border-brand-primary/50 transition-all duration-300 overflow-hidden"
+              {/* Counter-rotating Logo Card to stay upright */}
+              <motion.div
+                className="relative pointer-events-auto cursor-pointer"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={logoIdx}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.5 }}
+                    whileHover={{ scale: 1.2, zIndex: 100 }}
+                    className="relative w-14 h-14 rounded-xl bg-(--card) border border-white/10 shadow-xl flex items-center justify-center p-3 group hover:border-brand-primary transition-all duration-300 overflow-hidden"
                     style={{
                       boxShadow: `0 0 20px -5px ${logo.color}33`,
                     }}
                   >
-                    {/* Brand color accent background */}
                     <div
                       className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity"
                       style={{ backgroundColor: logo.color }}
                     />
-
-                    <div className="absolute inset-0 rounded-xl bg-linear-to-br from-white/5 to-transparent" />
-
                     <img
                       src={logo.image}
                       alt={logo.name}
@@ -209,38 +163,43 @@ const AdaptationLayer: React.FC = () => {
                         logo.name === "Mailchimp" ? "dark:invert" : ""
                       }`}
                     />
-
-                    {/* Status indicator */}
                     <div
                       className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full border-2 border-(--card) shadow-lg z-20"
                       style={{ backgroundColor: logo.color }}
                     />
-                  </div>
+                  </motion.div>
+                </AnimatePresence>
 
-                  {/* Label */}
-                  <div
-                    className="absolute -bottom-5 left-1/2 text-[9px] font-bold tracking-wider text-(--muted-foreground) uppercase whitespace-nowrap opacity-60"
-                    style={{
-                      transform: `translateX(-50%) rotate(${-tilt}deg)`,
-                    }}
-                  >
-                    {logo.name}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+                <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-[9px] font-bold tracking-wider text-(--muted-foreground) uppercase whitespace-nowrap opacity-60">
+                  {logo.name}
+                </div>
+              </motion.div>
             </div>
           );
         })}
-      </div>
+      </motion.div>
 
-      {/* LAYER 3: YOUR BUSINESS */}
+      {/* LAYER 3: YOUR BUSINESS - The Central Nucleus */}
       <div className="relative z-50 flex items-center justify-center">
         <motion.div
-          className="relative z-30 w-64 h-32 bg-(--card) rounded-2xl border border-white/10 shadow-xl flex flex-col items-center justify-center p-6 gap-3"
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
+          className="relative z-30 w-56 h-56 bg-brand-depth border border-white/10 rounded-full shadow-[0_0_50px_rgba(6,182,212,0.15)] flex flex-col items-center justify-center p-8 gap-3 text-center overflow-hidden"
+          initial={{ scale: 0.9, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          animate={{
+            boxShadow: [
+              "0 0 30px rgba(6,182,212,0.1)",
+              "0 0 60px rgba(6,182,212,0.2)",
+              "0 0 30px rgba(6,182,212,0.1)",
+            ],
+          }}
         >
+          {/* Internal rotating glass shine */}
+          <motion.div
+            className="absolute inset-0 bg-linear-to-tr from-white/5 via-transparent to-white/5"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          />
           <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-4">
             <motion.div
               className="w-px h-8 bg-linear-to-t from-brand-primary/50 to-brand-primary/0"
@@ -269,32 +228,6 @@ const AdaptationLayer: React.FC = () => {
           </div>
         </motion.div>
       </div>
-
-      {/* CLUSTER 3: SYSTEMS */}
-      <motion.div
-        className="absolute top-4 left-4 z-10 flex items-center gap-2 p-2 rounded-lg bg-black/20 border border-white/5 backdrop-blur-sm"
-        animate={{ y: [-2, 2, -2] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <div className="w-2 h-2 bg-brand-link rounded-full" />
-        <span className="text-[10px] text-white/60 font-mono">CRM: SYNCED</span>
-      </motion.div>
-
-      <motion.div
-        className="absolute top-10 right-4 z-10 flex items-center gap-2 p-2 rounded-lg bg-black/20 border border-white/5 backdrop-blur-sm"
-        animate={{ y: [2, -2, 2] }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      >
-        <div className="w-2 h-2 bg-purple-400 rounded-full" />
-        <span className="text-[10px] text-white/60 font-mono">
-          CALENDAR: ACTIVE
-        </span>
-      </motion.div>
     </div>
   );
 };

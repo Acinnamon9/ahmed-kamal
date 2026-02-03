@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Badge from "../ui/Badge";
 
 /**
  * DemoHeader Component
@@ -14,9 +15,13 @@ const DemoHeader: React.FC = () => {
       transition={{ duration: 0.8 }}
       className="text-center mb-16"
     >
-      <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-brand-orange uppercase bg-brand-orange/10 rounded-full border border-brand-orange/20">
+      <Badge
+        className="mb-6 text-brand-orange bg-brand-orange/10 border-brand-orange/20"
+        variant="outline"
+        size="md"
+      >
         Interactive Demo
-      </span>
+      </Badge>
       <h2 className="text-4xl md:text-6xl font-black text-(--foreground) tracking-tighter mb-6">
         The Systems That Stop <br className="hidden md:block" />
         <span className="text-brand-orange">Leads From Dying</span>

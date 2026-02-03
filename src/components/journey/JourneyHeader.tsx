@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Badge from "../ui/Badge";
 
 /**
  * JourneyHeader Component
@@ -19,13 +20,14 @@ const JourneyHeader: React.FC = () => {
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/5 border border-brand-primary/10 mb-6 backdrop-blur-sm"
       >
-        {/* Small pulsing indicator dot */}
-        <span className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse"></span>
-        <span className="text-[10px] font-black tracking-[0.25em] text-brand-primary uppercase">
+        <Badge
+          variant="outline"
+          className="mb-6 border-brand-primary/10 text-brand-primary bg-brand-primary/5"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse" />
           Revenue Leak Analysis
-        </span>
+        </Badge>
       </motion.div>
 
       {/* 

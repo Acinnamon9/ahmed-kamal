@@ -66,7 +66,7 @@ const DemoFeatureCard: React.FC<DemoFeatureCardProps> = ({
         </>
       )}
 
-      <div className="flex items-start gap-6">
+      <div className="flex items-center gap-6">
         <div
           className={cn(
             "w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border transition-all duration-500",

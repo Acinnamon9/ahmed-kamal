@@ -16,15 +16,15 @@ const HeroVisual: React.FC = () => {
    * Calculated to wrap around the central lady/screenshot cluster [25-85% H, 20-85% V].
    */
   const safePositions = [
-    { left: "-15%", top: "15%" }, // Top Left edge
-    { left: "-12%", top: "45%" }, // Left Mid edge
-    { left: "-18%", top: "75%" }, // Bottom Left edge
-    { left: "5%", top: "-10%" }, // Higher and to the Left (Salesforce)
-    { left: "105%", top: "5%" }, // Top Right outer
-    { left: "110%", top: "40%" }, // Right Mid outer
-    { left: "102%", top: "85%" }, // Bottom Right outer
-    { left: "95%", top: "-5%" }, // Higher Right edge (Monkey/Mailchimp)
-    { left: "-20%", top: "30%" }, // Far Left Mid
+    { left: "-15%", top: "0%" }, // shopify
+    { left: "-12%", top: "35%" }, // vertical lines
+    { left: "-18%", top: "55%" }, // orange circle
+    { left: "50%", top: "-14%" }, // Salesforce
+    { left: "calc(105% - 20px)", top: "calc(5% + 30px)" }, // Top Right outer
+    { left: "calc(100% - 20px)", top: "40%" }, // whatsapp
+    { left: "calc(70% - 20px)", top: "85%" }, // 3 colours
+    { left: "calc(100% - 20px)", top: "-5%" }, // Higher Right edge (Monkey/Mailchimp)
+    { left: "-20%", top: "18%" }, // telegram
   ];
 
   return (
@@ -126,7 +126,7 @@ const HeroVisual: React.FC = () => {
           whileInView={{ opacity: 1, y: 0, x: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="absolute -left-24 -bottom-20 z-20 w-[65%] pointer-events-none"
+          className="absolute -left-[116px] -bottom-20 z-20 w-[56.5%] pointer-events-none"
         >
           <motion.div
             animate={{ y: [0, 15, 0] }}

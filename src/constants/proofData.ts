@@ -20,8 +20,7 @@ export const caseStudies: ProofCaseStudy[] = [
   {
     id: "danube",
     logo: "DANUBE",
-    sourceLogo:
-      "https://yt3.googleusercontent.com/ytc/AIdro_n-x-MUm9n5dl840F716JA1WeMMDgRtqwCxj98hfxchN1I=s900-c-k-c0x00ffffff-no-rj",
+    sourceLogo: "/Danube.png",
     title: "Accelerating Sales by $5.2M in 30 Days",
     metrics: [
       { value: "$5.2M", label: "Revenue Lift" },
@@ -60,8 +59,7 @@ export const caseStudies: ProofCaseStudy[] = [
   {
     id: "sobha",
     logo: "SOBHA",
-    sourceLogo:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWA2aqWWmrh8e9BG_NqwpKcggOY-EzpXbD1w&s",
+    sourceLogo: "/Sobha.png",
     title: "Automating Quality Control at Scale",
     metrics: [
       { value: "85%", label: "Junk Reduced" },
@@ -80,8 +78,7 @@ export const caseStudies: ProofCaseStudy[] = [
   {
     id: "damac",
     logo: "DAMAC",
-    sourceLogo:
-      "https://e7.pngegg.com/pngimages/338/272/png-clipart-damac-properties-real-estate-off-plan-property-property-developer-limited-offer-miscellaneous-angle-thumbnail.png",
+    sourceLogo: "/DAMAC.png",
     title: "High-Volume Velocity Sales",
     metrics: [
       { value: "10k+", label: "Leads/Wk" },
@@ -120,8 +117,7 @@ export const caseStudies: ProofCaseStudy[] = [
   {
     id: "versace",
     logo: "VERSACE",
-    sourceLogo:
-      "https://static.vecteezy.com/system/resources/previews/024/131/299/non_2x/versace-brand-symbol-with-name-brown-logo-clothes-design-icon-abstract-illustration-with-black-background-free-vector.jpg",
+    sourceLogo: "/Versace.png",
     title: "The Ultimate Luxury Experience",
     metrics: [
       { value: "$20M+", label: "Sales" },
@@ -142,8 +138,7 @@ export const caseStudies: ProofCaseStudy[] = [
 export const trustedLogos = [
   {
     name: "DANUBE",
-    image:
-      "https://yt3.googleusercontent.com/ytc/AIdro_n-x-MUm9n5dl840F716JA1WeMMDgRtqwCxj98hfxchN1I=s900-c-k-c0x00ffffff-no-rj",
+    image: "/Danube.png",
   },
   {
     name: "EMAAR",
@@ -152,13 +147,11 @@ export const trustedLogos = [
   },
   {
     name: "DAMAC",
-    image:
-      "https://usuaebusiness.org/wp-content/uploads/2025/02/DAMAC-logo.png",
+    image: "/DAMAC.png",
   },
   {
     name: "SOBHA",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWA2aqWWmrh8e9BG_NqwpKcggOY-EzpXbD1w&s",
+    image: "/Sobha.png",
   },
   {
     name: "NAKHEEL",
@@ -167,7 +160,6 @@ export const trustedLogos = [
   },
   {
     name: "VERSACE",
-    image:
-      "https://static.vecteezy.com/system/resources/previews/024/131/299/non_2x/versace-brand-symbol-with-name-brown-logo-clothes-design-icon-abstract-illustration-with-black-background-free-vector.jpg",
+    image: "/Versace.png",
   },
 ];
