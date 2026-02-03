@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { useWidgetContext } from "../contexts/WidgetContext";
 
 export const navLinks = [
-  { label: "Test Drive", href: "#demo" },
-  { label: "Platform", href: "#ai-team" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Proof", href: "#social-proof" },
+  { label: "The Problem", href: "#journey" },
+  { label: "Agentic Solutions", href: "#ai-team" },
+  { label: "Promise", href: "#onboarding" },
+  { label: "Demo", href: "#demo" },
+  { label: "Industries", href: "#solutions" },
+  { label: "ROI Calculator", href: "#roi" },
+  { label: "Testimonials", href: "#social-proof" },
   { label: "FAQ", href: "#faq" },
 ];
 

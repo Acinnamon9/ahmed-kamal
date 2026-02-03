@@ -21,7 +21,7 @@ const NavbarDesktopLinks: React.FC<NavbarDesktopLinksProps> = ({
   const { openBooking } = useBooking();
 
   return (
-    <div className="hidden lg:flex items-center gap-2 pointer-events-auto">
+    <div className="hidden lg:flex items-center gap-1 xl:gap-2 pointer-events-auto">
       {navLinks.map((link) => {
         /**
          * isActive Logic:
@@ -38,7 +38,7 @@ const NavbarDesktopLinks: React.FC<NavbarDesktopLinksProps> = ({
             variant="glass"
             size="lg"
             className={cn(
-              "text-[11px] font-bold tracking-[0.2em] uppercase px-6 py-3 transition-all",
+              "text-[10px] xl:text-[11px] font-bold tracking-wider uppercase px-3 xl:px-5 py-3 transition-all",
               isActive
                 ? "bg-(--foreground)/10 border-(--foreground)/20 text-(--foreground) -translate-y-px shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
                 : "bg-transparent border-transparent text-(--muted-foreground) hover:text-(--foreground) hover:bg-(--foreground)/5",
@@ -68,11 +68,11 @@ const NavbarDesktopLinks: React.FC<NavbarDesktopLinksProps> = ({
           </Button>
         );
       })}
-      <div className="h-6 w-px bg-(--border) mx-4"></div>
+      <div className="h-6 w-px bg-(--border) mx-2 xl:mx-4"></div>
       <Button
         variant="glass-primary"
         size="xl"
-        className="px-10 rounded-[20px]"
+        className="px-6 xl:px-8 rounded-[20px]"
         onClick={openBooking}
       >
         Book Demo

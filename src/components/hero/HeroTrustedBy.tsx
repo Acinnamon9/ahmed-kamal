@@ -41,7 +41,7 @@ const HeroTrustedBy: React.FC = () => {
             {scrollingLogos.map((logo, idx) => (
               <div key={idx} className="flex items-center gap-4 group shrink-0">
                 {/* Logo Image Container: handles grayscale filtering */}
-                <div className="w-8 h-8 md:w-10 md:h-10 relative flex items-center justify-center">
+                <div className="w-16 h-16 md:w-20 md:h-20 relative flex items-center justify-center">
                   <img
                     src={logo.image}
                     alt={logo.name}

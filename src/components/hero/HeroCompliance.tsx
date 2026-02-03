@@ -31,7 +31,7 @@ const HeroCompliance: React.FC = () => {
               className="flex flex-col items-center gap-2 group cursor-pointer relative"
             >
               {/* Badge Image with Dynamic Hover Glow */}
-              <div className="h-8 md:h-10 w-auto flex items-center justify-center relative z-10">
+              <div className="h-12 md:h-16 w-auto flex items-center justify-center relative z-10">
                 {/* 
                   Hover Detail: Creates a subtle cyan aura behind the badge 
                   to highlight the certification's importance.
