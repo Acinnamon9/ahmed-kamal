@@ -92,7 +92,7 @@ export const JOURNEY_NARRATIVES: Narrative[] = [
         title: "QUALIFICATION WASTE",
         description:
           "Sales teams waste 40% of their time on bad-fit leads instead of focusing on high-intent buyers.",
-        image: `${ASSETS_URL}/Gay Salesman.png`,
+        image: "/Gay Salesman.png",
         metric: "40%",
         type: "lost",
       },
@@ -106,7 +106,7 @@ export const JOURNEY_NARRATIVES: Narrative[] = [
         title: "TRUST INTEGRITY",
         description:
           "Every handoff degrades trust. Fragmented experiences make leads feel like a number, not a customer.",
-        image: `${ASSETS_URL}/Yassified Hijabi.png`,
+        image: "/Yassified Hijabi.png",
         metric: "-60%",
         type: "lost",
         isFeatured: true,
