@@ -33,7 +33,7 @@ const SectorCard: React.FC<SectorCardProps> = React.memo(
             src={industry.image}
             alt=""
             loading="lazy"
-            className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 ease-in-out group-hover:scale-105 delay-200"
+            className="w-full h-full object-cover saturate-50 brightness-90 group-hover:saturate-100 group-hover:brightness-100 transition-all duration-1000 ease-in-out group-hover:scale-105 delay-200"
           />
           <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-20" />
         </div>
@@ -84,11 +84,10 @@ const SectorCard: React.FC<SectorCardProps> = React.memo(
                   )}
                 </div>
                 <span
-                  className={`text-2xl font-black tracking-tighter tabular-nums ${
-                    metric.value.startsWith("–") || metric.value.startsWith("-")
+                  className={`text-2xl font-black tracking-tighter tabular-nums ${metric.value.startsWith("–") || metric.value.startsWith("-")
                       ? "text-brand-error"
                       : "text-brand-success"
-                  }`}
+                    }`}
                 >
                   {metric.value}
                 </span>

@@ -45,13 +45,13 @@ const HeroTrustedBy: React.FC = () => {
                   <img
                     src={logo.image}
                     alt={logo.name}
-                    className="max-h-full max-w-full object-contain filter grayscale opacity-50 contrast-125 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                    className="max-h-full max-w-full object-contain filter grayscale opacity-50 contrast-125 dark:brightness-0 dark:invert group-hover:grayscale-0 group-hover:opacity-100 group-hover:dark:brightness-100 group-hover:dark:invert-0 transition-all duration-500"
                   />
                 </div>
                 {/* Logo Brand Name Tag */}
-                <span className="text-base md:text-xl font-black tracking-tighter text-(--muted-foreground)/60 group-hover:text-(--foreground) transition-all duration-300 font-heading uppercase italic">
+                {/* <span className="text-base md:text-xl font-black tracking-tighter text-(--muted-foreground)/60 group-hover:text-(--foreground) transition-all duration-300 font-heading uppercase italic">
                   {logo.name}
-                </span>
+                </span> */}
               </div>
             ))}
           </motion.div>

@@ -70,7 +70,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: `${BASE_URL}/Real Estate.png`,
+    // image: `${BASE_URL}/Real Estate.png`,
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description:
       "Agents bridge the gap between portal enquiry and viewing, qualifying buyers instantly and syncing data directly to your CRM.",
   },
@@ -92,7 +93,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: `${BASE_URL}/Healthcare.png`,
+    // image: `${BASE_URL}/Healthcare.png`,
+    image: "https://images.unsplash.com/photo-1666887360680-9dc27a1d2753?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description:
       "AI manages the entire patient intake lifecycle, from instant slot booking to insurance verification and automated follow-ups.",
   },
@@ -114,7 +116,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: `${BASE_URL}/Lending and Finance.png`,
+    // image: `${BASE_URL}/Lending and Finance.png`,
+    image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description:
       "Standardize complex document intake and KYC with OCR-enabled agents that guide applicants through the process in real-time.",
   },
@@ -136,7 +139,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: `${BASE_URL}/E-commerce.png`,
+    // image: `${BASE_URL}/E-commerce.png`,
+    image: "https://images.unsplash.com/photo-1713947506242-8fcae733d158?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description:
       "Recover abandoned carts with personalized voice calls and verify COD orders instantly to eliminate RTO losses.",
   },
@@ -158,7 +162,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: `${BASE_URL}/Supply Chain Management.png`,
+    // image: `${BASE_URL}/Supply Chain Management.png`,
+    image: "https://images.unsplash.com/photo-1634638026221-4c1c4cf9f881?q=80&w=1207&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description:
       "Optimize last-mile efficiency by resolving address conflicts and coordinating delivery windows via persistent customer loops.",
   },
@@ -180,7 +185,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: `${BASE_URL}/Hospitality.png`,
+    // image: `${BASE_URL}/Hospitality.png`,
+    image: "https://images.unsplash.com/photo-1660557989688-1564893ccf8c?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description:
       "Never miss a booking with a 24/7 AI concierge that handles reservations, FAQs, and local recommendations across 40+ languages.",
   },
@@ -202,7 +208,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: `${BASE_URL}/Automotive.png`,
+    // image: `${BASE_URL}/Automotive.png`,
+    image: "https://images.unsplash.com/photo-1567789884554-0b844b597180?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description:
       "Maximize workshop yield with agents that proactively book service slots and follow-up on sales leads before they go cold.",
   },
@@ -224,7 +231,8 @@ export const industries: Industry[] = [
       },
     ],
     buttonText: "Book a Meeting",
-    image: `${BASE_URL}/Professional services.png`,
+    // image: `${BASE_URL}/Professional services.png`,
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description:
       "Capture and score high-value leads instantly, providing summarized insights to your team to focus work on the winners.",
   },

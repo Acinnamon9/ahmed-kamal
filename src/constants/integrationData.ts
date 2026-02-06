@@ -11,11 +11,6 @@ export const integrationLogos: IntegrationLogo[] = [
     color: "#95BF47",
   },
   {
-    name: "Intercom",
-    image: "https://a.storyblok.com/f/336825/500x500/a073ce3ddf/intercom.webp",
-    color: "#0057FF",
-  },
-  {
     name: "HubSpot",
     image: "https://a.storyblok.com/f/336825/16x16/ac29a03cf8/hubspot.svg",
     color: "#FF7A59",
@@ -24,12 +19,6 @@ export const integrationLogos: IntegrationLogo[] = [
     name: "Salesforce",
     image: "https://a.storyblok.com/f/336825/16x16/1cd2862772/salesforce.svg",
     color: "#00A1E0",
-  },
-  {
-    name: "Google Forms",
-    image:
-      "https://a.storyblok.com/f/336825/500x500/fca676e564/google-forms.webp",
-    color: "#7248B9",
   },
   {
     name: "WhatsApp",
@@ -50,5 +39,20 @@ export const integrationLogos: IntegrationLogo[] = [
     name: "Telegram",
     image: "https://a.storyblok.com/f/336825/16x16/acc6cdc2e9/telegram.svg",
     color: "#0088CC",
+  },
+  {
+    name: "Instagram",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/960px-Instagram_logo_2016.svg.png",
+    color: "#E4405F",
+  },
+  {
+    name: "TikTok",
+    image: "https://img.freepik.com/premium-vector/tik-tok-logo_578229-290.jpg?semt=ais_hybrid&w=740&q=80",
+    color: "#000000",
+  },
+  {
+    name: "LinkedIn",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd59I5VJJPg2VoucJNvnuqK2-_gmUVqIzvdA&s",
+    color: "#0077B5",
   },
 ];

@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
           <motion.h1
             variants={itemVariants}
             style={{ opacity: headlineOpacity, y: headlineY }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.05] text-(--foreground) mb-8 tracking-tighter max-w-none"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-body leading-[1.05] text-(--foreground) mb-8 tracking-tighter max-w-none"
           >
             AI Agents That Call, Qualify, and Book Appointments{" "}
             <span className="bg-linear-to-r from-brand-primary to-brand-primary/60 bg-clip-text text-transparent">

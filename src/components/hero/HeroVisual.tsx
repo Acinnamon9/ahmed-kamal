@@ -17,7 +17,6 @@ const HeroVisual: React.FC = () => {
    */
   const safePositions = [
     { left: "-15%", top: "0%" }, // shopify
-    { left: "-12%", top: "35%" }, // vertical lines
     { left: "-18%", top: "55%" }, // orange circle
     { left: "50%", top: "-14%" }, // Salesforce
     { left: "calc(105% - 20px)", top: "calc(5% + 30px)" }, // Top Right outer
@@ -25,6 +24,9 @@ const HeroVisual: React.FC = () => {
     { left: "calc(70% - 20px)", top: "85%" }, // 3 colours
     { left: "calc(100% - 20px)", top: "-5%" }, // Higher Right edge (Monkey/Mailchimp)
     { left: "-20%", top: "18%" }, // telegram
+    { left: "10%", top: "-10%" }, // instagram position
+    { left: "calc(95% - 20px)", top: "65%" }, // tiktok position
+    { left: "calc(110% - 20px)", top: "20%" }, // linkedin position
   ];
 
   return (

@@ -23,7 +23,7 @@ const IntelligencePane: React.FC<IntelligencePaneProps> = ({ activeStudy }) => {
             <img
               src={activeStudy.sourceLogo}
               alt={activeStudy.logo}
-              className="h-20 w-auto grayscale brightness-200 object-contain"
+              className="h-20 w-auto  brightness-200 object-contain"
             />
           )}
           <div className="flex flex-col">
