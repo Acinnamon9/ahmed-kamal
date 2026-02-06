@@ -3,7 +3,7 @@
 @theme {
   /* AI Agency Color Palette - Electric Future v5.0 */
   /* Neutral scale for hierarchy */
-  --color-brand-depth: #020205;
+  --color-brand-depth: var(--brand-depth);
   /* Void Black */
   --color-brand-dark: #09090b;
   /* Zinc 950 */
@@ -84,9 +84,11 @@
 }
 
 @layer base {
+
   :host,
   :root {
-    --background: #f1f5f9; /* Softer Slate 100 instead of bright Slate 50 */
+    --background: #f1f5f9;
+    /* Softer Slate 100 instead of bright Slate 50 */
     --foreground: #020617;
     /* Slate 950 */
     --card: #ffffff;
@@ -94,17 +96,16 @@
     --muted: #f1f5f9;
     --muted-foreground: #64748b;
     --border: #e2e8f0;
+    --brand-primary-rgb: 6, 182, 212;
+    --brand-depth: #f8fafc;
+    /* Slate 50 for light mode */
 
-    --color-connection-line-start: color-mix(
-      in srgb,
-      var(--foreground) 40%,
-      var(--background)
-    );
-    --color-connection-line-end: color-mix(
-      in srgb,
-      var(--foreground) 80%,
-      var(--background)
-    );
+    --color-connection-line-start: color-mix(in srgb,
+        var(--foreground) 40%,
+        var(--background));
+    --color-connection-line-end: color-mix(in srgb,
+        var(--foreground) 80%,
+        var(--background));
     --color-connection-pulse: var(--color-brand-cerulean);
 
     scroll-behavior: smooth;
@@ -118,24 +119,29 @@
 
   :host([data-theme="dark"]),
   [data-theme="dark"] {
-    --background: #020205; /* VOID BLACK */
-    --foreground: #ecfeff; /* Cyan 50 */
-    --card: #09090b; /* Zinc 950 */
+    --background: #020205;
+    /* VOID BLACK */
+    --foreground: #ecfeff;
+    /* Cyan 50 */
+    --card: #09090b;
+    /* Zinc 950 */
     --card-foreground: #ecfeff;
-    --muted: #18181b; /* Zinc 900 */
-    --muted-foreground: #a1a1aa; /* Zinc 400 */
-    --border: #27272a; /* Zinc 800 */
+    --muted: #18181b;
+    /* Zinc 900 */
+    --muted-foreground: #a1a1aa;
+    /* Zinc 400 */
+    --border: #27272a;
+    /* Zinc 800 */
+    --brand-primary-rgb: 6, 182, 212;
+    --brand-depth: #020205;
+    /* Original dark color */
 
-    --color-connection-line-start: color-mix(
-      in srgb,
-      var(--foreground) 35%,
-      var(--background)
-    );
-    --color-connection-line-end: color-mix(
-      in srgb,
-      var(--foreground) 90%,
-      var(--background)
-    );
+    --color-connection-line-start: color-mix(in srgb,
+        var(--foreground) 35%,
+        var(--background));
+    --color-connection-line-end: color-mix(in srgb,
+        var(--foreground) 90%,
+        var(--background));
     --color-connection-pulse: var(--color-brand-cerulean);
     color-scheme: dark;
   }
@@ -165,6 +171,7 @@
 
 /* Custom Keyframes */
 @keyframes float-orb {
+
   0%,
   100% {
     transform: translate(0, 0) scale(1);
@@ -180,6 +187,7 @@
 }
 
 @keyframes badge-float {
+
   0%,
   100% {
     transform: translateY(0);
@@ -191,6 +199,7 @@
 }
 
 @keyframes phone-float {
+
   0%,
   100% {
     transform: translateY(0);
@@ -202,6 +211,7 @@
 }
 
 @keyframes float-badge-enhanced {
+
   0%,
   100% {
     transform: translateY(0) rotate(-2deg);
@@ -213,6 +223,7 @@
 }
 
 @keyframes pulse-dot {
+
   0%,
   100% {
     opacity: 1;
@@ -226,6 +237,7 @@
 }
 
 @keyframes fadeRotate {
+
   0%,
   100% {
     opacity: 0;
@@ -275,6 +287,7 @@
 }
 
 @keyframes pulse-bg {
+
   0%,
   100% {
     opacity: 1;
@@ -286,6 +299,7 @@
 }
 
 @keyframes badge-glow {
+
   0%,
   100% {
     box-shadow: 0 8px 24px rgba(0, 129, 167, 0.35);
@@ -303,6 +317,7 @@
 }
 
 @keyframes vs-pulse {
+
   0%,
   100% {
     transform: scale(1);
@@ -314,6 +329,7 @@
 }
 
 @keyframes pulse-timeline {
+
   0%,
   100% {
     opacity: 0.5;
@@ -377,6 +393,7 @@
 }
 
 @keyframes pulse-success {
+
   0%,
   100% {
     opacity: 1;
@@ -461,19 +478,15 @@
   }
 
   .mask-fade-edges {
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 15%,
-      black 85%,
-      transparent
-    );
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 15%,
-      black 85%,
-      transparent
-    );
+    mask-image: linear-gradient(to right,
+        transparent,
+        black 15%,
+        black 85%,
+        transparent);
+    -webkit-mask-image: linear-gradient(to right,
+        transparent,
+        black 15%,
+        black 85%,
+        transparent);
   }
 }

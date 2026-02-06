@@ -60,7 +60,7 @@ const AdaptationLayer: React.FC = () => {
 
       {/* LAYER 2: ATOMICX */}
       <motion.div
-        className="absolute z-10 w-[480px] h-[480px] rounded-full border border-white/5 bg-brand-depth/40 backdrop-blur-2xl shadow-2xl flex flex-col items-center justify-center"
+        className="absolute z-10 w-[480px] h-[480px] rounded-full border border-(--border)/50 bg-brand-depth/40 backdrop-blur-2xl shadow-2xl flex flex-col items-center justify-center"
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
@@ -147,7 +147,7 @@ const AdaptationLayer: React.FC = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.5 }}
                     whileHover={{ scale: 1.2, zIndex: 100 }}
-                    className="relative w-14 h-14 rounded-xl bg-(--card) border border-white/10 shadow-xl flex items-center justify-center p-3 group hover:border-brand-primary transition-all duration-300 overflow-hidden"
+                    className="relative w-14 h-14 rounded-xl bg-(--card) border border-(--border) shadow-xl flex items-center justify-center p-3 group hover:border-brand-primary transition-all duration-300 overflow-hidden"
                     style={{
                       boxShadow: `0 0 20px -5px ${logo.color}33`,
                     }}
@@ -159,9 +159,8 @@ const AdaptationLayer: React.FC = () => {
                     <img
                       src={logo.image}
                       alt={logo.name}
-                      className={`w-full h-full object-contain relative z-10 transition-all ${
-                        logo.name === "Mailchimp" ? "dark:invert" : ""
-                      }`}
+                      className={`w-full h-full object-contain relative z-10 transition-all ${logo.name === "Mailchimp" ? "dark:invert" : ""
+                        }`}
                     />
                     <div
                       className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full border-2 border-(--card) shadow-lg z-20"
@@ -182,7 +181,7 @@ const AdaptationLayer: React.FC = () => {
       {/* LAYER 3: YOUR BUSINESS - The Central Nucleus */}
       <div className="relative z-50 flex items-center justify-center">
         <motion.div
-          className="relative z-30 w-56 h-56 bg-brand-depth border border-white/10 rounded-full shadow-[0_0_50px_rgba(6,182,212,0.15)] flex flex-col items-center justify-center p-8 gap-3 text-center overflow-hidden"
+          className="relative z-30 w-56 h-56 bg-brand-depth border border-(--border) rounded-full shadow-[0_0_50px_rgba(6,182,212,0.15)] flex flex-col items-center justify-center p-8 gap-3 text-center overflow-hidden"
           initial={{ scale: 0.9, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}

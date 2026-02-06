@@ -4,7 +4,7 @@ import DashboardPanel from "./DashboardPanel";
 
 const CommandCenter: React.FC = () => {
   return (
-    <div className="relative aspect-square rounded-[40px] border border-white/10 bg-black/40 backdrop-blur-xl overflow-hidden flex items-center justify-center p-12 shadow-2xl">
+    <div className="relative aspect-square rounded-[40px] border border-(--border) bg-(--card)/40 backdrop-blur-xl overflow-hidden flex items-center justify-center p-12 shadow-2xl">
       {/* Scanline Effect */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-size-[100%_2px,3px_100%]" />
 
@@ -92,7 +92,7 @@ const CommandCenter: React.FC = () => {
           delay: 0.5,
         }}
       >
-        <div className="w-full bg-white/10 h-1 rounded-full overflow-hidden">
+        <div className="w-full bg-(--muted) h-1 rounded-full overflow-hidden">
           <motion.div
             className="bg-brand-primary h-full"
             animate={{ width: ["0%", "88%"] }}
@@ -138,9 +138,9 @@ const CommandCenter: React.FC = () => {
         }}
       >
         <div className="flex justify-center items-center gap-1">
-          <div className="w-full h-1 bg-white/20 relative rounded-full overflow-hidden">
+          <div className="w-full h-1 bg-(--muted) relative rounded-full overflow-hidden">
             <motion.div
-              className="absolute inset-0 bg-white/40"
+              className="absolute inset-0 bg-(--foreground)/10"
               animate={{ left: ["-100%", "100%"] }}
               transition={{
                 duration: 2,

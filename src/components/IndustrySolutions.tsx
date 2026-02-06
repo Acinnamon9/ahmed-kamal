@@ -154,9 +154,9 @@ const IndustrySolutions: React.FC = () => {
                 </Button>
 
                 {/* Micro-Interaction: Hover tooltip for social proof/expectation setting */}
-                <div className="absolute bottom-full left-1/2 md:left-0 md:translate-x-0 -translate-x-1/2 mb-4 px-3 py-2 bg-brand-depth/90 backdrop-blur-md border border-white/10 rounded-lg text-[9px] font-black text-white uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap shadow-xl translate-y-2 group-hover:translate-y-0">
+                <div className="absolute bottom-full left-1/2 md:left-0 md:translate-x-0 -translate-x-1/2 mb-4 px-3 py-2 bg-(--card)/95 backdrop-blur-md border border-(--border) rounded-lg text-[9px] font-black text-(--foreground) uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap shadow-xl translate-y-2 group-hover:translate-y-0">
                   Custom analysis in 24h
-                  <div className="absolute top-full left-1/2 md:left-8 -translate-x-1/2 border-8 border-transparent border-t-brand-depth/90"></div>
+                  <div className="absolute top-full left-1/2 md:left-8 -translate-x-1/2 border-8 border-transparent border-t-(--border)/30"></div>
                 </div>
               </div>
             </motion.div>

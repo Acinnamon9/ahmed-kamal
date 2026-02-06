@@ -38,7 +38,7 @@ const NavbarDesktopLinks: React.FC<NavbarDesktopLinksProps> = ({
             variant="glass"
             size="lg"
             className={cn(
-              "text-[10px] xl:text-[11px] font-bold tracking-wider uppercase px-3 xl:px-5 py-3 transition-all",
+              "text-[10px] xl:text-[11px] font-bold tracking-wider uppercase px-3 xl:px-4 py-2 transition-all",
               isActive
                 ? "bg-(--foreground)/10 border-(--foreground)/20 text-(--foreground) -translate-y-px shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
                 : "bg-transparent border-transparent text-(--muted-foreground) hover:text-(--foreground) hover:bg-(--foreground)/5",
@@ -71,8 +71,8 @@ const NavbarDesktopLinks: React.FC<NavbarDesktopLinksProps> = ({
       <div className="h-6 w-px bg-(--border) mx-2 xl:mx-4"></div>
       <Button
         variant="glass-primary"
-        size="xl"
-        className="px-6 xl:px-8 rounded-[20px]"
+        size="lg"
+        className="px-5 xl:px-6 rounded-[18px] whitespace-nowrap"
         onClick={openBooking}
       >
         Book Demo

@@ -25,10 +25,10 @@ const buttonVariants = cva(
           "bg-brand-orange/20 backdrop-blur-xl text-white border border-brand-orange/30 shadow-2xl shadow-brand-orange/20 hover:bg-brand-orange/30 hover:border-brand-orange/40",
       },
       size: {
-        sm: "px-4 py-2 text-sm rounded-lg",
-        md: "px-6 py-3 text-base font-bold rounded-xl",
-        lg: "px-8 py-4 text-lg font-extrabold rounded-2xl",
-        xl: "px-10 py-5 text-xl font-black rounded-[20px]",
+        sm: "px-3 py-1.5 text-xs rounded-lg",
+        md: "px-4 py-2 text-sm font-bold rounded-xl",
+        lg: "px-6 py-2.5 text-base font-extrabold rounded-2xl",
+        xl: "px-8 py-3.5 text-lg font-black rounded-[20px]",
       },
     },
     defaultVariants: {
@@ -40,8 +40,8 @@ const buttonVariants = cva(
 
 interface ButtonProps
   extends
-    React.HTMLAttributes<HTMLElement>,
-    VariantProps<typeof buttonVariants> {
+  React.HTMLAttributes<HTMLElement>,
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   as?: React.ElementType;
   href?: string;
