@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { TimelineStepType } from "./types";
 import { cn } from "../../lib/utils";
 
@@ -15,6 +15,7 @@ interface TimelineStepProps {
 /**
  * TimelineStep
  * Renders a single node and its associated content card.
+ * Now with scroll-triggered reveal animations.
  */
 const TimelineStep: React.FC<TimelineStepProps> = ({
   step,
@@ -23,8 +24,15 @@ const TimelineStep: React.FC<TimelineStepProps> = ({
   onMouseEnter,
   onMouseLeave,
 }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    once: true,
+    amount: 0.3,
+    margin: "-20% 0px -20% 0px", // Triggers when element is in the middle 40% of viewport
+  });
   return (
     <div
+      ref={ref}
       className="relative flex flex-col items-center group/item"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -36,10 +44,10 @@ const TimelineStep: React.FC<TimelineStepProps> = ({
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
         animate={{
-          scale: isUnlocked ? 1 : 0,
-          opacity: isUnlocked ? 1 : 0,
+          scale: isUnlocked && isInView ? 1 : 0,
+          opacity: isUnlocked && isInView ? 1 : 0,
         }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
         className={cn(
           "hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-(--background) border-2 rounded-full z-10 transition-all duration-300",
           isActive
@@ -64,11 +72,11 @@ const TimelineStep: React.FC<TimelineStepProps> = ({
           scale: 0.95,
         }}
         animate={{
-          opacity: isUnlocked ? 1 : 0,
-          y: isUnlocked ? 0 : step.position === "top" ? 30 : -30,
-          scale: isUnlocked ? 1 : 0.95,
+          opacity: isUnlocked && isInView ? 1 : 0,
+          y: isUnlocked && isInView ? 0 : step.position === "top" ? 30 : -30,
+          scale: isUnlocked && isInView ? 1 : 0.95,
         }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         className={cn(
           "relative ml-16 md:ml-0 md:w-full p-6 rounded-xl border backdrop-blur-md transition-all duration-500 cursor-pointer overflow-hidden",
           "md:absolute md:left-1/2 md:-translate-x-1/2 md:w-72",

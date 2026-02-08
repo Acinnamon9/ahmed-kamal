@@ -112,6 +112,22 @@
     );
     --color-connection-pulse: var(--color-brand-cerulean);
 
+    /* Dynamic Card Surfaces: Darker & Less Saturated in Light Mode */
+    --card-surface: color-mix(
+      in oklch,
+      var(--background),
+      var(--color-brand-primary) 4%
+    );
+    --card-elevated: color-mix(
+      in oklch,
+      color-mix(in oklch, var(--background), black 5%),
+      var(--color-brand-primary) 3%
+    );
+
+    /* Modal Surfaces: More neutral and darker for better readability */
+    --modal-surface: color-mix(in oklch, var(--background), black 8%);
+    --modal-elevated: color-mix(in oklch, var(--background), black 10%);
+
     scroll-behavior: smooth;
     font-family: var(--font-body);
     line-height: 1.5;
@@ -151,6 +167,15 @@
       var(--background)
     );
     --color-connection-pulse: var(--color-brand-cerulean);
+
+    /* Dynamic Card Surfaces */
+    --card-surface: color-mix(in oklch, var(--background), white 5%);
+    --card-elevated: color-mix(in oklch, var(--background), white 10%);
+
+    /* Modal Surfaces: Slightly brighter for better contrast in dark mode */
+    --modal-surface: color-mix(in oklch, var(--background), white 8%);
+    --modal-elevated: color-mix(in oklch, var(--background), white 12%);
+
     color-scheme: dark;
   }
 

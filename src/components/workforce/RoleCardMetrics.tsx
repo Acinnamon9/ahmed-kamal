@@ -17,13 +17,13 @@ const RoleCardMetrics: React.FC<RoleCardMetricsProps> = ({ metrics }) => {
       {metrics.map((metric, i) => (
         <div
           key={i}
-          className="relative p-2 rounded-lg bg-(--muted)/50 border border-(--border) group-hover:border-brand-primary/20 transition-all overflow-hidden"
+          className="relative p-2 rounded-lg bg-white/10 border border-(--border) group-hover:border-brand-primary/20 transition-all overflow-hidden"
         >
           <div className="relative z-10">
-            <span className="block text-lg font-black text-brand-primary tracking-tighter leading-none">
+            <span className="block text-lg font-black text-brand-primary tracking-tighter leading-none drop-shadow-xs">
               {metric.value}
             </span>
-            <span className="text-[7px] text-(--muted-foreground) font-black uppercase tracking-[0.2em] mt-0.5 block">
+            <span className="text-[7px] text-(--muted-foreground) font-black uppercase tracking-[0.2em] mt-0.5 block drop-shadow-xs">
               {metric.label}
             </span>
           </div>

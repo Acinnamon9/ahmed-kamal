@@ -13,36 +13,32 @@ const RoleCardInfo: React.FC<RoleCardInfoProps> = ({
 }) => {
   return (
     <div className="mb-3">
+      <h3 className="text-lg md:text-xl font-black text-(--foreground) tracking-tighter uppercase leading-tight mb-3 group-hover:text-brand-primary transition-colors duration-500 line-clamp-2 h-10 md:h-12 drop-shadow-xs">
+        {title}
+      </h3>
+
       {/* Header Area: Ultra-Compact Inline Status */}
-      <div className="flex items-center justify-between mb-2">
-        <div className="flex items-center gap-2">
-          <span className="h-1 w-1 rounded-full bg-brand-success animate-pulse"></span>
-          <span className="text-[8px] font-black tracking-[0.2em] text-brand-success uppercase">
-            Active
-          </span>
-        </div>
-        <div className="text-[8px] font-black text-brand-primary/80 uppercase tracking-widest">
+      <div className="flex items-center mb-2">
+        <div className="text-[8px] font-black text-brand-primary/80 uppercase tracking-widest drop-shadow-xs">
           {replaces} Replacement
         </div>
       </div>
 
-      <h3 className="text-lg md:text-xl font-black text-(--foreground) tracking-tighter uppercase leading-tight mb-2 group-hover:text-brand-primary transition-colors duration-500">
-        {title}
-      </h3>
-
-      {/* Capabilities Manifest: Ultra-Compact */}
-      <div className="space-y-1.5 mt-4 mb-1">
-        {features.map((feature, i) => (
+      {/* Capabilities Manifest: Ultra-Compact & Fixed Height for alignment */}
+      <div className="space-y-1.5 mt-4 mb-1 h-[76px] overflow-hidden">
+        {features.slice(0, 3).map((feature, i) => (
           <div
             key={i}
             className="flex items-center gap-2.5 group/feat transition-all duration-300"
           >
-            <div className="w-1 h-1 rounded-full bg-brand-primary/30 group-hover/feat:bg-brand-primary transition-colors"></div>
-            <p className="text-[11px] md:text-xs text-(--muted-foreground) font-bold group-hover/feat:text-(--foreground) transition-colors line-clamp-1">
+            <div className="w-1 h-1 rounded-full bg-brand-primary/30 group-hover/feat:bg-brand-primary transition-colors shadow-xs"></div>
+            <p className="text-[11px] md:text-xs text-(--muted-foreground) font-bold group-hover/feat:text-(--foreground) transition-colors line-clamp-1 drop-shadow-xs">
               {feature}
             </p>
           </div>
         ))}
+        {/* Placeholder for empty state to maintain height if needed, 
+            though usually features are > 3 */}
       </div>
     </div>
   );
