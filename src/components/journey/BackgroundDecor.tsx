@@ -14,19 +14,6 @@ const BackgroundDecor: React.FC = () => {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
       {/* 
-        1. Technical Mesh Grid:
-        - A subtle radial dot pattern that reacts to light/dark modes.
-        - Provides a "blueprint" or "platform" feel.
-      */}
-      <div
-        className="absolute inset-0 opacity-[0.03] dark:opacity-[0.07] transition-opacity duration-[2s]"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1.5px 1.5px, var(--foreground) 1.5px, transparent 0)`,
-          backgroundSize: "48px 48px",
-        }}
-      />
-
-      {/* 
         2. Deep Atmospheric Glows:
         - Large, blurred radial gradients that slowly move and pulse.
         - Adds depth and color (brand-primary and brand-success) to the background.
@@ -92,12 +79,6 @@ const BackgroundDecor: React.FC = () => {
           />
         ))}
       </div>
-
-      {/* 
-        5. Edge vignette:
-        - Darkens the corners/edges to focus the user's attention on the center content.
-      */}
-      <div className="absolute inset-0 bg-radial-[circle_at_center,transparent_0%,var(--background)_90%] opacity-40" />
     </div>
   );
 };

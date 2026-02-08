@@ -7,7 +7,7 @@ const WorkforceHeader: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
         className="flex items-center justify-start gap-4 mb-6"
       >
         <div className="h-px w-10 bg-linear-to-r from-transparent to-brand-primary/40"></div>
@@ -26,7 +26,8 @@ const WorkforceHeader: React.FC = () => {
 
         <div className="flex-1 md:max-w-lg text-left md:text-right">
           <p className="text-lg md:text-xl text-(--muted-foreground) leading-relaxed font-medium">
-            Translate manual overhead into definitive outcomes. Deploy specialized{" "}
+            Translate manual overhead into definitive outcomes. Deploy
+            specialized{" "}
             <span className="text-(--foreground) brightness-125">
               AI agents engineered to replace bottlenecked roles
             </span>{" "}

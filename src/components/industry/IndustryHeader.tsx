@@ -8,7 +8,7 @@ const IndustryHeader: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
         className="flex items-center justify-center gap-4 mb-8"
       >
         <div className="h-px w-10 bg-linear-to-r from-transparent to-brand-link/40"></div>
@@ -21,17 +21,29 @@ const IndustryHeader: React.FC = () => {
         <div className="h-px w-10 bg-linear-to-l from-transparent to-brand-link/40"></div>
       </motion.div>
 
-      <h2 className="text-5xl md:text-7xl font-black text-(--foreground) tracking-tighter uppercase leading-[0.9] mb-8">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ delay: 0.1 }}
+        className="text-5xl md:text-7xl font-black text-(--foreground) tracking-tighter uppercase leading-[0.9] mb-8"
+      >
         Universal Core <br />
         <span className="text-brand-link italic">Sector Power</span>
-      </h2>
+      </motion.h2>
 
-      <p className="text-lg md:text-xl text-(--muted-foreground) leading-relaxed font-medium max-w-2xl mx-auto">
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ delay: 0.2 }}
+        className="text-lg md:text-xl text-(--muted-foreground) leading-relaxed font-medium max-w-2xl mx-auto"
+      >
         Our universal core provides the{" "}
         <span className="text-(--foreground) brightness-125">baseline ROI</span>
         . Our sector-specific logic provides the{" "}
         <span className="text-brand-link">exponential power</span>.
-      </p>
+      </motion.p>
     </div>
   );
 };

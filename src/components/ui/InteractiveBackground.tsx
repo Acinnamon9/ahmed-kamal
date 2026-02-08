@@ -54,8 +54,8 @@ const InteractiveBackground: React.FC = () => {
   const tertiaryX = useSpring(mouseX, { stiffness: 15, damping: 30 });
   const tertiaryY = useSpring(mouseY, { stiffness: 15, damping: 30 });
 
-  const quaternaryX = useSpring(mouseX, { stiffness: 10, damping: 35 });
-  const quaternaryY = useSpring(mouseY, { stiffness: 10, damping: 35 });
+  const quaternaryX = useSpring(mouseX, { stiffness: 20, damping: 30 });
+  const quaternaryY = useSpring(mouseY, { stiffness: 20, damping: 30 });
 
   // Update mouse position on global move event (Throttled)
   useEffect(() => {
@@ -99,13 +99,14 @@ const InteractiveBackground: React.FC = () => {
 
       {/* Layer 2: Deep Cerulean (Medium Delay) */}
       <motion.div
-        className="absolute w-[600px] h-[600px] rounded-full opacity-20 dark:opacity-15 blur-[100px]"
+        className="absolute w-[600px] h-[600px] rounded-full opacity-20 dark:opacity-[0.15] blur-[100px]"
         style={{
           x: secondaryX,
           y: secondaryY,
           translateX: "-50%",
           translateY: "-50%",
-          background: "radial-gradient(circle, #0ea5e9 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, oklch(62.42% 0.172 243.39) 0%, transparent 70%)",
         }}
       />
 
@@ -124,7 +125,7 @@ const InteractiveBackground: React.FC = () => {
 
       {/* Layer 4: Electric Violet (Deepest Delay) */}
       <motion.div
-        className="absolute w-[500px] h-[500px] rounded-full opacity-15 dark:opacity-12 blur-[110px]"
+        className="absolute w-[650px] h-[650px] rounded-full opacity-[0.25] dark:opacity-[0.18] blur-[90px]"
         style={{
           x: quaternaryX,
           y: quaternaryY,

@@ -45,7 +45,7 @@ const HeroVisual: React.FC = () => {
               className="absolute drop-shadow-lg pointer-events-auto cursor-pointer group"
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               whileHover={{
                 scale: 1.15,
                 rotate: 0,
@@ -93,7 +93,7 @@ const HeroVisual: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, x: 40, y: 20 }}
           whileInView={{ opacity: 1, x: 0, y: -120 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative z-10 w-[95%] ml-auto"
         >

@@ -19,7 +19,7 @@ const JourneyHeader: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
       >
         <Badge
           variant="outline"
@@ -38,7 +38,7 @@ const JourneyHeader: React.FC = () => {
       <motion.h3
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
         transition={{ delay: 0.1 }}
         className="text-4xl md:text-7xl font-black text-(--foreground) tracking-tighter uppercase leading-[0.85] mb-6"
       >
@@ -53,7 +53,7 @@ const JourneyHeader: React.FC = () => {
       <motion.p
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
         transition={{ delay: 0.2 }}
         className="text-xl md:text-2xl text-(--muted-foreground) font-medium tracking-tight"
       >

@@ -13,16 +13,14 @@ import AdaptationLayer from "./approach/AdaptationLayer";
  */
 const Approach: React.FC = () => {
   return (
-    <Section
-      className="py-24 md:py-32 relative overflow-hidden bg-transparent"
-    >
+    <Section className="py-24 md:py-32 relative overflow-hidden bg-transparent">
       <Container className="relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           {/* Left Side: Brand Narrative & Supporting Copy */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6 }}
             className="flex-1 text-center lg:text-left"
           >
@@ -106,7 +104,7 @@ const Approach: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex-1 w-full max-w-md lg:max-w-full"
           >

@@ -31,12 +31,7 @@ const OnboardingTimeline: React.FC = () => {
   const progressPercent = activeIndex / (TIMELINE_STEPS.length - 1);
 
   return (
-    <Section
-      className="bg-transparent py-32 relative overflow-hidden"
-    >
-      {/* Visual Background Accent: Large atmospheric glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-brand-primary/5 blur-[100px] rounded-full pointer-events-none" />
-
+    <Section className="bg-transparent py-32 relative overflow-hidden">
       <Container className="relative z-10 max-w-[1700px]">
         {/* Intro Section: Staggered entrance animations for header content */}
         <TimelineHeader />

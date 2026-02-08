@@ -14,7 +14,7 @@ const TimelineHeader: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6 }}
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-(--foreground)/5 border border-(--foreground)/10 mb-6 backdrop-blur-md"
         >
@@ -36,7 +36,7 @@ const TimelineHeader: React.FC = () => {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-(--foreground) mb-6"
         >
@@ -46,7 +46,7 @@ const TimelineHeader: React.FC = () => {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-xl text-(--muted-foreground) max-w-2xl"
         >
@@ -58,7 +58,7 @@ const TimelineHeader: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
         transition={{ duration: 0.8 }}
         className="flex-1 w-full"
       >
