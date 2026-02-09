@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between relative z-10">
           {/* Logo */}
           <a
-            href="/"
+            href={import.meta.env.BASE_URL}
             className="flex items-center gap-2.5 transition-opacity hover:opacity-80"
           >
             <img

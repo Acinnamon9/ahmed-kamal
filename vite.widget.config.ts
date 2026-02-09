@@ -2,22 +2,24 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
-import vercel from "vite-plugin-vercel";
 
 export default defineConfig({
   base: process.env.BASE_PATH || "/",
-  server: {
-    port: process.env.PORT ? Number(process.env.PORT) : undefined,
-  },
-  plugins: [
-    react(),
-    tailwindcss(),
-    ...(process.env.VERCEL ? [vercel()] : []),
-  ],
+  plugins: [react(), tailwindcss()],
   publicDir: "public",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    lib: {
+      entry: path.resolve(__dirname, "src/widget.tsx"),
+      name: "ReactWidget",
+      fileName: "react-widget-uv",
+      formats: ["iife"],
+    },
+    copyPublicDir: true,
+  },
 });
+

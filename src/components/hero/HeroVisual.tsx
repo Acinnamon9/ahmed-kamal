@@ -90,7 +90,7 @@ const HeroVisual: React.FC = () => {
           >
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 glass-card">
               <img
-                src="/chat_screenshot.png"
+                src={`${import.meta.env.BASE_URL}chat_screenshot.png`}
                 alt="AI Conversation Platform"
                 className="w-full h-auto object-cover"
               />
@@ -118,7 +118,7 @@ const HeroVisual: React.FC = () => {
             }}
           >
             <img
-              src="/pretty_woman.png"
+              src={`${import.meta.env.BASE_URL}pretty_woman.png`}
               alt="AI Interaction"
               className="w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
             />

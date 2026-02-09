@@ -8,7 +8,7 @@ const FooterBrand: React.FC = () => {
   return (
     <div className="space-y-6">
       <a
-        href="/"
+        href={import.meta.env.BASE_URL}
         className="text-(--foreground) text-3xl font-black no-underline tracking-tighter transition-colors"
       >
         AtomicX
