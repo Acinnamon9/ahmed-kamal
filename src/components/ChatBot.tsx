@@ -13,7 +13,7 @@ import {
   PhoneOff,
 } from "lucide-react";
 import { cn } from "../lib/utils";
-import { Room, RoomEvent, RemoteTrack } from "livekit-client";
+import type { Room, RemoteTrack } from "livekit-client";
 
 interface Message {
   id: string;
@@ -161,6 +161,9 @@ const ChatBot: React.FC = () => {
 
       if (cid) setCallId(cid);
       if (csid) setCallSessionId(csid);
+
+      // Load livekit only when needed
+      const { Room, RoomEvent } = await import("livekit-client");
 
       // 2. Initialize Room
       const room = new Room({

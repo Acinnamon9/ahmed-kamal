@@ -36,9 +36,9 @@ const HeroCTA: React.FC<HeroCTAProps> = ({ onBookDemo }) => {
       </Button>
 
       {/* Secondary Anchor Button: Redirects to the product walkthrough section */}
-      <Button as="a" href="#demo" variant="glass" size="xl" className="px-12">
+      {/* <Button as="a" href="#demo" variant="glass" size="xl" className="px-12">
         See how it works
-      </Button>
+      </Button> */}
     </motion.div>
   );
 };
