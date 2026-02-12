@@ -44,11 +44,11 @@ export const faqCategories: FAQData[] = [
     items: [
       {
         q: "How long does onboarding take?",
-        a: "Onboarding is completed within 72 hours from kickoff for standard packages. Complex, enterprise implementations may need a little longer — but the typical brand-to-live flow is 72 hours.",
+        a: "Onboarding is completed within 48 hours from kickoff for standard packages. Complex, enterprise implementations may need a little longer — but the typical brand-to-live flow is 48 hours.",
       },
       {
-        q: "What exactly is included in the 72-hour onboarding?",
-        a: "A standard 72-hour onboarding includes: discovery + ICP mapping, initial persona & conversation design, CRM & calendar connection, demo agent deployment, basic training for your team, one live test run, and go-live for the agreed scope.",
+        q: "What exactly is included in the 48-hour onboarding?",
+        a: "A standard 48-hour onboarding includes: discovery + ICP mapping, initial persona & conversation design, CRM & calendar connection, demo agent deployment, basic training for your team, one live test run, and go-live for the agreed scope.",
       },
       {
         q: "How do you ensure the agent matches our brand voice?",

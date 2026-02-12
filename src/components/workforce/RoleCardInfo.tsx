@@ -13,13 +13,13 @@ const RoleCardInfo: React.FC<RoleCardInfoProps> = ({
 }) => {
   return (
     <div className="mb-3">
-      <h3 className="text-lg md:text-xl font-black text-(--foreground) tracking-tighter uppercase leading-tight mb-3 group-hover:text-brand-primary transition-colors duration-500 line-clamp-2 h-10 md:h-12 drop-shadow-xs">
+      <h3 className="text-lg md:text-xl font-black text-(--foreground) tracking-tighter uppercase leading-tight mb-3 group-hover:text-brand-orange transition-colors duration-500 line-clamp-2 h-10 md:h-12 drop-shadow-xs">
         {title}
       </h3>
 
       {/* Header Area: Ultra-Compact Inline Status */}
       <div className="flex items-center mb-2">
-        <div className="text-[8px] font-black text-brand-primary/80 uppercase tracking-widest drop-shadow-xs">
+        <div className="text-[8px] font-black text-brand-orange/80 uppercase tracking-widest drop-shadow-xs">
           {replaces} Replacement
         </div>
       </div>
@@ -31,7 +31,7 @@ const RoleCardInfo: React.FC<RoleCardInfoProps> = ({
             key={i}
             className="flex items-center gap-2.5 group/feat transition-all duration-300"
           >
-            <div className="w-1 h-1 rounded-full bg-brand-primary/30 group-hover/feat:bg-brand-primary transition-colors shadow-xs"></div>
+            <div className="w-1 h-1 rounded-full bg-brand-orange/30 group-hover/feat:bg-brand-orange transition-colors shadow-xs"></div>
             <p className="text-[11px] md:text-xs text-(--muted-foreground) font-bold group-hover/feat:text-(--foreground) transition-colors line-clamp-1 drop-shadow-xs">
               {feature}
             </p>

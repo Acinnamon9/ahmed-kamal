@@ -85,7 +85,7 @@ const Approach: React.FC = () => {
               <div className="flex flex-wrap items-center gap-3 text-xs text-(--muted-foreground) justify-center lg:justify-start">
                 <span className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-success animate-pulse" />
-                  Live in 72 hours
+                  Live in 48 hours
                 </span>
                 <span className="opacity-30">·</span>
                 <span>Works with any CRM</span>

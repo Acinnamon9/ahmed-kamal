@@ -10,17 +10,23 @@ const WorkforceHeader: React.FC = () => {
         viewport={{ once: false }}
         className="flex items-center justify-start gap-4 mb-6"
       >
-        <div className="h-px w-10 bg-linear-to-r from-transparent to-brand-primary/40"></div>
-        <span className="text-[10px] font-black tracking-[0.5em] text-brand-primary uppercase">
+        <div className="h-px w-10 bg-linear-to-r from-transparent to-brand-orange/40"></div>
+        <span className="text-[10px] font-black tracking-[0.5em] text-brand-orange uppercase">
           Operational Fleet
         </span>
+        <div className="flex items-center gap-1.5 ml-2 bg-brand-success/10 dark:bg-brand-success/10 px-3 py-1 rounded-full border border-brand-success/30 dark:border-brand-success/20">
+          <span className="w-1.5 h-1.5 rounded-full bg-brand-success animate-pulse" />
+          <span className="text-[9px] font-black text-green-700 dark:text-brand-success uppercase tracking-widest">
+            48h Setup
+          </span>
+        </div>
       </motion.div>
 
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
         <div className="flex-1 text-left">
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-(--foreground) tracking-tighter uppercase leading-[0.9]">
             The New <br />
-            <span className="text-brand-primary italic">Digital Workforce</span>
+            <span className="text-brand-orange italic">Digital Workforce</span>
           </h2>
         </div>
 
@@ -31,7 +37,7 @@ const WorkforceHeader: React.FC = () => {
             <span className="text-(--foreground) brightness-125">
               AI agents engineered to replace bottlenecked roles
             </span>{" "}
-            with 100% availability, instant speed, and massive volume.
+            with 100% availability, 48-hour launch speed, and massive volume.
           </p>
         </div>
       </div>

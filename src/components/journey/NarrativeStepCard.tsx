@@ -78,7 +78,7 @@ const NarrativeStepCard: React.FC<NarrativeStepCardProps> = ({
                     "inline-flex items-center gap-2 px-3 py-1 rounded-lg text-[10px] font-black tracking-widest uppercase",
                     card.type === "won"
                       ? "bg-brand-primary/10 border border-brand-primary/20 text-brand-primary"
-                      : "bg-red-500/10 border border-red-500/20 text-red-500",
+                      : "bg-orange-500/10 border border-orange-500/20 text-orange-500",
                   )}
                 >
                   {card.metric || "Status"}
@@ -137,7 +137,7 @@ const NarrativeStepCard: React.FC<NarrativeStepCardProps> = ({
                 "inline-flex self-start px-3 py-1 rounded-lg text-[10px] font-black tracking-widest uppercase mb-4",
                 card.type === "won"
                   ? "bg-brand-primary/10 border border-brand-primary/20 text-brand-primary"
-                  : "bg-red-500/10 border border-red-500/20 text-red-500",
+                  : "bg-orange-500/10 border border-orange-500/20 text-orange-500",
               )}
             >
               {card.metric || "Status"}

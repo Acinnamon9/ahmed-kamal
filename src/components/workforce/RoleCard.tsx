@@ -53,10 +53,10 @@ const RoleCard: React.FC<RoleCardProps> = React.memo(({ role }) => {
         >
           <Card
             variant="white"
-            className="group relative overflow-hidden bg-(--card-surface)/80 backdrop-blur-2xl border border-(--border) hover:border-brand-primary/40 transition-all duration-700 h-full p-px rounded-[24px]"
+            className="group relative overflow-hidden bg-(--card-surface)/80 backdrop-blur-2xl border border-(--border) hover:border-brand-orange/40 transition-all duration-700 h-full p-px rounded-[24px]"
           >
             {/* Iridescent Outer Border Effect: Reveals on hover for a premium "tech" feel */}
-            <div className="absolute inset-0 bg-linear-to-br from-brand-primary/20 via-transparent to-brand-success/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+            <div className="absolute inset-0 bg-linear-to-br from-brand-orange/20 via-transparent to-brand-success/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
 
             <div className="relative bg-(--card-elevated)/80 rounded-[23px] h-full flex flex-col overflow-hidden">
               {/* Header Image/Icon area */}
@@ -66,7 +66,7 @@ const RoleCard: React.FC<RoleCardProps> = React.memo(({ role }) => {
                   title={role.title}
                   icon={role.icon}
                 />
-                <div className="absolute inset-0 bg-brand-primary/0 group-hover/card:bg-brand-primary/5 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-brand-orange/0 group-hover/card:bg-brand-orange/5 transition-colors duration-500" />
               </div>
 
               {/* Main content: Information and key metrics preview */}
@@ -114,8 +114,8 @@ const RoleCard: React.FC<RoleCardProps> = React.memo(({ role }) => {
                 transition={{ duration: 0.6, ease: "easeOut" }}
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center bg-brand-primary/5">
-                <div className="text-brand-primary opacity-20 transform scale-[5]">
+              <div className="w-full h-full flex items-center justify-center bg-brand-orange/5">
+                <div className="text-brand-orange opacity-20 transform scale-[5]">
                   {role.icon}
                 </div>
               </div>
@@ -154,7 +154,7 @@ const RoleCard: React.FC<RoleCardProps> = React.memo(({ role }) => {
               transition={{ duration: 0.4, delay: 0.4 }}
               className="mb-8"
             >
-              <div className="text-[10px] font-black text-brand-primary uppercase tracking-[0.3em] mb-4">
+              <div className="text-[10px] font-black text-brand-orange uppercase tracking-[0.3em] mb-4">
                 Workforce Deployment Status
               </div>
               <div className="p-4 rounded-xl bg-white/5 border border-white/10">
@@ -191,7 +191,7 @@ const RoleCard: React.FC<RoleCardProps> = React.memo(({ role }) => {
                     whileHover={{ x: 4, transition: { duration: 0.2 } }}
                     className="flex items-start gap-4 p-3 rounded-lg bg-white/5 border border-white/5"
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-brand-primary mt-1.5 shadow-[0_0_8px_rgba(var(--brand-primary-rgb),0.5)]" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-brand-orange mt-1.5 shadow-[0_0_8px_rgba(var(--brand-orange-rgb),0.5)]" />
                     <p className="text-sm font-medium text-(--foreground)/90 leading-snug">
                       {feature}
                     </p>

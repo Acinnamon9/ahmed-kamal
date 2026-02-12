@@ -4286,7 +4286,7 @@
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             <p>Not at all. We handle the entire implementation for you. We typically have clients live
-                                within 48 to 72 hours.</p>
+                                within 48 hours.</p>
                             <ul class="faq-list">
                                 <li>We clone your voice (optional)</li>
                                 <li>We upload your scripts and knowledge base</li>

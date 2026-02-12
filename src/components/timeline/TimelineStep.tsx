@@ -19,6 +19,7 @@ interface TimelineStepProps {
  */
 const TimelineStep: React.FC<TimelineStepProps> = ({
   step,
+  index,
   isActive,
   isUnlocked,
   onMouseEnter,
@@ -33,7 +34,7 @@ const TimelineStep: React.FC<TimelineStepProps> = ({
   return (
     <div
       ref={ref}
-      className="relative flex flex-col items-center group/item"
+      className="relative flex flex-col items-center group/item md:h-0"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -47,12 +48,12 @@ const TimelineStep: React.FC<TimelineStepProps> = ({
           scale: isUnlocked && isInView ? 1 : 0,
           opacity: isUnlocked && isInView ? 1 : 0,
         }}
-        transition={{ duration: 0.5, delay: 0.1 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
         className={cn(
           "hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-(--background) border-2 rounded-full z-10 transition-all duration-300",
           isActive
             ? "border-brand-primary scale-125 shadow-[0_0_15px_var(--color-brand-primary)]"
-            : "border-(--foreground)/20 scale-100",
+            : "border-(--foreground)/30 scale-100",
         )}
       >
         {/* Ring animation to draw attention to the current active step */}
@@ -74,9 +75,9 @@ const TimelineStep: React.FC<TimelineStepProps> = ({
         animate={{
           opacity: isUnlocked && isInView ? 1 : 0,
           y: isUnlocked && isInView ? 0 : step.position === "top" ? 30 : -30,
-          scale: isUnlocked && isInView ? 1 : 0.95,
+          scale: isUnlocked && isInView ? (isActive ? 1.05 : 1) : 0.95,
         }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.1 }}
         className={cn(
           "relative ml-16 md:ml-0 md:w-full p-6 rounded-xl border backdrop-blur-md transition-all duration-500 cursor-pointer overflow-hidden",
           "md:absolute md:left-1/2 md:-translate-x-1/2 md:w-72",
@@ -84,9 +85,9 @@ const TimelineStep: React.FC<TimelineStepProps> = ({
             ? "md:bottom-full md:mb-16"
             : "md:top-full md:mt-16",
           isActive
-            ? "bg-brand-primary/10 border-brand-primary/40 shadow-[0_0_30px_rgba(var(--brand-primary-rgb),0.15)]"
-            : "bg-(--foreground)/5 border-(--foreground)/5 opacity-40 grayscale hover:grayscale-0 hover:opacity-100",
-          !isUnlocked && "pointer-events-none",
+            ? "bg-brand-primary/8 dark:bg-brand-primary/15 border-brand-primary/40 shadow-[0_8px_32px_rgba(var(--brand-primary-rgb),0.12)]"
+            : "bg-(--foreground)/2 dark:bg-(--foreground)/10 border-(--foreground)/15 opacity-60 backdrop-blur-sm hover:opacity-100 hover:bg-(--foreground)/4",
+          !isUnlocked && "pointer-events-none opacity-20 saturate-0",
         )}
       >
         {/* 
@@ -128,7 +129,7 @@ const TimelineStep: React.FC<TimelineStepProps> = ({
             "absolute -left-10 md:hidden w-10 h-10 rounded-full bg-(--background) border flex items-center justify-center z-10 transition-all duration-300",
             isActive
               ? "border-brand-primary text-brand-primary shadow-[0_0_15px_var(--color-brand-primary)]"
-              : "border-(--foreground)/20 text-(--foreground)/20",
+              : "border-(--foreground)/30 text-(--foreground)/30",
           )}
         >
           {step.icon}
@@ -158,24 +159,44 @@ const TimelineStep: React.FC<TimelineStepProps> = ({
           )}
         </div>
 
-        <h3
-          className={cn(
-            "text-lg font-black mb-2 transition-colors duration-300 tracking-tight",
-            isActive ? "text-(--foreground)" : "text-(--muted-foreground)",
-          )}
-        >
-          {step.title}
-        </h3>
-        <p
-          className={cn(
-            "text-xs leading-relaxed transition-colors duration-300 font-medium",
-            isActive
-              ? "text-(--foreground)/70"
-              : "text-(--muted-foreground)/40",
-          )}
-        >
-          {step.description}
-        </p>
+        <div className="flex items-start gap-3">
+          <div
+            className={cn(
+              "p-2 rounded-lg border transition-all duration-300",
+              isActive
+                ? "bg-brand-primary/10 border-brand-primary/20 text-brand-primary shadow-[0_0_15px_rgba(var(--brand-primary-rgb),0.1)]"
+                : "bg-(--foreground)/5 border-(--foreground)/10 text-(--muted-foreground)",
+            )}
+          >
+            {React.cloneElement(step.icon as React.ReactElement, {
+              className: "w-5 h-5",
+            })}
+          </div>
+          <div className="flex-1">
+            <motion.h3
+              animate={{ scale: isActive ? 1.02 : 1 }}
+              transition={{ duration: 0.3 }}
+              className={cn(
+                "text-lg font-black mb-1 transition-colors duration-300 tracking-tight",
+                isActive ? "text-(--foreground)" : "text-(--muted-foreground)",
+              )}
+            >
+              {step.title}
+            </motion.h3>
+            <motion.p
+              animate={{ scale: isActive ? 1.02 : 1 }}
+              transition={{ duration: 0.3 }}
+              className={cn(
+                "text-xs leading-relaxed transition-colors duration-300 font-medium",
+                isActive
+                  ? "text-(--foreground)/70"
+                  : "text-(--muted-foreground)/40",
+              )}
+            >
+              {step.description}
+            </motion.p>
+          </div>
+        </div>
       </motion.div>
 
       <div className="h-4 md:hidden" />

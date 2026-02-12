@@ -81,7 +81,7 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="text-xl sm:text-2xl text-(--muted-foreground) leading-relaxed mb-12 max-w-3xl font-medium tracking-tight"
           >
-            Launch in 72 hours. Works with any CRM. No missed leads.
+            Launch in 48 hours. Works with any CRM. No missed leads.
           </motion.p>
 
           <HeroCTA />
