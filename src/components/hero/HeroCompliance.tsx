@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const complianceLogos = [
-  { name: "PCI DSS", image: "https://www.callers.ai/images/dss-logo.svg" },
-  { name: "GDPR", image: "https://www.callers.ai/images/gdpr-logo.svg" },
+  // { name: "PCI DSS", image: "https://www.callers.ai/images/dss-logo.svg" },
+  // { name: "GDPR", image: "https://www.callers.ai/images/gdpr-logo.svg" },
   { name: "HIPAA", image: "https://www.callers.ai/images/hipaa-logo.svg" },
   { name: "SOC2", image: "https://www.callers.ai/images/soc2-logo.svg" },
   { name: "CCPA", image: "https://www.callers.ai/images/ccpa-logo.svg" },

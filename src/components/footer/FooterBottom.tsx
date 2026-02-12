@@ -19,14 +19,14 @@ const FooterBottom: React.FC<FooterBottomProps> = ({
 }) => {
   return (
     <div className="pt-10 border-t border-(--border) flex flex-col md:flex-row justify-between items-center gap-6">
-      <p className="font-bold opacity-60 font-['Plus_Jakarta_Sans',sans-serif] tracking-tight">
+      <p className="font-bold text-gray-500 font-['Plus_Jakarta_Sans',sans-serif] tracking-tight">
         &copy; {currentYear} AtomicX. Built for Global Dominance.
       </p>
 
       <div className="flex items-center gap-8">
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-full bg-(--muted) hover:bg-brand-primary/10 transition-all border border-(--border) group"
+          className="p-2 rounded-full bg-white/5 hover:bg-brand-primary/10 transition-all border border-white/10 group"
           aria-label="Toggle Theme"
         >
           {theme === "light" ? (
@@ -55,7 +55,7 @@ const FooterBottom: React.FC<FooterBottomProps> = ({
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-brand-primary font-black transition-all no-underline text-xs uppercase tracking-widest text-(--foreground)"
+              className="hover:text-brand-primary font-black transition-all no-underline text-xs uppercase tracking-widest text-gray-400"
             >
               {social.label}
             </a>

@@ -23,15 +23,13 @@ const Footer: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <footer
-      data-theme="dark" // Forces dark mode variables for the footer area
-      className="bg-brand-depth border-t border-(--border) pt-24 pb-12 px-5 text-(--muted-foreground) text-sm"
-    >
-      <Container>
-        {/* Upper Footer: Branding and multi-column navigation */}
+    <footer className="bg-gray-950 border-t border-white/5 pt-24 pb-12 text-gray-400 text-sm relative overflow-hidden">
+      {/* Dark mode background gradient */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(30,58,138,0.1),transparent_40%)] pointer-events-none" />
+
+      <Container className="relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-16 mb-20">
           <FooterBrand />
-
           <FooterNav
             platformLinks={footerPlatformLinks}
             companyLinks={footerCompanyLinks}
@@ -39,7 +37,6 @@ const Footer: React.FC = () => {
           />
         </div>
 
-        {/* Lower Footer: Copyright, Theme Toggle, and Social Links */}
         <FooterBottom
           currentYear={currentYear}
           theme={theme}

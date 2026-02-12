@@ -36,26 +36,7 @@ export const caseStudies: ProofCaseStudy[] = [
     author: "Adel Sajan",
     role: "MD, Danube Properties",
   },
-  {
-    id: "emaar",
-    logo: "EMAAR",
-    sourceLogo:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKPRXmffFUFhstsSry7-v40QNQRZnct8SclA&s",
-    title: "$12M Off-Plan Sales for Luxury Launch",
-    metrics: [
-      { value: "$12M+", label: "Revenue" },
-      { value: "3.5x", label: "Conv. Lift" },
-      { value: "24/7", label: "Uptime" },
-    ],
-    challenge:
-      "Needed to filter 15,000+ global leads for a luxury launch without compromising the premium 'white-glove' experience.",
-    solution:
-      "Deployed a 'Luxury Concierge' AI persona to engage high-net-worth individuals instantly and schedule private viewings.",
-    testimonial:
-      "The precision of the agents is remarkable. Our sales team walked into meetings with prospects who were already educated.",
-    author: "Ahmed Al Matrooshi",
-    role: "Exec. Board, Emaar",
-  },
+
   {
     id: "sobha",
     logo: "SOBHA",
@@ -94,26 +75,7 @@ export const caseStudies: ProofCaseStudy[] = [
     author: "Hussain Sajwani",
     role: "Founder, DAMAC",
   },
-  {
-    id: "nakheel",
-    logo: "NAKHEEL",
-    sourceLogo:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Nakheel_Properties_logo.svg/960px-Nakheel_Properties_logo.svg.png",
-    title: "Revitalizing Waterfront Sales",
-    metrics: [
-      { value: "$15M", label: "Unlocked" },
-      { value: "300%", label: "ROI" },
-      { value: "98%", label: "Compliance" },
-    ],
-    challenge:
-      "Needed to reactivate a dormant database. Manual recall campaigns were too expensive and low-yield.",
-    solution:
-      "Executed a massive contextual reactivation campaign to re-engage old prospects and identify new interest.",
-    testimonial:
-      "We turned a 'dead' database into a multi-million dollar revenue stream using natural AI conversations.",
-    author: "Naaman Atallah",
-    role: "CEO, Nakheel",
-  },
+
   {
     id: "versace",
     logo: "VERSACE",
@@ -140,11 +102,7 @@ export const trustedLogos = [
     name: "DANUBE",
     image: "/Danube.png",
   },
-  {
-    name: "EMAAR",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKPRXmffFUFhstsSry7-v40QNQRZnct8SclA&s",
-  },
+
   {
     name: "DAMAC",
     image: "/DAMAC.png",
@@ -153,11 +111,7 @@ export const trustedLogos = [
     name: "SOBHA",
     image: "/Sobha.png",
   },
-  {
-    name: "NAKHEEL",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Nakheel_Properties_logo.svg/960px-Nakheel_Properties_logo.svg.png",
-  },
+
   {
     name: "VERSACE",
     image: "/Versace.png",

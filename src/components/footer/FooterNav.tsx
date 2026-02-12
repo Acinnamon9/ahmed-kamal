@@ -33,7 +33,7 @@ const FooterNav: React.FC<FooterNavProps> = ({
   return (
     <>
       <div>
-        <h4 className="text-(--foreground) text-lg font-black mb-8 tracking-tight transition-colors">
+        <h4 className="text-white text-lg font-black mb-8 tracking-tight transition-colors">
           Platform
         </h4>
         <ul className="space-y-4">
@@ -53,7 +53,7 @@ const FooterNav: React.FC<FooterNavProps> = ({
       </div>
 
       <div>
-        <h4 className="text-(--foreground) text-lg font-black mb-8 tracking-tight transition-colors">
+        <h4 className="text-white text-lg font-black mb-8 tracking-tight transition-colors">
           Company
         </h4>
         <ul className="space-y-4">
@@ -78,7 +78,7 @@ const FooterNav: React.FC<FooterNavProps> = ({
       </div>
 
       <div>
-        <h4 className="text-(--foreground) text-lg font-black mb-8 tracking-tight transition-colors">
+        <h4 className="text-white text-lg font-black mb-8 tracking-tight transition-colors">
           Contact
         </h4>
         <ul className="space-y-4 font-bold">
@@ -86,7 +86,7 @@ const FooterNav: React.FC<FooterNavProps> = ({
             <li>
               <a
                 href={`mailto:${contactInfo.email}`}
-                className="hover:text-brand-primary transition-all duration-300 no-underline"
+                className="text-gray-400 hover:text-brand-primary transition-all duration-300 no-underline"
               >
                 {contactInfo.email}
               </a>
@@ -96,7 +96,7 @@ const FooterNav: React.FC<FooterNavProps> = ({
             <li>
               <a
                 href={`tel:${contactInfo.phone.replace(/[^0-9+]/g, "")}`}
-                className="hover:text-brand-primary transition-all duration-300 no-underline"
+                className="text-gray-400 hover:text-brand-primary transition-all duration-300 no-underline"
               >
                 {contactInfo.phone}
               </a>
@@ -108,7 +108,7 @@ const FooterNav: React.FC<FooterNavProps> = ({
                 href={contactInfo.address.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-brand-primary transition-all duration-300 no-underline"
+                className="text-gray-400 hover:text-brand-primary transition-all duration-300 no-underline"
               >
                 {contactInfo.address.label}
               </a>

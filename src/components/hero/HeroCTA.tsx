@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Button from "../ui/Button";
 import { itemVariants } from "../../animations";
 import { useBooking } from "../../context/BookingContext";
 
@@ -12,12 +11,9 @@ interface HeroCTAProps {
  * HeroCTA Component
  *
  * Provides the primary interaction points for the landing page.
- * Includes a "dual-track" strategy:
- * 1. Direct Conversion (Book Live Demo)
- * 2. Educational (See how it works - jumps to interactive demo)
+ * Features a rotating light border effect on the primary CTA for maximum visual impact.
  */
 const HeroCTA: React.FC<HeroCTAProps> = ({ onBookDemo }) => {
-  // openBooking: function from global context to trigger the iframe modal
   const { openBooking } = useBooking();
 
   return (
@@ -25,20 +21,30 @@ const HeroCTA: React.FC<HeroCTAProps> = ({ onBookDemo }) => {
       variants={itemVariants}
       className="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto"
     >
-      {/* Primary Conversion Button: Triggers specialized lead capture flow */}
-      <Button
-        variant="glass-primary"
-        size="xl"
-        className="px-12"
+      {/* 
+        Rotating Light Border CTA:
+        - Outer wrapper: rounded container with overflow-hidden and a spinning conic-gradient child.
+        - The gradient creates a "light beam" that orbits the button's perimeter.
+        - Inner button: sits on top with a slight inset to reveal the gradient border.
+      */}
+      <button
         onClick={onBookDemo || openBooking}
+        className="group relative inline-flex items-center justify-center rounded-[20px] p-[2px] cursor-pointer overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-xl hover:shadow-2xl shadow-brand-primary/20 animate-[pulse-scale_3s_ease-in-out_infinite]"
       >
-        Book Live Demo
-      </Button>
+        {/* Spinning conic gradient — refined for smoothness */}
+        <span
+          className="absolute -inset-full animate-[spin_4s_linear_infinite]"
+          style={{
+            background:
+              "conic-gradient(from 90deg, transparent 0%, transparent 50%, var(--color-brand-primary) 50%, transparent 55%, transparent 100%)",
+          }}
+        />
 
-      {/* Secondary Anchor Button: Redirects to the product walkthrough section */}
-      {/* <Button as="a" href="#demo" variant="glass" size="xl" className="px-12">
-        See how it works
-      </Button> */}
+        {/* Inner button face — solid background to prevent see-through */}
+        <span className="relative z-10 inline-flex items-center justify-center gap-2 px-12 py-3.5 text-lg font-black rounded-[18px] bg-brand-primary text-white border border-white/10 transition-all duration-300 group-hover:bg-brand-primary/90">
+          Book Live Demo
+        </span>
+      </button>
     </motion.div>
   );
 };
