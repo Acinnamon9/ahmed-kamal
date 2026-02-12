@@ -3,13 +3,19 @@ import { useCurrency } from "../../hooks/useCurrency";
 
 interface ROIResultCardProps {
   projectedRevenue: number;
+  isRevenueBased?: boolean;
+  description?: string;
 }
 
 /**
  * ROIResultCard Component
- * Displays the calculated projected revenue uplift.
+ * Displays the calculated projected revenue uplift or efficiency gains.
  */
-const ROIResultCard: React.FC<ROIResultCardProps> = ({ projectedRevenue }) => {
+const ROIResultCard: React.FC<ROIResultCardProps> = ({
+  projectedRevenue,
+  isRevenueBased = true,
+  description,
+}) => {
   const { formatCurrency } = useCurrency();
 
   return (
@@ -41,15 +47,26 @@ const ROIResultCard: React.FC<ROIResultCardProps> = ({ projectedRevenue }) => {
 
       <div className="relative z-10">
         <div className="text-[10px] font-black text-(--muted-foreground) uppercase tracking-[0.3em] mb-4 opacity-80">
-          Projected Monthly Revenue Uplift
+          {isRevenueBased
+            ? "Projected Monthly Revenue Uplift"
+            : "Projected Efficiency Gain"}
         </div>
         <div className="text-5xl sm:text-7xl font-black text-brand-link tracking-tighter mb-4 transition-transform group-hover:scale-105 duration-1000 delay-200 selection:bg-brand-link/30">
-          {formatCurrency(projectedRevenue)}
+          {isRevenueBased ? formatCurrency(projectedRevenue) : "35–50%"}
         </div>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-success/10 border border-brand-success/20">
-          <span className="text-[9px] font-black text-brand-success uppercase tracking-widest">
-            +30% Operational Gain
-          </span>
+        <div className="flex flex-col items-center gap-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-success/10 border border-brand-success/20">
+            <span className="text-[9px] font-black text-brand-success uppercase tracking-widest">
+              {isRevenueBased
+                ? "+30% Operational Gain"
+                : "Backlog Reduction Ready"}
+            </span>
+          </div>
+          {description && (
+            <p className="text-[10px] text-(--muted-foreground) font-bold uppercase tracking-widest max-w-[280px] leading-relaxed">
+              {description}
+            </p>
+          )}
         </div>
       </div>
     </div>

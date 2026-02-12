@@ -43,7 +43,7 @@ const Approach: React.FC = () => {
                 Most AI platforms ship rigid workflows and expect your team to
                 adjust.
                 <strong className="text-brand-primary"> AtomicX</strong> sits
-                between the AI and your business — making sure the system bends,
+                between the AI and your business; making sure the system bends,
                 not you.
               </p>
             </div>

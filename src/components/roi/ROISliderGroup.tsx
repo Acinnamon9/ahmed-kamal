@@ -31,8 +31,8 @@ const ROISliderGroup: React.FC<ROISliderGroupProps> = ({
         label="Monthly Leads"
         valueDisplay={leads.toLocaleString()}
         min="10"
-        max="1000"
-        step="10"
+        max={leads > 1000 ? Math.max(leads * 1.5, 100000).toString() : "1000"}
+        step={leads > 1000 ? "100" : "10"}
         value={leads}
         onChange={(e) => setLeads(parseInt(e.target.value))}
       />
@@ -40,9 +40,13 @@ const ROISliderGroup: React.FC<ROISliderGroupProps> = ({
       <Slider
         label="Avg. Deal Value"
         valueDisplay={formatCurrency(dealValue)}
-        min="500"
-        max="50000"
-        step="500"
+        min="10"
+        max={
+          dealValue > 50000
+            ? Math.max(dealValue * 1.5, 500000).toString()
+            : "50000"
+        }
+        step={dealValue > 1000 ? "500" : "10"}
         value={dealValue}
         onChange={(e) => setDealValue(parseInt(e.target.value))}
       />
@@ -50,9 +54,9 @@ const ROISliderGroup: React.FC<ROISliderGroupProps> = ({
       <Slider
         label="Current Close Rate"
         valueDisplay={`${closeRate}%`}
-        min="1"
-        max="30"
-        step="0.5"
+        min="0.1"
+        max="90"
+        step="0.1"
         value={closeRate}
         onChange={(e) => setCloseRate(parseFloat(e.target.value))}
       />

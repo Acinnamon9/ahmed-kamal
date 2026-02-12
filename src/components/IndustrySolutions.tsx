@@ -45,9 +45,7 @@ const IndustrySolutions: React.FC = () => {
   }, []);
 
   return (
-    <Section
-      className="font-jakarta py-16 md:py-20 overflow-hidden bg-transparent"
-    >
+    <Section className="font-jakarta py-16 md:py-20 overflow-hidden bg-transparent">
       <Container>
         <IndustryHeader />
 
@@ -59,40 +57,12 @@ const IndustrySolutions: React.FC = () => {
           */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
             <AnimatePresence mode="popLayout">
-              {/* Fixed First Industry Card */}
-              <motion.div
-                key={industries[0].id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                layout
-                transition={{ duration: 0.4 }}
-              >
-                <SectorCard
-                  industry={industries[0]}
-                  onHover={setHoveredIndustry}
-                />
-              </motion.div>
-
               {/* 
-                "Universal Core" Anchor Card:
-                Positioned statically as the 2nd item. It serves as a visual hub,
-                reacting to whichever sector the user is currently hovering over.
+                Industry List:
+                Renders all sectors in order. The 'global' (Universal Core) 
+                is now at the end of the data array.
               */}
-              <motion.div
-                key="universal-core"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                layout
-                transition={{ duration: 0.4, delay: 0.05 }}
-              >
-                <CenterCard hoveredIndustry={hoveredIndustry} />
-              </motion.div>
-
-              {/* 
-                Dynamic Industry List:
-                Slices the data based on 'isExpanded' state to show/hide extra sectors.
-              */}
-              {(isExpanded ? industries.slice(1) : industries.slice(1, 2)).map(
+              {(isExpanded ? industries : industries.slice(0, 3)).map(
                 (ind, idx) => (
                   <motion.div
                     key={ind.id}
@@ -106,11 +76,15 @@ const IndustrySolutions: React.FC = () => {
                     }}
                     transition={{
                       duration: 0.4,
-                      delay: isExpanded ? (idx + 2) * 0.05 : 0.1,
+                      delay: isExpanded ? idx * 0.05 : idx * 0.1,
                     }}
                     layout
                   >
-                    <SectorCard industry={ind} onHover={setHoveredIndustry} />
+                    {ind.id === "global" ? (
+                      <CenterCard hoveredIndustry={hoveredIndustry} />
+                    ) : (
+                      <SectorCard industry={ind} onHover={setHoveredIndustry} />
+                    )}
                   </motion.div>
                 ),
               )}

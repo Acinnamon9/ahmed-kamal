@@ -8,6 +8,9 @@ import Badge from "./ui/Badge";
 import ROISliderGroup from "./roi/ROISliderGroup";
 import ROIResultCard from "./roi/ROIResultCard";
 
+import IndustryPresets from "./roi/IndustryPresets";
+import { ROI_PRESETS, type ROIPreset } from "../constants/roiPresets";
+
 /**
  * ROICalculator Component
  *
@@ -19,6 +22,14 @@ const ROICalculator: React.FC = () => {
   const [leads, setLeads] = useState(300);
   const [dealValue, setDealValue] = useState(1000);
   const [closeRate, setCloseRate] = useState(7);
+  const [activePresetId, setActivePresetId] = useState<string | null>(null);
+
+  const handlePresetSelect = (preset: ROIPreset) => {
+    setActivePresetId(preset.id);
+    setLeads(preset.leads);
+    setDealValue(preset.dealValue);
+    setCloseRate(preset.closeRate);
+  };
 
   /**
    * REVENUE PROJECTION LOGIC:
@@ -29,25 +40,20 @@ const ROICalculator: React.FC = () => {
   const currentRevenue = leads * (closeRate / 100) * dealValue;
   const projectedRevenue = currentRevenue * 0.3;
 
+  const activePreset = ROI_PRESETS.find((p) => p.id === activePresetId);
+
   return (
     <Section className="bg-transparent overflow-hidden relative py-24 md:py-32">
-      {/* 
-        Thematic Background Decor: 
-        Soft localized glows that match the site's hero gradient colors.
-      */}
       <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
         <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-(--hero-gradient-from) rounded-full blur-[120px] opacity-20" />
         <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-(--hero-gradient-to) rounded-full blur-[100px] opacity-10" />
       </div>
 
       <Container className="relative z-10">
-        {/* Main Glassmorphic Panel Wrapper */}
         <div className="relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl overflow-hidden py-10 px-6 md:px-12">
-          {/* Internal Glass Flow Overlay: creates a subtle chromatic variation */}
           <div className="absolute inset-0 bg-linear-to-br from-brand-primary/5 via-transparent to-brand-primary/5 pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center max-w-6xl mx-auto relative z-10">
-            {/* Left Column: Educational Copy & Action */}
             <div className="max-w-xl text-center lg:text-left">
               <div className="mb-6">
                 <Badge
@@ -63,12 +69,15 @@ const ROICalculator: React.FC = () => {
               </h2>
               <p className="text-lg text-(--muted-foreground) leading-relaxed font-medium mb-10 max-w-lg mx-auto lg:mx-0">
                 Quantify the operational leakage in your current manual
-                workflows. Our AI eliminates response delay and maximizes every
-                unit of inbound lead traffic.
+                workflows. Select your sector or adjust the sliders manually.
               </p>
 
+              <IndustryPresets
+                activePresetId={activePresetId}
+                onSelect={handlePresetSelect}
+              />
+
               <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                {/* Magnetic Interaction: Makes the button feel physically reactive */}
                 <Magnetic>
                   <Button
                     size="xl"
@@ -86,7 +95,6 @@ const ROICalculator: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column: Interactive Slider Suite */}
             <InteractiveTilt strength={5}>
               <Card
                 variant="white"
@@ -95,15 +103,27 @@ const ROICalculator: React.FC = () => {
                 <div className="space-y-12">
                   <ROISliderGroup
                     leads={leads}
-                    setLeads={setLeads}
+                    setLeads={(val) => {
+                      setLeads(val);
+                      setActivePresetId(null);
+                    }}
                     dealValue={dealValue}
-                    setDealValue={setDealValue}
+                    setDealValue={(val) => {
+                      setDealValue(val);
+                      setActivePresetId(null);
+                    }}
                     closeRate={closeRate}
-                    setCloseRate={setCloseRate}
+                    setCloseRate={(val) => {
+                      setCloseRate(val);
+                      setActivePresetId(null);
+                    }}
                   />
 
-                  {/* Result Panel: Reacts instantly to state changes above */}
-                  <ROIResultCard projectedRevenue={projectedRevenue} />
+                  <ROIResultCard
+                    projectedRevenue={projectedRevenue}
+                    isRevenueBased={activePreset?.isRevenueBased}
+                    description={activePreset?.description}
+                  />
                 </div>
 
                 {/* Subtle Technical 'Glow' accent in the corner */}
