@@ -12,13 +12,14 @@ import path from "path";
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import vercel from "vite-plugin-vercel";
+import { viteSingleFile } from "vite-plugin-singlefile";
 
 export default defineConfig({
   base: "/",
   server: {
     port: process.env.PORT as unknown as number,
   },
-  plugins: [react(), tailwindcss(), vercel()],
+  plugins: [react(), tailwindcss(), vercel(), viteSingleFile()],
   publicDir: "public",
   resolve: {
     alias: {
@@ -28,13 +29,5 @@ export default defineConfig({
   build: {
     outDir: "dist",
     sourcemap: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          "vendor-react": ["react", "react-dom"],
-          "vendor-motion": ["framer-motion"],
-        },
-      },
-    },
   },
 });
